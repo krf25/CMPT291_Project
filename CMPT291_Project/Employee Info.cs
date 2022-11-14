@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace CMPT291_Project
 {
-    public partial class EmpReports : Form
+    public partial class Employee_Info : Form
     {
-        public EmpReports()
+        public Employee_Info()
         {
             InitializeComponent();
-        }
-
-        private void tabPage1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
