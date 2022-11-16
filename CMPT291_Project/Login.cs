@@ -30,5 +30,11 @@ namespace CMPT291_Project
             r.Show();
 
         }
+
+        private void login_button_Click(object sender, EventArgs e)
+        {
+            CustomerScreen c = new CustomerScreen();
+            c.Show();
+        }
     }
 }

@@ -5,6 +5,9 @@
     <Compile Update="CustomerInfo.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="CustomerScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Employee Info.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -15,6 +18,9 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="EmpReports.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="landingpage.cs">

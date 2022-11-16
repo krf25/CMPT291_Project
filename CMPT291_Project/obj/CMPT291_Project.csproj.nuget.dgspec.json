@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "F:\\projects\\C#\\CMPT291_GroupProject\\CMPT291_Project\\CMPT291_Project.csproj": {}
+    "C:\\Users\\e2467\\Desktop\\Eric\\homework\\cmpt 291\\project\\CMPT291_Project\\CMPT291_Project.csproj": {}
   },
   "projects": {
-    "F:\\projects\\C#\\CMPT291_GroupProject\\CMPT291_Project\\CMPT291_Project.csproj": {
+    "C:\\Users\\e2467\\Desktop\\Eric\\homework\\cmpt 291\\project\\CMPT291_Project\\CMPT291_Project.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\projects\\C#\\CMPT291_GroupProject\\CMPT291_Project\\CMPT291_Project.csproj",
+        "projectUniqueName": "C:\\Users\\e2467\\Desktop\\Eric\\homework\\cmpt 291\\project\\CMPT291_Project\\CMPT291_Project.csproj",
         "projectName": "CMPT291_Project",
-        "projectPath": "F:\\projects\\C#\\CMPT291_GroupProject\\CMPT291_Project\\CMPT291_Project.csproj",
-        "packagesPath": "C:\\Users\\kiera\\.nuget\\packages\\",
-        "outputPath": "F:\\projects\\C#\\CMPT291_GroupProject\\CMPT291_Project\\obj\\",
+        "projectPath": "C:\\Users\\e2467\\Desktop\\Eric\\homework\\cmpt 291\\project\\CMPT291_Project\\CMPT291_Project.csproj",
+        "packagesPath": "C:\\Users\\e2467\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\e2467\\Desktop\\Eric\\homework\\cmpt 291\\project\\CMPT291_Project\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-        ],
         "configFilePaths": [
-          "C:\\Users\\kiera\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\e2467\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -62,7 +58,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
