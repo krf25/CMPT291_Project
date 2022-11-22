@@ -20,7 +20,7 @@
     <Compile Update="EmpReports.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Form1.cs">
+    <Compile Update="Movie_Edit.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="landingpage.cs">

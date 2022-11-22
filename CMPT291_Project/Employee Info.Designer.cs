@@ -55,12 +55,6 @@
             this.EID_box_add = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.label30 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.delete_employee = new System.Windows.Forms.Button();
-            this.EID_DEL_LABEL = new System.Windows.Forms.Label();
-            this.EID_DELETE_BOX = new System.Windows.Forms.TextBox();
-            this.label45 = new System.Windows.Forms.Label();
             this.edit_confirm_btn = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.startDate_edit_box_emp = new System.Windows.Forms.TextBox();
@@ -84,6 +78,12 @@
             this.label22 = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.EID_edit_box = new System.Windows.Forms.TextBox();
+            this.label30 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.delete_employee = new System.Windows.Forms.Button();
+            this.EID_DEL_LABEL = new System.Windows.Forms.Label();
+            this.EID_DELETE_BOX = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
             this.tabcontrol_customer.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -319,6 +319,7 @@
             this.EID_box_add.Name = "EID_box_add";
             this.EID_box_add.Size = new System.Drawing.Size(100, 23);
             this.EID_box_add.TabIndex = 1;
+            this.EID_box_add.TextChanged += new System.EventHandler(this.EID_box_add_TextChanged);
             // 
             // label1
             // 
@@ -363,65 +364,6 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Edit";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label30.Location = new System.Drawing.Point(6, 6);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(216, 32);
-            this.label30.TabIndex = 29;
-            this.label30.Text = "Edit employee info";
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.delete_employee);
-            this.tabPage3.Controls.Add(this.EID_DEL_LABEL);
-            this.tabPage3.Controls.Add(this.EID_DELETE_BOX);
-            this.tabPage3.Controls.Add(this.label45);
-            this.tabPage3.Location = new System.Drawing.Point(4, 24);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(791, 415);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Delete";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // delete_employee
-            // 
-            this.delete_employee.Location = new System.Drawing.Point(315, 159);
-            this.delete_employee.Name = "delete_employee";
-            this.delete_employee.Size = new System.Drawing.Size(140, 23);
-            this.delete_employee.TabIndex = 32;
-            this.delete_employee.Text = "Delete Employee";
-            this.delete_employee.UseVisualStyleBackColor = true;
-            // 
-            // EID_DEL_LABEL
-            // 
-            this.EID_DEL_LABEL.AutoSize = true;
-            this.EID_DEL_LABEL.Location = new System.Drawing.Point(332, 112);
-            this.EID_DEL_LABEL.Name = "EID_DEL_LABEL";
-            this.EID_DEL_LABEL.Size = new System.Drawing.Size(73, 15);
-            this.EID_DEL_LABEL.TabIndex = 31;
-            this.EID_DEL_LABEL.Text = "Employee ID";
-            // 
-            // EID_DELETE_BOX
-            // 
-            this.EID_DELETE_BOX.Location = new System.Drawing.Point(332, 130);
-            this.EID_DELETE_BOX.Name = "EID_DELETE_BOX";
-            this.EID_DELETE_BOX.Size = new System.Drawing.Size(100, 23);
-            this.EID_DELETE_BOX.TabIndex = 30;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label45.Location = new System.Drawing.Point(264, 55);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(245, 32);
-            this.label45.TabIndex = 29;
-            this.label45.Text = "Delete Employee Info";
             // 
             // edit_confirm_btn
             // 
@@ -607,6 +549,65 @@
             this.EID_edit_box.Name = "EID_edit_box";
             this.EID_edit_box.Size = new System.Drawing.Size(100, 23);
             this.EID_edit_box.TabIndex = 30;
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label30.Location = new System.Drawing.Point(6, 6);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(216, 32);
+            this.label30.TabIndex = 29;
+            this.label30.Text = "Edit employee info";
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.delete_employee);
+            this.tabPage3.Controls.Add(this.EID_DEL_LABEL);
+            this.tabPage3.Controls.Add(this.EID_DELETE_BOX);
+            this.tabPage3.Controls.Add(this.label45);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(791, 415);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Delete";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // delete_employee
+            // 
+            this.delete_employee.Location = new System.Drawing.Point(315, 159);
+            this.delete_employee.Name = "delete_employee";
+            this.delete_employee.Size = new System.Drawing.Size(140, 23);
+            this.delete_employee.TabIndex = 32;
+            this.delete_employee.Text = "Delete Employee";
+            this.delete_employee.UseVisualStyleBackColor = true;
+            // 
+            // EID_DEL_LABEL
+            // 
+            this.EID_DEL_LABEL.AutoSize = true;
+            this.EID_DEL_LABEL.Location = new System.Drawing.Point(332, 112);
+            this.EID_DEL_LABEL.Name = "EID_DEL_LABEL";
+            this.EID_DEL_LABEL.Size = new System.Drawing.Size(73, 15);
+            this.EID_DEL_LABEL.TabIndex = 31;
+            this.EID_DEL_LABEL.Text = "Employee ID";
+            // 
+            // EID_DELETE_BOX
+            // 
+            this.EID_DELETE_BOX.Location = new System.Drawing.Point(332, 130);
+            this.EID_DELETE_BOX.Name = "EID_DELETE_BOX";
+            this.EID_DELETE_BOX.Size = new System.Drawing.Size(100, 23);
+            this.EID_DELETE_BOX.TabIndex = 30;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label45.Location = new System.Drawing.Point(264, 55);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(245, 32);
+            this.label45.TabIndex = 29;
+            this.label45.Text = "Delete Employee Info";
             // 
             // Employee_Info
             // 

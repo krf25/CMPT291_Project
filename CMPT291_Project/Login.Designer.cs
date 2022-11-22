@@ -28,28 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.user_box = new System.Windows.Forms.TextBox();
-            this.pass_box = new System.Windows.Forms.TextBox();
+            this.username = new System.Windows.Forms.TextBox();
+            this.password = new System.Windows.Forms.TextBox();
             this.user_label = new System.Windows.Forms.Label();
             this.pass_label = new System.Windows.Forms.Label();
             this.login_button = new System.Windows.Forms.Button();
             this.register_button = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // user_box
+            // username
             // 
-            this.user_box.Location = new System.Drawing.Point(342, 144);
-            this.user_box.Name = "user_box";
-            this.user_box.Size = new System.Drawing.Size(163, 23);
-            this.user_box.TabIndex = 0;
+            this.username.Location = new System.Drawing.Point(342, 144);
+            this.username.Name = "username";
+            this.username.Size = new System.Drawing.Size(163, 23);
+            this.username.TabIndex = 0;
             // 
-            // pass_box
+            // password
             // 
-            this.pass_box.Location = new System.Drawing.Point(342, 194);
-            this.pass_box.Name = "pass_box";
-            this.pass_box.Size = new System.Drawing.Size(163, 23);
-            this.pass_box.TabIndex = 1;
-            this.pass_box.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.password.Location = new System.Drawing.Point(342, 194);
+            this.password.Name = "password";
+            this.password.Size = new System.Drawing.Size(163, 23);
+            this.password.TabIndex = 1;
+            this.password.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
             // 
             // user_label
             // 
@@ -103,10 +103,11 @@
             this.Controls.Add(this.login_button);
             this.Controls.Add(this.pass_label);
             this.Controls.Add(this.user_label);
-            this.Controls.Add(this.pass_box);
-            this.Controls.Add(this.user_box);
+            this.Controls.Add(this.password);
+            this.Controls.Add(this.username);
             this.Name = "Login";
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.Login_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -114,8 +115,8 @@
 
         #endregion
 
-        private TextBox user_box;
-        private TextBox pass_box;
+        private TextBox username;
+        private TextBox password;
         private Label user_label;
         private Label pass_label;
         private Button login_button;

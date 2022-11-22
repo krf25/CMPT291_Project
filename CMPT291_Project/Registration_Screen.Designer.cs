@@ -29,11 +29,13 @@
         private void InitializeComponent()
         {
             this.bkround_panel = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.email = new System.Windows.Forms.TextBox();
             this.Login_redirect_button = new System.Windows.Forms.Button();
             this.Register_button = new System.Windows.Forms.Button();
-            this.password_box_confirm = new System.Windows.Forms.TextBox();
-            this.password_box = new System.Windows.Forms.TextBox();
-            this.username_box = new System.Windows.Forms.TextBox();
+            this.password_confirm = new System.Windows.Forms.TextBox();
+            this.password = new System.Windows.Forms.TextBox();
+            this.username = new System.Windows.Forms.TextBox();
             this.confirm_password_label = new System.Windows.Forms.Label();
             this.password_label = new System.Windows.Forms.Label();
             this.username_label = new System.Windows.Forms.Label();
@@ -44,11 +46,13 @@
             // bkround_panel
             // 
             this.bkround_panel.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.bkround_panel.Controls.Add(this.label2);
+            this.bkround_panel.Controls.Add(this.email);
             this.bkround_panel.Controls.Add(this.Login_redirect_button);
             this.bkround_panel.Controls.Add(this.Register_button);
-            this.bkround_panel.Controls.Add(this.password_box_confirm);
-            this.bkround_panel.Controls.Add(this.password_box);
-            this.bkround_panel.Controls.Add(this.username_box);
+            this.bkround_panel.Controls.Add(this.password_confirm);
+            this.bkround_panel.Controls.Add(this.password);
+            this.bkround_panel.Controls.Add(this.username);
             this.bkround_panel.Controls.Add(this.confirm_password_label);
             this.bkround_panel.Controls.Add(this.password_label);
             this.bkround_panel.Controls.Add(this.username_label);
@@ -57,6 +61,25 @@
             this.bkround_panel.Name = "bkround_panel";
             this.bkround_panel.Size = new System.Drawing.Size(459, 356);
             this.bkround_panel.TabIndex = 0;
+            this.bkround_panel.Paint += new System.Windows.Forms.PaintEventHandler(this.bkround_panel_Paint);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label2.Location = new System.Drawing.Point(57, 84);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(91, 21);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Enter Email:";
+            // 
+            // email
+            // 
+            this.email.AccessibleName = "email";
+            this.email.Location = new System.Drawing.Point(154, 84);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(211, 23);
+            this.email.TabIndex = 9;
             // 
             // Login_redirect_button
             // 
@@ -82,34 +105,34 @@
             this.Register_button.UseVisualStyleBackColor = false;
             this.Register_button.Click += new System.EventHandler(this.Register_button_Click);
             // 
-            // password_box_confirm
+            // password_confirm
             // 
-            this.password_box_confirm.Location = new System.Drawing.Point(157, 167);
-            this.password_box_confirm.Name = "password_box_confirm";
-            this.password_box_confirm.Size = new System.Drawing.Size(209, 23);
-            this.password_box_confirm.TabIndex = 6;
+            this.password_confirm.Location = new System.Drawing.Point(154, 171);
+            this.password_confirm.Name = "password_confirm";
+            this.password_confirm.Size = new System.Drawing.Size(209, 23);
+            this.password_confirm.TabIndex = 6;
             // 
-            // password_box
+            // password
             // 
-            this.password_box.Location = new System.Drawing.Point(157, 127);
-            this.password_box.Name = "password_box";
-            this.password_box.Size = new System.Drawing.Size(208, 23);
-            this.password_box.TabIndex = 5;
+            this.password.Location = new System.Drawing.Point(154, 142);
+            this.password.Name = "password";
+            this.password.Size = new System.Drawing.Size(209, 23);
+            this.password.TabIndex = 5;
             // 
-            // username_box
+            // username
             // 
-            this.username_box.AccessibleName = "usernamebox";
-            this.username_box.Location = new System.Drawing.Point(157, 90);
-            this.username_box.Name = "username_box";
-            this.username_box.Size = new System.Drawing.Size(209, 23);
-            this.username_box.TabIndex = 4;
-            this.username_box.TextChanged += new System.EventHandler(this.username_box_TextChanged);
+            this.username.AccessibleName = "username";
+            this.username.Location = new System.Drawing.Point(154, 113);
+            this.username.Name = "username";
+            this.username.Size = new System.Drawing.Size(211, 23);
+            this.username.TabIndex = 4;
+            this.username.TextChanged += new System.EventHandler(this.username_box_TextChanged);
             // 
             // confirm_password_label
             // 
             this.confirm_password_label.AutoSize = true;
             this.confirm_password_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.confirm_password_label.Location = new System.Drawing.Point(14, 165);
+            this.confirm_password_label.Location = new System.Drawing.Point(9, 174);
             this.confirm_password_label.Name = "confirm_password_label";
             this.confirm_password_label.Size = new System.Drawing.Size(140, 21);
             this.confirm_password_label.TabIndex = 3;
@@ -119,7 +142,7 @@
             // 
             this.password_label.AutoSize = true;
             this.password_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.password_label.Location = new System.Drawing.Point(32, 125);
+            this.password_label.Location = new System.Drawing.Point(30, 145);
             this.password_label.Name = "password_label";
             this.password_label.Size = new System.Drawing.Size(119, 21);
             this.password_label.TabIndex = 2;
@@ -129,7 +152,7 @@
             // 
             this.username_label.AutoSize = true;
             this.username_label.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.username_label.Location = new System.Drawing.Point(30, 88);
+            this.username_label.Location = new System.Drawing.Point(25, 115);
             this.username_label.Name = "username_label";
             this.username_label.Size = new System.Drawing.Size(124, 21);
             this.username_label.TabIndex = 1;
@@ -155,6 +178,7 @@
             this.Controls.Add(this.bkround_panel);
             this.Name = "Registration_Screen";
             this.Text = "Account Registration";
+            this.Load += new System.EventHandler(this.Registration_Screen_Load);
             this.bkround_panel.ResumeLayout(false);
             this.bkround_panel.PerformLayout();
             this.ResumeLayout(false);
@@ -167,11 +191,13 @@
         private Label label1;
         private Button Login_redirect_button;
         private Button Register_button;
-        private TextBox password_box_confirm;
-        private TextBox password_box;
-        private TextBox username_box;
+        private TextBox password_confirm;
+        private TextBox password;
+        private TextBox username;
         private Label confirm_password_label;
         private Label password_label;
         private Label username_label;
+        private Label label2;
+        private TextBox email;
     }
 }

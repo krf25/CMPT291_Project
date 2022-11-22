@@ -16,5 +16,10 @@ namespace CMPT291_Project
         {
             InitializeComponent();
         }
+
+        private void EID_box_add_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
