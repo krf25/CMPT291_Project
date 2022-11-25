@@ -470,19 +470,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\e2467\\.nuget\\packages\\": {}
+    "C:\\Users\\tee\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\e2467\\Desktop\\Eric\\homework\\cmpt 291\\project\\CMPT291_Project\\CMPT291_Project.csproj",
+      "projectUniqueName": "C:\\Users\\tee\\Source\\Repos\\CMPT291_Project\\CMPT291_Project\\CMPT291_Project.csproj",
       "projectName": "CMPT291_Project",
-      "projectPath": "C:\\Users\\e2467\\Desktop\\Eric\\homework\\cmpt 291\\project\\CMPT291_Project\\CMPT291_Project.csproj",
-      "packagesPath": "C:\\Users\\e2467\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\e2467\\Desktop\\Eric\\homework\\cmpt 291\\project\\CMPT291_Project\\obj\\",
+      "projectPath": "C:\\Users\\tee\\Source\\Repos\\CMPT291_Project\\CMPT291_Project\\CMPT291_Project.csproj",
+      "packagesPath": "C:\\Users\\tee\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\tee\\Source\\Repos\\CMPT291_Project\\CMPT291_Project\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\e2467\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\tee\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
