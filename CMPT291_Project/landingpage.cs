@@ -20,12 +20,28 @@ namespace CMPT291_Project
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-
+            CustomerInfo CIF = new CustomerInfo();
+            CIF.Show();
         }
-
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            emp_movie_form emf = new emp_movie_form();
+            emf.Show();
+        }
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            EmpReports ER = new EmpReports();
+            ER.Show();
+        }
         private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            
+            EmpRental rental = new EmpRental();
+            rental.Show();
+        }
+        private void linkLabel5_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Employee_Info EIF = new Employee_Info();
+            EIF.Show();
         }
         // reports label
         private void label3_Click(object sender, EventArgs e)

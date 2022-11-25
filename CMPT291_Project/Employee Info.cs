@@ -21,13 +21,14 @@ namespace CMPT291_Project
         public Employee_Info()
         {
             InitializeComponent();
-            String connectionString = "Server = DESKTOP-T8V1TAB; Database = Cmpt291_GroupProject; Trusted_Connection = yes;";
-            SqlConnection myConnection = new SqlConnection(connectionString); // Timeout in seconds
+            //String connectionString = "Server = DESKTOP-T8V1TAB; Database = Cmpt291_GroupProject; Trusted_Connection = yes;";
+            //SqlConnection myConnection = new SqlConnection(connectionString); // Timeout in seconds
+            SqlConnection db = new SqlConnection(@"Data Source=(local);Initial Catalog=Cmpt291_GroupProject;Integrated Security=True");
             try
             {
-                myConnection.Open(); // Open connection
+                db.Open(); // Open connection
                 myCommand = new SqlCommand();
-                myCommand.Connection = myConnection; // Link the command stream to the connection
+                myCommand.Connection = db; // Link the command stream to the connection
             }
             catch (Exception e)
             {
