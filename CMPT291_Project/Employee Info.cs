@@ -144,5 +144,54 @@ namespace CMPT291_Project
         {
 
         }
+
+        private void label26_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void edit_confirm_btn_Click(object sender, EventArgs e)
+        {
+            string FName = FName_edit_box.PlaceholderText, LName = LName_edit_box_emp.PlaceholderText, Address = Address_edit_box_emp.PlaceholderText, City = City_edit_box_emp.PlaceholderText, State = State_edit_box_emp.PlaceholderText, Zip = ZIP_edit_box_emp.PlaceholderText, SSN = socialSEC_edit_box_emp.PlaceholderText, Start_Date = startDate_edit_box_emp.PlaceholderText, Hourly_Rate = HourRate_edit_box_emp.PlaceholderText, Email = Email_edit_box_emp.PlaceholderText, PhoneNum = phone_edit_box_emp.PlaceholderText, Password = Password_edit_box_emp.PlaceholderText;
+            if (FName_edit_box.Text != "") FName = FName_edit_box.Text;
+            if (LName_edit_box_emp.Text != "") LName = LName_edit_box_emp.Text;
+            if (Address_edit_box_emp.Text != "") Address = Address_edit_box_emp.Text;
+            if (City_edit_box_emp.Text != "") City = City_edit_box_emp.Text;
+            if (State_edit_box_emp.Text != "") State = State_edit_box_emp.Text;
+            if (ZIP_edit_box_emp.Text != "") Zip = ZIP_edit_box_emp.Text;
+            if (socialSEC_edit_box_emp.Text != "") SSN = socialSEC_edit_box_emp.Text;
+            if (startDate_edit_box_emp.Text != "") Start_Date = socialSEC_edit_box_emp.Text;
+            if (HourRate_edit_box_emp.Text != "") Hourly_Rate = HourRate_edit_box_emp.Text;
+            if (Email_edit_box_emp.Text != "") Email = Email_edit_box_emp.Text;
+            if (phone_edit_box_emp.Text != "") PhoneNum = phone_edit_box_emp.Text;
+            if (Password_edit_box_emp.Text != "") Password = Password_edit_box_emp.Text;
+            myCommand.CommandText = "update dbo.Employees set SSN = '" + SSN + "', LName = '" + LName +
+                   "', FName = '" + FName + "', Address = '" + Address + "', City = '" + City + "' , State = '" +
+                   State + "', ZIP = '" + Zip + "', Start_Date = '" + Start_Date + "', Hourly_Rate = " +
+                    Hourly_Rate + ", PhoneNum = '" + PhoneNum + "', Email = '" + Email + "', password = '" + Password + "' where EID = " + EID_edit_box.Text;
+            MessageBox.Show(myCommand.CommandText);
+            myCommand.ExecuteNonQuery();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            myCommand.CommandText = "select * from dbo.Employees where EID = " + EID_edit_box.Text;
+            myReader = myCommand.ExecuteReader();
+            EmployeeFilter.Rows.Clear();
+            myReader.Read();
+            FName_edit_box.PlaceholderText = myReader["FName"].ToString();
+            LName_edit_box_emp.PlaceholderText = myReader["LName"].ToString();
+            Address_edit_box_emp.PlaceholderText = myReader["Address"].ToString();
+            City_edit_box_emp.PlaceholderText = myReader["City"].ToString();
+            State_edit_box_emp.PlaceholderText = myReader["State"].ToString();
+            ZIP_edit_box_emp.PlaceholderText = myReader["ZIP"].ToString();
+            socialSEC_edit_box_emp.PlaceholderText = myReader["SSN"].ToString();
+            startDate_edit_box_emp.PlaceholderText = myReader["Start_Date"].ToString();
+            HourRate_edit_box_emp.PlaceholderText = myReader["Hourly_Rate"].ToString();
+            phone_edit_box_emp.PlaceholderText = myReader["PhoneNum"].ToString();
+            Email_edit_box_emp.PlaceholderText = myReader["Email"].ToString();
+            Password_edit_box_emp.PlaceholderText = myReader["password"].ToString();
+            myReader.Close();
+        }
     }
 }

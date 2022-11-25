@@ -57,6 +57,11 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.Password_edit_box_emp = new System.Windows.Forms.TextBox();
+            this.Email_edit_box_emp = new System.Windows.Forms.TextBox();
+            this.Edit_employee = new System.Windows.Forms.Button();
+            this.label27 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.EmployeeFilter = new System.Windows.Forms.DataGridView();
@@ -378,6 +383,11 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.Password_edit_box_emp);
+            this.tabPage2.Controls.Add(this.Email_edit_box_emp);
+            this.tabPage2.Controls.Add(this.Edit_employee);
+            this.tabPage2.Controls.Add(this.label27);
+            this.tabPage2.Controls.Add(this.label26);
             this.tabPage2.Controls.Add(this.label24);
             this.tabPage2.Controls.Add(this.button1);
             this.tabPage2.Controls.Add(this.EmployeeFilter);
@@ -414,11 +424,54 @@
             this.tabPage2.Text = "Edit";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // Password_edit_box_emp
+            // 
+            this.Password_edit_box_emp.Location = new System.Drawing.Point(575, 142);
+            this.Password_edit_box_emp.Name = "Password_edit_box_emp";
+            this.Password_edit_box_emp.Size = new System.Drawing.Size(97, 23);
+            this.Password_edit_box_emp.TabIndex = 63;
+            // 
+            // Email_edit_box_emp
+            // 
+            this.Email_edit_box_emp.Location = new System.Drawing.Point(459, 142);
+            this.Email_edit_box_emp.Name = "Email_edit_box_emp";
+            this.Email_edit_box_emp.Size = new System.Drawing.Size(97, 23);
+            this.Email_edit_box_emp.TabIndex = 62;
+            // 
+            // Edit_employee
+            // 
+            this.Edit_employee.Location = new System.Drawing.Point(120, 55);
+            this.Edit_employee.Name = "Edit_employee";
+            this.Edit_employee.Size = new System.Drawing.Size(95, 23);
+            this.Edit_employee.TabIndex = 61;
+            this.Edit_employee.Text = "Edit Employee";
+            this.Edit_employee.UseVisualStyleBackColor = true;
+            this.Edit_employee.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label27
+            // 
+            this.label27.AutoSize = true;
+            this.label27.Location = new System.Drawing.Point(575, 127);
+            this.label27.Name = "label27";
+            this.label27.Size = new System.Drawing.Size(57, 15);
+            this.label27.TabIndex = 60;
+            this.label27.Text = "Password";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Location = new System.Drawing.Point(459, 127);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(36, 15);
+            this.label26.TabIndex = 59;
+            this.label26.Text = "Email";
+            this.label26.Click += new System.EventHandler(this.label26_Click);
+            // 
             // label24
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label24.Location = new System.Drawing.Point(575, 160);
+            this.label24.Location = new System.Drawing.Point(575, 172);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(103, 30);
             this.label24.TabIndex = 57;
@@ -426,7 +479,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(699, 374);
+            this.button1.Location = new System.Drawing.Point(699, 386);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 54;
@@ -451,7 +504,7 @@
             this.PhoneNum,
             this.Email,
             this.password});
-            this.EmployeeFilter.Location = new System.Drawing.Point(15, 160);
+            this.EmployeeFilter.Location = new System.Drawing.Point(15, 172);
             this.EmployeeFilter.Name = "EmployeeFilter";
             this.EmployeeFilter.RowTemplate.Height = 25;
             this.EmployeeFilter.Size = new System.Drawing.Size(543, 237);
@@ -525,17 +578,18 @@
             // 
             // edit_confirm_btn
             // 
-            this.edit_confirm_btn.Location = new System.Drawing.Point(607, 110);
+            this.edit_confirm_btn.Location = new System.Drawing.Point(683, 141);
             this.edit_confirm_btn.Name = "edit_confirm_btn";
-            this.edit_confirm_btn.Size = new System.Drawing.Size(167, 23);
+            this.edit_confirm_btn.Size = new System.Drawing.Size(100, 23);
             this.edit_confirm_btn.TabIndex = 52;
             this.edit_confirm_btn.Text = "Confirm Edits";
             this.edit_confirm_btn.UseVisualStyleBackColor = true;
+            this.edit_confirm_btn.Click += new System.EventHandler(this.edit_confirm_btn_Click);
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(480, 93);
+            this.label8.Location = new System.Drawing.Point(344, 127);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 15);
             this.label8.TabIndex = 51;
@@ -543,14 +597,14 @@
             // 
             // startDate_edit_box_emp
             // 
-            this.startDate_edit_box_emp.Location = new System.Drawing.Point(480, 111);
+            this.startDate_edit_box_emp.Location = new System.Drawing.Point(344, 142);
             this.startDate_edit_box_emp.Name = "startDate_edit_box_emp";
             this.startDate_edit_box_emp.Size = new System.Drawing.Size(97, 23);
             this.startDate_edit_box_emp.TabIndex = 50;
             // 
             // HourRate_edit_box_emp
             // 
-            this.HourRate_edit_box_emp.Location = new System.Drawing.Point(361, 111);
+            this.HourRate_edit_box_emp.Location = new System.Drawing.Point(232, 142);
             this.HourRate_edit_box_emp.Name = "HourRate_edit_box_emp";
             this.HourRate_edit_box_emp.Size = new System.Drawing.Size(97, 23);
             this.HourRate_edit_box_emp.TabIndex = 49;
@@ -558,7 +612,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(364, 96);
+            this.label9.Location = new System.Drawing.Point(232, 127);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 15);
             this.label9.TabIndex = 48;
@@ -566,14 +620,14 @@
             // 
             // socialSEC_edit_box_emp
             // 
-            this.socialSEC_edit_box_emp.Location = new System.Drawing.Point(241, 111);
+            this.socialSEC_edit_box_emp.Location = new System.Drawing.Point(122, 142);
             this.socialSEC_edit_box_emp.Name = "socialSEC_edit_box_emp";
             this.socialSEC_edit_box_emp.Size = new System.Drawing.Size(97, 23);
             this.socialSEC_edit_box_emp.TabIndex = 47;
             // 
             // phone_edit_box_emp
             // 
-            this.phone_edit_box_emp.Location = new System.Drawing.Point(127, 111);
+            this.phone_edit_box_emp.Location = new System.Drawing.Point(12, 141);
             this.phone_edit_box_emp.Name = "phone_edit_box_emp";
             this.phone_edit_box_emp.Size = new System.Drawing.Size(97, 23);
             this.phone_edit_box_emp.TabIndex = 46;
@@ -581,7 +635,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(241, 96);
+            this.label15.Location = new System.Drawing.Point(122, 127);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(93, 15);
             this.label15.TabIndex = 45;
@@ -590,7 +644,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(130, 96);
+            this.label16.Location = new System.Drawing.Point(12, 127);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(51, 15);
             this.label16.TabIndex = 44;
@@ -599,7 +653,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(15, 96);
+            this.label17.Location = new System.Drawing.Point(575, 86);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(24, 15);
             this.label17.TabIndex = 43;
@@ -607,22 +661,22 @@
             // 
             // ZIP_edit_box_emp
             // 
-            this.ZIP_edit_box_emp.Location = new System.Drawing.Point(12, 111);
+            this.ZIP_edit_box_emp.Location = new System.Drawing.Point(575, 101);
             this.ZIP_edit_box_emp.Name = "ZIP_edit_box_emp";
             this.ZIP_edit_box_emp.Size = new System.Drawing.Size(97, 23);
             this.ZIP_edit_box_emp.TabIndex = 42;
             // 
             // State_edit_box_emp
             // 
-            this.State_edit_box_emp.Location = new System.Drawing.Point(586, 61);
+            this.State_edit_box_emp.Location = new System.Drawing.Point(459, 101);
             this.State_edit_box_emp.Name = "State_edit_box_emp";
-            this.State_edit_box_emp.Size = new System.Drawing.Size(100, 23);
+            this.State_edit_box_emp.Size = new System.Drawing.Size(97, 23);
             this.State_edit_box_emp.TabIndex = 41;
             // 
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(589, 46);
+            this.label18.Location = new System.Drawing.Point(459, 86);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(33, 15);
             this.label18.TabIndex = 40;
@@ -630,15 +684,15 @@
             // 
             // City_edit_box_emp
             // 
-            this.City_edit_box_emp.Location = new System.Drawing.Point(480, 61);
+            this.City_edit_box_emp.Location = new System.Drawing.Point(344, 101);
             this.City_edit_box_emp.Name = "City_edit_box_emp";
-            this.City_edit_box_emp.Size = new System.Drawing.Size(100, 23);
+            this.City_edit_box_emp.Size = new System.Drawing.Size(97, 23);
             this.City_edit_box_emp.TabIndex = 39;
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(483, 46);
+            this.label19.Location = new System.Drawing.Point(344, 86);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(28, 15);
             this.label19.TabIndex = 38;
@@ -646,15 +700,15 @@
             // 
             // Address_edit_box_emp
             // 
-            this.Address_edit_box_emp.Location = new System.Drawing.Point(361, 61);
+            this.Address_edit_box_emp.Location = new System.Drawing.Point(232, 101);
             this.Address_edit_box_emp.Name = "Address_edit_box_emp";
-            this.Address_edit_box_emp.Size = new System.Drawing.Size(100, 23);
+            this.Address_edit_box_emp.Size = new System.Drawing.Size(97, 23);
             this.Address_edit_box_emp.TabIndex = 37;
             // 
             // label20
             // 
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(364, 46);
+            this.label20.Location = new System.Drawing.Point(232, 86);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(45, 15);
             this.label20.TabIndex = 36;
@@ -662,22 +716,22 @@
             // 
             // LName_edit_box_emp
             // 
-            this.LName_edit_box_emp.Location = new System.Drawing.Point(241, 61);
+            this.LName_edit_box_emp.Location = new System.Drawing.Point(122, 101);
             this.LName_edit_box_emp.Name = "LName_edit_box_emp";
-            this.LName_edit_box_emp.Size = new System.Drawing.Size(100, 23);
+            this.LName_edit_box_emp.Size = new System.Drawing.Size(97, 23);
             this.LName_edit_box_emp.TabIndex = 35;
             // 
             // FName_edit_box
             // 
-            this.FName_edit_box.Location = new System.Drawing.Point(127, 61);
+            this.FName_edit_box.Location = new System.Drawing.Point(12, 101);
             this.FName_edit_box.Name = "FName_edit_box";
-            this.FName_edit_box.Size = new System.Drawing.Size(100, 23);
+            this.FName_edit_box.Size = new System.Drawing.Size(97, 23);
             this.FName_edit_box.TabIndex = 34;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(244, 46);
+            this.label21.Location = new System.Drawing.Point(122, 86);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(63, 15);
             this.label21.TabIndex = 33;
@@ -686,7 +740,7 @@
             // label22
             // 
             this.label22.AutoSize = true;
-            this.label22.Location = new System.Drawing.Point(130, 46);
+            this.label22.Location = new System.Drawing.Point(12, 83);
             this.label22.Name = "label22";
             this.label22.Size = new System.Drawing.Size(64, 15);
             this.label22.TabIndex = 32;
@@ -695,7 +749,7 @@
             // label23
             // 
             this.label23.AutoSize = true;
-            this.label23.Location = new System.Drawing.Point(15, 46);
+            this.label23.Location = new System.Drawing.Point(12, 38);
             this.label23.Name = "label23";
             this.label23.Size = new System.Drawing.Size(73, 15);
             this.label23.TabIndex = 31;
@@ -703,7 +757,7 @@
             // 
             // EID_edit_box
             // 
-            this.EID_edit_box.Location = new System.Drawing.Point(12, 61);
+            this.EID_edit_box.Location = new System.Drawing.Point(12, 56);
             this.EID_edit_box.Name = "EID_edit_box";
             this.EID_edit_box.Size = new System.Drawing.Size(100, 23);
             this.EID_edit_box.TabIndex = 30;
@@ -726,7 +780,7 @@
             this.panel1.Controls.Add(this.SearchLName);
             this.panel1.Controls.Add(this.searchEmail);
             this.panel1.Controls.Add(this.SearchShowAll);
-            this.panel1.Location = new System.Drawing.Point(564, 193);
+            this.panel1.Location = new System.Drawing.Point(564, 205);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 175);
             this.panel1.TabIndex = 58;
@@ -942,5 +996,10 @@
         private Label label2;
         private TextBox Password_add_box;
         private TextBox Email_add_box;
+        private Label label27;
+        private Label label26;
+        private TextBox Email_edit_box_emp;
+        private Button Edit_employee;
+        private TextBox Password_edit_box_emp;
     }
 }
