@@ -30,13 +30,13 @@
         {
             this.tabcontrol_customer = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.StartDate = new System.Windows.Forms.DateTimePicker();
             this.label25 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Password_add_box = new System.Windows.Forms.TextBox();
             this.Email_add_box = new System.Windows.Forms.TextBox();
             this.add_employee_btn = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
-            this.startdate_add_box = new System.Windows.Forms.TextBox();
             this.HourRate_add_box = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.socialSEC_add_box = new System.Windows.Forms.TextBox();
@@ -134,13 +134,13 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.StartDate);
             this.tabPage1.Controls.Add(this.label25);
             this.tabPage1.Controls.Add(this.label2);
             this.tabPage1.Controls.Add(this.Password_add_box);
             this.tabPage1.Controls.Add(this.Email_add_box);
             this.tabPage1.Controls.Add(this.add_employee_btn);
             this.tabPage1.Controls.Add(this.label14);
-            this.tabPage1.Controls.Add(this.startdate_add_box);
             this.tabPage1.Controls.Add(this.HourRate_add_box);
             this.tabPage1.Controls.Add(this.label10);
             this.tabPage1.Controls.Add(this.socialSEC_add_box);
@@ -168,6 +168,13 @@
             this.tabPage1.Text = "Add";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // StartDate
+            // 
+            this.StartDate.Location = new System.Drawing.Point(472, 144);
+            this.StartDate.Name = "StartDate";
+            this.StartDate.Size = new System.Drawing.Size(200, 23);
+            this.StartDate.TabIndex = 34;
+            // 
             // label25
             // 
             this.label25.AutoSize = true;
@@ -180,7 +187,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(587, 129);
+            this.label2.Location = new System.Drawing.Point(683, 129);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 15);
             this.label2.TabIndex = 32;
@@ -188,7 +195,7 @@
             // 
             // Password_add_box
             // 
-            this.Password_add_box.Location = new System.Drawing.Point(587, 144);
+            this.Password_add_box.Location = new System.Drawing.Point(683, 144);
             this.Password_add_box.Name = "Password_add_box";
             this.Password_add_box.Size = new System.Drawing.Size(100, 23);
             this.Password_add_box.TabIndex = 31;
@@ -218,13 +225,6 @@
             this.label14.Size = new System.Drawing.Size(58, 15);
             this.label14.TabIndex = 27;
             this.label14.Text = "Start Date";
-            // 
-            // startdate_add_box
-            // 
-            this.startdate_add_box.Location = new System.Drawing.Point(472, 144);
-            this.startdate_add_box.Name = "startdate_add_box";
-            this.startdate_add_box.Size = new System.Drawing.Size(97, 23);
-            this.startdate_add_box.TabIndex = 22;
             // 
             // HourRate_add_box
             // 
@@ -426,14 +426,14 @@
             // 
             // Password_edit_box_emp
             // 
-            this.Password_edit_box_emp.Location = new System.Drawing.Point(575, 142);
+            this.Password_edit_box_emp.Location = new System.Drawing.Point(344, 141);
             this.Password_edit_box_emp.Name = "Password_edit_box_emp";
             this.Password_edit_box_emp.Size = new System.Drawing.Size(97, 23);
             this.Password_edit_box_emp.TabIndex = 63;
             // 
             // Email_edit_box_emp
             // 
-            this.Email_edit_box_emp.Location = new System.Drawing.Point(459, 142);
+            this.Email_edit_box_emp.Location = new System.Drawing.Point(232, 141);
             this.Email_edit_box_emp.Name = "Email_edit_box_emp";
             this.Email_edit_box_emp.Size = new System.Drawing.Size(97, 23);
             this.Email_edit_box_emp.TabIndex = 62;
@@ -451,7 +451,7 @@
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(575, 127);
+            this.label27.Location = new System.Drawing.Point(344, 126);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(57, 15);
             this.label27.TabIndex = 60;
@@ -460,7 +460,7 @@
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(459, 127);
+            this.label26.Location = new System.Drawing.Point(232, 126);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(36, 15);
             this.label26.TabIndex = 59;
@@ -483,7 +483,7 @@
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 54;
-            this.button1.Text = "Query";
+            this.button1.Text = "Search";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -589,7 +589,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(344, 127);
+            this.label8.Location = new System.Drawing.Point(533, 23);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 15);
             this.label8.TabIndex = 51;
@@ -597,14 +597,14 @@
             // 
             // startDate_edit_box_emp
             // 
-            this.startDate_edit_box_emp.Location = new System.Drawing.Point(344, 142);
+            this.startDate_edit_box_emp.Location = new System.Drawing.Point(533, 38);
             this.startDate_edit_box_emp.Name = "startDate_edit_box_emp";
             this.startDate_edit_box_emp.Size = new System.Drawing.Size(97, 23);
             this.startDate_edit_box_emp.TabIndex = 50;
             // 
             // HourRate_edit_box_emp
             // 
-            this.HourRate_edit_box_emp.Location = new System.Drawing.Point(232, 142);
+            this.HourRate_edit_box_emp.Location = new System.Drawing.Point(122, 141);
             this.HourRate_edit_box_emp.Name = "HourRate_edit_box_emp";
             this.HourRate_edit_box_emp.Size = new System.Drawing.Size(97, 23);
             this.HourRate_edit_box_emp.TabIndex = 49;
@@ -612,7 +612,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(232, 127);
+            this.label9.Location = new System.Drawing.Point(122, 126);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(69, 15);
             this.label9.TabIndex = 48;
@@ -620,14 +620,14 @@
             // 
             // socialSEC_edit_box_emp
             // 
-            this.socialSEC_edit_box_emp.Location = new System.Drawing.Point(122, 142);
+            this.socialSEC_edit_box_emp.Location = new System.Drawing.Point(12, 141);
             this.socialSEC_edit_box_emp.Name = "socialSEC_edit_box_emp";
             this.socialSEC_edit_box_emp.Size = new System.Drawing.Size(97, 23);
             this.socialSEC_edit_box_emp.TabIndex = 47;
             // 
             // phone_edit_box_emp
             // 
-            this.phone_edit_box_emp.Location = new System.Drawing.Point(12, 141);
+            this.phone_edit_box_emp.Location = new System.Drawing.Point(683, 101);
             this.phone_edit_box_emp.Name = "phone_edit_box_emp";
             this.phone_edit_box_emp.Size = new System.Drawing.Size(97, 23);
             this.phone_edit_box_emp.TabIndex = 46;
@@ -635,7 +635,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(122, 127);
+            this.label15.Location = new System.Drawing.Point(12, 126);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(93, 15);
             this.label15.TabIndex = 45;
@@ -644,7 +644,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(12, 127);
+            this.label16.Location = new System.Drawing.Point(683, 87);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(51, 15);
             this.label16.TabIndex = 44;
@@ -832,6 +832,7 @@
             // SearchShowAll
             // 
             this.SearchShowAll.AutoSize = true;
+            this.SearchShowAll.Checked = true;
             this.SearchShowAll.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.SearchShowAll.Location = new System.Drawing.Point(19, 15);
             this.SearchShowAll.Name = "SearchShowAll";
@@ -920,7 +921,6 @@
         private TabPage tabPage1;
         private Button add_employee_btn;
         private Label label14;
-        private TextBox startdate_add_box;
         private TextBox HourRate_add_box;
         private Label label10;
         private TextBox socialSEC_add_box;
@@ -1001,5 +1001,6 @@
         private TextBox Email_edit_box_emp;
         private Button Edit_employee;
         private TextBox Password_edit_box_emp;
+        private DateTimePicker StartDate;
     }
 }

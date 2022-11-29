@@ -21,8 +21,7 @@ namespace CMPT291_Project
         public Employee_Info()
         {
             InitializeComponent();
-            String connectionString = "Server = DESKTOP-T8V1TAB; Database = Cmpt291_GroupProject; Trusted_Connection = yes;";
-            SqlConnection myConnection = new SqlConnection(connectionString); // Timeout in seconds
+            SqlConnection myConnection = new SqlConnection(@"Data Source=(local);Initial Catalog=Cmpt291_GroupProject;Integrated Security=True");
             try
             {
                 myConnection.Open(); // Open connection
@@ -113,10 +112,10 @@ namespace CMPT291_Project
             try
 
             {
-                myCommand.CommandText = "insert into dbo.Employees values (" + EID.ToString() + "," + socialSEC_add_box.Text + 
+                myCommand.CommandText = "insert into dbo.Employees values (" + EID.ToString() + ",0" + socialSEC_add_box.Text + 
                     ",'" + LName_add_box.Text + "','" + FName_add_box.Text + "','" + Address_add_box.Text + "','" + 
                     City_add_box.Text + "','" + State_add_box.Text + "','" + ZIP_add_box.Text + "','" +
-                    startdate_add_box.Text + "'," + HourRate_add_box.Text + ",'" + phone_add_box.Text + "','" + Email_add_box.Text + "','" + Password_add_box.Text + "')";
+                    StartDate.Text + "',0" + HourRate_add_box.Text + ",'" + phone_add_box.Text + "','" + Email_add_box.Text + "','" + Password_add_box.Text + "')";
                 MessageBox.Show(myCommand.CommandText);
 
                 myCommand.ExecuteNonQuery();
