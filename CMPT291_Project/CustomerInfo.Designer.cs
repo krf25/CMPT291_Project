@@ -62,7 +62,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.button4 = new System.Windows.Forms.Button();
+            this.EditWithCID = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.PremiumEdit = new System.Windows.Forms.RadioButton();
@@ -72,7 +72,7 @@
             this.NotActiveEdit = new System.Windows.Forms.RadioButton();
             this.endDate_edit_box = new System.Windows.Forms.DateTimePicker();
             this.startDate_edit_box = new System.Windows.Forms.DateTimePicker();
-            this.button3 = new System.Windows.Forms.Button();
+            this.ConfirmCustomerEditButton = new System.Windows.Forms.Button();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.Password_edit_box = new System.Windows.Forms.TextBox();
@@ -99,7 +99,7 @@
             this.CID_edit_box = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.button1 = new System.Windows.Forms.Button();
+            this.DeleteCustomerButton = new System.Windows.Forms.Button();
             this.label44 = new System.Windows.Forms.Label();
             this.CID_DELETE_BOX = new System.Windows.Forms.TextBox();
             this.label45 = new System.Windows.Forms.Label();
@@ -111,7 +111,7 @@
             this.SearchLastName = new System.Windows.Forms.RadioButton();
             this.SearchEmail = new System.Windows.Forms.RadioButton();
             this.SearchAll = new System.Windows.Forms.RadioButton();
-            this.button2 = new System.Windows.Forms.Button();
+            this.SearchCustomerButton = new System.Windows.Forms.Button();
             this.CustomerDisplay = new System.Windows.Forms.DataGridView();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -469,12 +469,12 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.button4);
+            this.tabPage2.Controls.Add(this.EditWithCID);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.panel2);
             this.tabPage2.Controls.Add(this.endDate_edit_box);
             this.tabPage2.Controls.Add(this.startDate_edit_box);
-            this.tabPage2.Controls.Add(this.button3);
+            this.tabPage2.Controls.Add(this.ConfirmCustomerEditButton);
             this.tabPage2.Controls.Add(this.label16);
             this.tabPage2.Controls.Add(this.label17);
             this.tabPage2.Controls.Add(this.Password_edit_box);
@@ -508,14 +508,14 @@
             this.tabPage2.Text = "Edit";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // EditWithCID
             // 
-            this.button4.Location = new System.Drawing.Point(131, 46);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(119, 23);
-            this.button4.TabIndex = 62;
-            this.button4.Text = "Edit Customer Info";
-            this.button4.UseVisualStyleBackColor = true;
+            this.EditWithCID.Location = new System.Drawing.Point(131, 46);
+            this.EditWithCID.Name = "EditWithCID";
+            this.EditWithCID.Size = new System.Drawing.Size(119, 23);
+            this.EditWithCID.TabIndex = 62;
+            this.EditWithCID.Text = "Edit Customer Info";
+            this.EditWithCID.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
@@ -608,14 +608,15 @@
             this.startDate_edit_box.Size = new System.Drawing.Size(200, 23);
             this.startDate_edit_box.TabIndex = 59;
             // 
-            // button3
+            // ConfirmCustomerEditButton
             // 
-            this.button3.Location = new System.Drawing.Point(619, 259);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(120, 46);
-            this.button3.TabIndex = 58;
-            this.button3.Text = "Confirm Edit";
-            this.button3.UseVisualStyleBackColor = true;
+            this.ConfirmCustomerEditButton.Location = new System.Drawing.Point(619, 259);
+            this.ConfirmCustomerEditButton.Name = "ConfirmCustomerEditButton";
+            this.ConfirmCustomerEditButton.Size = new System.Drawing.Size(120, 46);
+            this.ConfirmCustomerEditButton.TabIndex = 58;
+            this.ConfirmCustomerEditButton.Text = "Confirm Edit";
+            this.ConfirmCustomerEditButton.UseVisualStyleBackColor = true;
+            this.ConfirmCustomerEditButton.Click += new System.EventHandler(this.button3_Click);
             // 
             // label16
             // 
@@ -823,7 +824,7 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.button1);
+            this.tabPage3.Controls.Add(this.DeleteCustomerButton);
             this.tabPage3.Controls.Add(this.label44);
             this.tabPage3.Controls.Add(this.CID_DELETE_BOX);
             this.tabPage3.Controls.Add(this.label45);
@@ -835,15 +836,15 @@
             this.tabPage3.Text = "Delete";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // DeleteCustomerButton
             // 
-            this.button1.Location = new System.Drawing.Point(315, 166);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(140, 23);
-            this.button1.TabIndex = 32;
-            this.button1.Text = "Delete Customer";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.DeleteCustomerButton.Location = new System.Drawing.Point(315, 166);
+            this.DeleteCustomerButton.Name = "DeleteCustomerButton";
+            this.DeleteCustomerButton.Size = new System.Drawing.Size(140, 23);
+            this.DeleteCustomerButton.TabIndex = 32;
+            this.DeleteCustomerButton.Text = "Delete Customer";
+            this.DeleteCustomerButton.UseVisualStyleBackColor = true;
+            this.DeleteCustomerButton.Click += new System.EventHandler(this.button1_Click);
             // 
             // label44
             // 
@@ -891,7 +892,7 @@
             this.panel1.Controls.Add(this.SearchLastName);
             this.panel1.Controls.Add(this.SearchEmail);
             this.panel1.Controls.Add(this.SearchAll);
-            this.panel1.Controls.Add(this.button2);
+            this.panel1.Controls.Add(this.SearchCustomerButton);
             this.panel1.Location = new System.Drawing.Point(548, 13);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(238, 304);
@@ -961,15 +962,15 @@
             this.SearchAll.Text = "Show All";
             this.SearchAll.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // SearchCustomerButton
             // 
-            this.button2.Location = new System.Drawing.Point(139, 259);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(86, 31);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "Search";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.SearchCustomerButton.Location = new System.Drawing.Point(139, 259);
+            this.SearchCustomerButton.Name = "SearchCustomerButton";
+            this.SearchCustomerButton.Size = new System.Drawing.Size(86, 31);
+            this.SearchCustomerButton.TabIndex = 0;
+            this.SearchCustomerButton.Text = "Search";
+            this.SearchCustomerButton.UseVisualStyleBackColor = true;
+            this.SearchCustomerButton.Click += new System.EventHandler(this.button2_Click);
             // 
             // CustomerDisplay
             // 
@@ -1152,11 +1153,11 @@
         private Label label29;
         private TextBox CID_edit_box;
         private Label label30;
-        private Button button1;
+        private Button DeleteCustomerButton;
         private Label label44;
         private TextBox CID_DELETE_BOX;
         private Label label45;
-        private Button button3;
+        private Button ConfirmCustomerEditButton;
         private DateTimePicker EndDatePicker;
         private DateTimePicker StartDatePicker;
         private GroupBox groupBox1;
@@ -1170,7 +1171,7 @@
         private TabPage tabPage4;
         private DataGridView CustomerDisplay;
         private Panel panel1;
-        private Button button2;
+        private Button SearchCustomerButton;
         private RadioButton SearchAddress;
         private RadioButton SearchPhone;
         private RadioButton SearchLastName;
@@ -1178,7 +1179,7 @@
         private RadioButton SearchAll;
         private TextBox SearchBy;
         private Panel panel2;
-        private Button button4;
+        private Button EditWithCID;
         private Label label2;
         private RadioButton PremiumEdit;
         private RadioButton StandardEdit;

@@ -63,7 +63,7 @@
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.SearchEmployees = new System.Windows.Forms.Button();
             this.EmployeeFilter = new System.Windows.Forms.DataGridView();
             this.EID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SSN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -389,7 +389,7 @@
             this.tabPage2.Controls.Add(this.label27);
             this.tabPage2.Controls.Add(this.label26);
             this.tabPage2.Controls.Add(this.label24);
-            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.SearchEmployees);
             this.tabPage2.Controls.Add(this.EmployeeFilter);
             this.tabPage2.Controls.Add(this.edit_confirm_btn);
             this.tabPage2.Controls.Add(this.label8);
@@ -477,15 +477,15 @@
             this.label24.TabIndex = 57;
             this.label24.Text = "Search by";
             // 
-            // button1
+            // SearchEmployees
             // 
-            this.button1.Location = new System.Drawing.Point(699, 386);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 54;
-            this.button1.Text = "Search";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.SearchEmployees.Location = new System.Drawing.Point(699, 386);
+            this.SearchEmployees.Name = "SearchEmployees";
+            this.SearchEmployees.Size = new System.Drawing.Size(75, 23);
+            this.SearchEmployees.TabIndex = 54;
+            this.SearchEmployees.Text = "Search";
+            this.SearchEmployees.UseVisualStyleBackColor = true;
+            this.SearchEmployees.Click += new System.EventHandler(this.button1_Click);
             // 
             // EmployeeFilter
             // 
@@ -971,7 +971,7 @@
         private Label label23;
         private TextBox EID_edit_box;
         private DataGridView EmployeeFilter;
-        private Button button1;
+        private Button SearchEmployees;
         private Label label24;
         private TextBox SearchBy;
         private Panel panel1;
