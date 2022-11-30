@@ -168,22 +168,10 @@ namespace CMPT291_Project
         private void edit_confirm_btn_Click(object sender, EventArgs e)
         {
             // values to use in command
-            string FName = FName_edit_box.PlaceholderText, LName = LName_edit_box_emp.PlaceholderText, Address = Address_edit_box_emp.PlaceholderText, City = City_edit_box_emp.PlaceholderText, State = State_edit_box_emp.PlaceholderText, Zip = ZIP_edit_box_emp.PlaceholderText, SSN = socialSEC_edit_box_emp.PlaceholderText,  Hourly_Rate = HourRate_edit_box_emp.PlaceholderText, Email = Email_edit_box_emp.PlaceholderText, PhoneNum = phone_edit_box_emp.PlaceholderText, Password = Password_edit_box_emp.PlaceholderText;
+            string FName = FName_edit_box.Text, LName = LName_edit_box_emp.Text, Address = Address_edit_box_emp.Text, City = City_edit_box_emp.Text, State = State_edit_box_emp.Text, Zip = ZIP_edit_box_emp.Text, SSN = socialSEC_edit_box_emp.Text,  Hourly_Rate = HourRate_edit_box_emp.Text, Email = Email_edit_box_emp.Text, PhoneNum = phone_edit_box_emp.Text, Password = Password_edit_box_emp.Text;
             int day = StartDatePickerEdit.Value.Day;
             int month = StartDatePickerEdit.Value.Month;
             int year = StartDatePickerEdit.Value.Year;
-            // check if value was changed(empty box)
-            if (FName_edit_box.Text != "") FName = FName_edit_box.Text;
-            if (LName_edit_box_emp.Text != "") LName = LName_edit_box_emp.Text;
-            if (Address_edit_box_emp.Text != "") Address = Address_edit_box_emp.Text;
-            if (City_edit_box_emp.Text != "") City = City_edit_box_emp.Text;
-            if (State_edit_box_emp.Text != "") State = State_edit_box_emp.Text;
-            if (ZIP_edit_box_emp.Text != "") Zip = ZIP_edit_box_emp.Text;
-            if (socialSEC_edit_box_emp.Text != "") SSN = socialSEC_edit_box_emp.Text;
-            if (HourRate_edit_box_emp.Text != "") Hourly_Rate = HourRate_edit_box_emp.Text;
-            if (Email_edit_box_emp.Text != "") Email = Email_edit_box_emp.Text;
-            if (phone_edit_box_emp.Text != "") PhoneNum = phone_edit_box_emp.Text;
-            if (Password_edit_box_emp.Text != "") Password = Password_edit_box_emp.Text;
             // makes the command for change
             myCommand.CommandText = "update dbo.Employees set SSN = '" + SSN + "', LName = '" + LName +
                    "', FName = '" + FName + "', Address = '" + Address + "', City = '" + City + "' , State = '" +
@@ -214,18 +202,18 @@ namespace CMPT291_Project
                 else day = Int32.Parse(Start_Date.Substring(8, 1));
             }
             // shows current values in the boxes
-            FName_edit_box.PlaceholderText = myReader["FName"].ToString();
-            LName_edit_box_emp.PlaceholderText = myReader["LName"].ToString();
-            Address_edit_box_emp.PlaceholderText = myReader["Address"].ToString();
-            City_edit_box_emp.PlaceholderText = myReader["City"].ToString();
-            State_edit_box_emp.PlaceholderText = myReader["State"].ToString();
-            ZIP_edit_box_emp.PlaceholderText = myReader["ZIP"].ToString();
-            socialSEC_edit_box_emp.PlaceholderText = myReader["SSN"].ToString();
+            FName_edit_box.Text = myReader["FName"].ToString();
+            LName_edit_box_emp.Text = myReader["LName"].ToString();
+            Address_edit_box_emp.Text = myReader["Address"].ToString();
+            City_edit_box_emp.Text = myReader["City"].ToString();
+            State_edit_box_emp.Text = myReader["State"].ToString();
+            ZIP_edit_box_emp.Text = myReader["ZIP"].ToString();
+            socialSEC_edit_box_emp.Text = myReader["SSN"].ToString();
             StartDatePickerEdit.Value = new DateTime(year, month, day);
-            HourRate_edit_box_emp.PlaceholderText = myReader["Hourly_Rate"].ToString();
-            phone_edit_box_emp.PlaceholderText = myReader["PhoneNum"].ToString();
-            Email_edit_box_emp.PlaceholderText = myReader["Email"].ToString();
-            Password_edit_box_emp.PlaceholderText = myReader["password"].ToString();
+            HourRate_edit_box_emp.Text = myReader["Hourly_Rate"].ToString();
+            phone_edit_box_emp.Text = myReader["PhoneNum"].ToString();
+            Email_edit_box_emp.Text = myReader["Email"].ToString();
+            Password_edit_box_emp.Text = myReader["password"].ToString();
             myReader.Close();
         }
     }

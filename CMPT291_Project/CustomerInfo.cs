@@ -111,7 +111,7 @@ namespace CMPT291_Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // command to delete base on CID from the box
+            // command to delete customer base on CID from the box
             myCommand.CommandText = "delete from dbo.Customer where CID = " + CID_DELETE_BOX.Text;
             MessageBox.Show(myCommand.CommandText);
             myCommand.ExecuteNonQuery();
@@ -169,7 +169,7 @@ namespace CMPT291_Project
         private void button3_Click(object sender, EventArgs e)
         {
             // values to use in command
-            string FName = FName_edit_box.PlaceholderText, LName = LName_edit_box.PlaceholderText, Address = Address_edit_box.PlaceholderText, City = City_edit_box.PlaceholderText, State = State_edit_box.PlaceholderText, Zip = ZIP_edit_box.PlaceholderText, Phone = Phone_edit_box.PlaceholderText, Email = Email_edit_box.PlaceholderText, Password = Password_edit_box.PlaceholderText, CreditCardNum = Credit_edit_box.PlaceholderText;
+            string FName = FName_edit_box.Text, LName = LName_edit_box.Text, Address = Address_edit_box.Text, City = City_edit_box.Text, State = State_edit_box.Text, Zip = ZIP_edit_box.Text, Phone = Phone_edit_box.Text, Email = Email_edit_box.Text, Password = Password_edit_box.Text, CreditCardNum = Credit_edit_box.Text;
             int TID;
             int StartDay = startDate_edit_box.Value.Day;
             int StartMonth = startDate_edit_box.Value.Month;
@@ -178,16 +178,6 @@ namespace CMPT291_Project
             int EndMonth = endDate_edit_box.Value.Month;
             int EndYear = endDate_edit_box.Value.Year;
             // check if value was changed(empty box)
-            if (FName_edit_box.Text != "") FName = FName_edit_box.Text;
-            if (LName_edit_box.Text != "") LName = LName_edit_box.Text;
-            if (Address_edit_box.Text != "") Address = Address_edit_box.Text;
-            if (City_edit_box.Text != "") City = City_edit_box.Text;
-            if (State_edit_box.Text != "") State = State_edit_box.Text;
-            if (ZIP_edit_box.Text != "") Zip = ZIP_edit_box.Text;
-            if (Phone_edit_box.Text != "") Phone = Phone_edit_box.Text;
-            if (Email_edit_box.Text != "") Email = Email_edit_box.Text;
-            if (Password_edit_box.Text != "") Password = Password_edit_box.Text;
-            if (Credit_edit_box.Text != "") CreditCardNum = Credit_edit_box.Text;
             if (LimitedEdit.Checked) TID = 1;
             else if (BasicEdit.Checked) TID = 2;
             else if (StandardEdit.Checked) TID = 3;
@@ -241,16 +231,16 @@ namespace CMPT291_Project
 
 
             // shows current values in the boxes
-            FName_edit_box.PlaceholderText = myReader["FName"].ToString();
-            LName_edit_box.PlaceholderText = myReader["LName"].ToString();
-            Address_edit_box.PlaceholderText = myReader["Address"].ToString();
-            City_edit_box.PlaceholderText = myReader["City"].ToString();
-            State_edit_box.PlaceholderText = myReader["State"].ToString();
-            ZIP_edit_box.PlaceholderText = myReader["ZIP"].ToString();
-            Phone_edit_box.PlaceholderText = myReader["Phone"].ToString();
-            Email_edit_box.PlaceholderText = myReader["Email"].ToString();
-            Password_edit_box.PlaceholderText = myReader["password"].ToString();
-            Credit_edit_box.PlaceholderText = myReader["CreditCardNum"].ToString();
+            FName_edit_box.Text = myReader["FName"].ToString();
+            LName_edit_box.Text = myReader["LName"].ToString();
+            Address_edit_box.Text = myReader["Address"].ToString();
+            City_edit_box.Text = myReader["City"].ToString();
+            State_edit_box.Text = myReader["State"].ToString();
+            ZIP_edit_box.Text = myReader["ZIP"].ToString();
+            Phone_edit_box.Text = myReader["Phone"].ToString();
+            Email_edit_box.Text = myReader["Email"].ToString();
+            Password_edit_box.Text = myReader["password"].ToString();
+            Credit_edit_box.Text = myReader["CreditCardNum"].ToString();
             if (TID == 4) PremiumEdit.Checked = true;
             else if (TID == 3) StandardEdit.Checked = true;
             else if (TID == 2) BasicEdit.Checked = true;
