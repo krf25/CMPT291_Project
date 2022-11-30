@@ -516,6 +516,7 @@
             this.EditWithCID.TabIndex = 62;
             this.EditWithCID.Text = "Edit Customer Info";
             this.EditWithCID.UseVisualStyleBackColor = true;
+            this.EditWithCID.Click += new System.EventHandler(this.EditWithCID_Click);
             // 
             // label2
             // 
@@ -596,14 +597,14 @@
             // 
             // endDate_edit_box
             // 
-            this.endDate_edit_box.Location = new System.Drawing.Point(153, 206);
+            this.endDate_edit_box.Location = new System.Drawing.Point(375, 203);
             this.endDate_edit_box.Name = "endDate_edit_box";
             this.endDate_edit_box.Size = new System.Drawing.Size(200, 23);
             this.endDate_edit_box.TabIndex = 60;
             // 
             // startDate_edit_box
             // 
-            this.startDate_edit_box.Location = new System.Drawing.Point(375, 206);
+            this.startDate_edit_box.Location = new System.Drawing.Point(153, 203);
             this.startDate_edit_box.Name = "startDate_edit_box";
             this.startDate_edit_box.Size = new System.Drawing.Size(200, 23);
             this.startDate_edit_box.TabIndex = 59;
@@ -621,7 +622,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(153, 191);
+            this.label16.Location = new System.Drawing.Point(375, 188);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(54, 15);
             this.label16.TabIndex = 57;
@@ -630,7 +631,7 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(375, 191);
+            this.label17.Location = new System.Drawing.Point(153, 188);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(58, 15);
             this.label17.TabIndex = 56;

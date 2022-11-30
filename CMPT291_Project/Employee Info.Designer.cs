@@ -57,6 +57,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.StartDatePickerEdit = new System.Windows.Forms.DateTimePicker();
             this.Password_edit_box_emp = new System.Windows.Forms.TextBox();
             this.Email_edit_box_emp = new System.Windows.Forms.TextBox();
             this.Edit_employee = new System.Windows.Forms.Button();
@@ -80,7 +81,6 @@
             this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.edit_confirm_btn = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
-            this.startDate_edit_box_emp = new System.Windows.Forms.TextBox();
             this.HourRate_edit_box_emp = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.socialSEC_edit_box_emp = new System.Windows.Forms.TextBox();
@@ -383,6 +383,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.StartDatePickerEdit);
             this.tabPage2.Controls.Add(this.Password_edit_box_emp);
             this.tabPage2.Controls.Add(this.Email_edit_box_emp);
             this.tabPage2.Controls.Add(this.Edit_employee);
@@ -393,7 +394,6 @@
             this.tabPage2.Controls.Add(this.EmployeeFilter);
             this.tabPage2.Controls.Add(this.edit_confirm_btn);
             this.tabPage2.Controls.Add(this.label8);
-            this.tabPage2.Controls.Add(this.startDate_edit_box_emp);
             this.tabPage2.Controls.Add(this.HourRate_edit_box_emp);
             this.tabPage2.Controls.Add(this.label9);
             this.tabPage2.Controls.Add(this.socialSEC_edit_box_emp);
@@ -423,6 +423,13 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Edit";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // StartDatePickerEdit
+            // 
+            this.StartDatePickerEdit.Location = new System.Drawing.Point(459, 141);
+            this.StartDatePickerEdit.Name = "StartDatePickerEdit";
+            this.StartDatePickerEdit.Size = new System.Drawing.Size(200, 23);
+            this.StartDatePickerEdit.TabIndex = 64;
             // 
             // Password_edit_box_emp
             // 
@@ -589,18 +596,11 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(533, 23);
+            this.label8.Location = new System.Drawing.Point(459, 127);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(58, 15);
             this.label8.TabIndex = 51;
             this.label8.Text = "Start Date";
-            // 
-            // startDate_edit_box_emp
-            // 
-            this.startDate_edit_box_emp.Location = new System.Drawing.Point(533, 38);
-            this.startDate_edit_box_emp.Name = "startDate_edit_box_emp";
-            this.startDate_edit_box_emp.Size = new System.Drawing.Size(97, 23);
-            this.startDate_edit_box_emp.TabIndex = 50;
             // 
             // HourRate_edit_box_emp
             // 
@@ -949,7 +949,6 @@
         private Label label45;
         private Button edit_confirm_btn;
         private Label label8;
-        private TextBox startDate_edit_box_emp;
         private TextBox HourRate_edit_box_emp;
         private Label label9;
         private TextBox socialSEC_edit_box_emp;
@@ -1002,5 +1001,6 @@
         private Button Edit_employee;
         private TextBox Password_edit_box_emp;
         private DateTimePicker StartDate;
+        private DateTimePicker StartDatePickerEdit;
     }
 }
