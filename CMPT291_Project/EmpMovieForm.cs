@@ -125,7 +125,7 @@ namespace CMPT291_Project
                     while (myReader.Read())
                     {
                     // fills in the box with the sql return
-                    CopyDisplay.Rows.Add(myReader["CID"].ToString(), myReader["MID"].ToString(), myReader["mType"].ToString(), myReader["State"].ToString());
+                    CopyDisplay.Rows.Add(myReader["CPID"].ToString(), myReader["MID"].ToString(), myReader["mType"].ToString(), myReader["State"].ToString());
                     }
 
                     myReader.Close();
@@ -139,25 +139,25 @@ namespace CMPT291_Project
         private void RemoveCopiesButton_Click(object sender, EventArgs e)
         {
             // command to delete copy base on CPID from the box
-            myCommand.CommandText = "delete from dbo.Copies where CID = " + CPID_Delete_Box.Text;
+            myCommand.CommandText = "delete from dbo.Copies where CPID = " + CPID_Delete_Box.Text;
             MessageBox.Show(myCommand.CommandText);
             myCommand.ExecuteNonQuery();
         }
 
         private void AddCopiesButton_Click(object sender, EventArgs e)
         {
-            // finds avalible CID by finding highest CID
-            string MaxCID = "";
-            int CID;
+            // finds avalible CPID by finding highest CPID
+            string MaxCPID = "";
+            int CPID;
             int num = 0;
-            myCommand.CommandText = "select max(CID) as CID from dbo.Copies";
+            myCommand.CommandText = "select max(CPID) as CPID from dbo.Copies";
             try
             {
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
                     // returns highest CPID
-                    MaxCID += (myReader["CID"].ToString());
+                    MaxCPID += (myReader["CPID"].ToString());
                 }
                 myReader.Close();
             }
@@ -167,20 +167,20 @@ namespace CMPT291_Project
 
             }
             // gets the avalible CPID
-            if (MaxCID == "") CID = 1;
-            else CID = Convert.ToInt32(MaxCID)+1;
+            if (MaxCPID == "") CPID = 1;
+            else CPID = Convert.ToInt32(MaxCPID)+1;
             try
             {
                 // loop to add all copies
                 while (num != Int32.Parse(Add_NumCopies_Box.Text))
                 {
                     //make the sql to add the typed in data to copy table
-                    myCommand.CommandText = "insert into dbo.Copies values (" + CID.ToString() + "," + Add_MID_Box.Text +
-                        ",'" + Add_CopyType_Box.Text + "',' New ')";
+                    myCommand.CommandText = "insert into dbo.Copies values (" + CPID.ToString() + "," + Add_MID_Box.Text +
+                        ",'" + Add_CopyType_Box.Text + "','New','Y')";
                     // executes the sql commend
                     myCommand.ExecuteNonQuery();
                     //add value for loop
-                    CID += 1;
+                    CPID += 1;
                     num += 1;
                 }
                 MessageBox.Show("added " +num.ToString() + " copies");
@@ -195,8 +195,8 @@ namespace CMPT291_Project
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // gets current values from Copy from CID
-            myCommand.CommandText = "select * from dbo.Copies where CID = " + CopyIDEdit.Text;
+            // gets current values from Copy from CPID
+            myCommand.CommandText = "select * from dbo.Copies where CPID = " + CopyIDEdit.Text;
             myReader = myCommand.ExecuteReader();
             myReader.Read();
             // shows current values in the boxes
@@ -209,7 +209,7 @@ namespace CMPT291_Project
         {
             string CopyType = CopyTypeEdit.Text, CopyState = CopyStateEdit.Text;
             // makes the command for change
-            myCommand.CommandText = "update dbo.Copies set mType = '" + CopyType + "', State = '" + CopyState + "' where CID = " + CopyIDEdit.Text;
+            myCommand.CommandText = "update dbo.Copies set mType = '" + CopyType + "', State = '" + CopyState + "' where CPID = " + CopyIDEdit.Text;
             MessageBox.Show(myCommand.CommandText);
             // runs command
             myCommand.ExecuteNonQuery();
