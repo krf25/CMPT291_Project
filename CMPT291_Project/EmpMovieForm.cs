@@ -139,8 +139,13 @@ namespace CMPT291_Project
 
         private void RemoveCopiesButton_Click(object sender, EventArgs e)
         {
+            if (CPID_Delete_Box.Text == "")
+            {
+                MessageBox.Show("Please fill in the Copy ID field.");
+                return;
+            }
             // command to delete copy base on CPID from the box
-            myCommand.CommandText = "delete from dbo.Copies where CPID = " + CPID_Delete_Box.Text;
+            myCommand.CommandText = "delete from dbo.Copies where CPID = " + CPID_Delete_Box.Text + "";
             MessageBox.Show(myCommand.CommandText);
             myCommand.ExecuteNonQuery();
         }
@@ -185,7 +190,7 @@ namespace CMPT291_Project
                     num += 1;
                 }
                 MessageBox.Show("added " + num.ToString() + " copies");
-                myCommand.CommandText = "update dbo.Movies set NumCopies = NumCopies+" + num.ToString() + "where MID = " + Add_MID_Box.Text;
+                myCommand.CommandText = "update dbo.Movies set NumCopies = NumCopies+" + num.ToString() + "where MID = " + Add_MID_Box.Text + "";
                 myCommand.ExecuteNonQuery();
             }
             catch (Exception e2)
@@ -197,7 +202,7 @@ namespace CMPT291_Project
         private void button1_Click(object sender, EventArgs e)
         {
             // gets current values from Copy from CPID
-            myCommand.CommandText = "select * from dbo.Copies where CPID = " + CopyIDEdit.Text;
+            myCommand.CommandText = "select * from dbo.Copies where CPID = " + CopyIDEdit.Text + "";
             myReader = myCommand.ExecuteReader();
             myReader.Read();
             // shows current values in the boxes
@@ -210,7 +215,7 @@ namespace CMPT291_Project
         {
             string CopyType = CopyTypeEdit.Text, CopyState = CopyStateEdit.Text;
             // makes the command for change
-            myCommand.CommandText = "update dbo.Copies set mType = '" + CopyType + "', State = '" + CopyState + "' where CPID = " + CopyIDEdit.Text;
+            myCommand.CommandText = "update dbo.Copies set mType = '" + CopyType + "', State = '" + CopyState + "' where CPID =" + CopyIDEdit.Text + "";
             MessageBox.Show(myCommand.CommandText);
             // runs command
             myCommand.ExecuteNonQuery();
@@ -222,7 +227,7 @@ namespace CMPT291_Project
         }
 
         private void AddMovieButton_Click(object sender, EventArgs e)
-        {
+        {   // ADDING MOVIES TAB
             const double distro_FEE = 1.99;
             string title = movie_text_box.Text;
             string genre = genre_movie_box.Text;
@@ -236,6 +241,12 @@ namespace CMPT291_Project
             // check for movie already existing in database
             myCommand.CommandText = "select mName from Movies where mName ='" + title + "'";
             object movie_check = myCommand.ExecuteScalar();
+
+            if (title == "" || genre == "")
+            {
+                MessageBox.Show("Please fill in the Movie title and Genre fields");
+                return;
+            }
 
             // movie titles.text are not case sensitive when adding movies to the database
             if (movie_check != null)
@@ -486,7 +497,7 @@ namespace CMPT291_Project
 
         private static void gen_movies_btn_Click1(object sender, EventArgs e)
         {
-            MessageBox.Show("test!");
+          
         }
 
         private void button1_Click_1(object sender, EventArgs e)
@@ -495,6 +506,12 @@ namespace CMPT291_Project
             string genre = textBox1.Text;
             string new_title = textBox4.Text;
             string new_genre = textBox3.Text;
+
+            if (title == "" || genre == "")
+            {
+                MessageBox.Show("Please fill in the Movie Title and Genre fields");
+                return;
+            }
 
             // check for movie in database
             myCommand.CommandText = "select mName from Movies where mName ='" + title + "' and mType ='" + genre + "'";
@@ -530,6 +547,12 @@ namespace CMPT291_Project
             // check for movie in database
             myCommand.CommandText = "select mName from Movies where mName ='" + movie_title + "'";
             object movie_check = myCommand.ExecuteScalar();
+            if (movie_title == "")
+            {
+                MessageBox.Show("Please fill in the Movie Name field");
+                return;
+            }
+
             if (movie_check is null)
             {
                 MessageBox.Show("Movie title '" + movie_title + "' does not exist in the database.");
@@ -569,7 +592,11 @@ namespace CMPT291_Project
             cast.Add("support_2", richTextBox7.Text);
 
             
-
+            if (title == "")
+            {
+                MessageBox.Show("Please fill in the Movie field");
+                return;
+            }
 
             // check for movie already existing in database
             myCommand.CommandText = "select mName from Movies where mName ='" + title + "'";
@@ -813,13 +840,24 @@ namespace CMPT291_Project
         }
 
         private void edit_actor_btn_Click(object sender, EventArgs e)
-        {
+        {   // EDITING ACTORS TAB
             string old_actor = richTextBox2.Text;
             string new_actor = richTextBox4.Text;
             string new_role = richTextBox10.Text;
-            int new_actor_age = Int32.Parse(richTextBox3.Text);
+            string edit_actor_age = richTextBox3.Text;
 
-            
+            if (edit_actor_age == "" || new_actor == "")
+            {
+                MessageBox.Show("Please fill in the New Actor name and Age fields.");
+                return;
+            }
+
+            // no update to actor role
+            if (new_role == "")
+            {
+                // do nothing
+            }
+
             // grab actor AID
             myCommand.CommandText = "select AID from Actor WHERE name ='" + old_actor + "'";
             int actor_AID = (int)myCommand.ExecuteScalar();
@@ -834,6 +872,7 @@ namespace CMPT291_Project
             }
             if (actor_check != null)
             {
+                int new_actor_age = Int32.Parse(richTextBox3.Text);
                 myCommand.CommandText = "UPDATE Actor SET Name = '" + new_actor + "', Age = '" + new_actor_age + "' WHERE Name ='" + old_actor + "'";
                 MessageBox.Show(myCommand.CommandText);
                 myCommand.ExecuteNonQuery();
@@ -847,16 +886,19 @@ namespace CMPT291_Project
                 myCommand.ExecuteNonQuery();
                 return;
             }
-            // no update to actor role
-            if (new_role == "")
+            
+        }
+        //DELETE ACTORS FROM DATABASE BTN
+        private void button1_Click_2(object sender, EventArgs e)
+        {   
+            string actor_name_remove = remove_actor_name.Text;
+            // if actor name field is empty
+            if (actor_name_remove == "")
             {
+                MessageBox.Show("Please fill in the Actor Name field.");
                 return;
             }
-        }
 
-        private void button1_Click_2(object sender, EventArgs e)
-        { //DELETE ACTORS FROM DATABASE BTN
-            string actor_name_remove = remove_actor_name.Text;
             // check for Actor in database
             myCommand.CommandText = "select Name from Actor where Name ='" + actor_name_remove + "'";
             object actor_name_check_rem = myCommand.ExecuteScalar();
@@ -872,14 +914,16 @@ namespace CMPT291_Project
                 // delete participated_in entry where AID exists before deleting the Actor entry from Actor because of FK constraint
                 myCommand.CommandText = "DELETE FROM Participated_IN WHERE AID=" + actor_rem_AID + "";
                 myCommand.ExecuteNonQuery();
-                //MessageBox.Show(myCommand.CommandText);
                 // delete movie from Movies table
                 myCommand.CommandText = "DELETE FROM Actor WHERE Name ='" + actor_name_remove + "'";
                 myCommand.ExecuteNonQuery();
-                // show user what has been deleted
-                //MessageBox.Show(myCommand.CommandText);
                 return;
             }
+        }
+
+        private void gen_movies_btn_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

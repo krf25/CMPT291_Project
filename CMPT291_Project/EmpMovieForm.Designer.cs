@@ -220,6 +220,7 @@
             this.gen_movies_btn.TabIndex = 10;
             this.gen_movies_btn.Text = "Generate Movies";
             this.gen_movies_btn.UseVisualStyleBackColor = true;
+            this.gen_movies_btn.Click += new System.EventHandler(this.gen_movies_btn_Click_1);
             // 
             // AddMovie
             // 
