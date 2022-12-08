@@ -23,6 +23,7 @@ namespace CMPT291_Project
         // starts the sql connection
         public SqlConnection myConnection;
         public SqlCommand myCommand;
+        public SqlCommand actorCommand;
         public SqlDataReader myReader;
         public CustomerScreen()
         {
@@ -33,6 +34,8 @@ namespace CMPT291_Project
                 myConnection.Open(); // Open connection
                 myCommand = new SqlCommand();
                 myCommand.Connection = myConnection; // Link the command stream to the connection
+                actorCommand = new SqlCommand();
+                actorCommand.Connection = myConnection; // Link the command stream to the connection
             }
             catch (Exception e)
             {
@@ -343,7 +346,34 @@ namespace CMPT291_Project
 
         private void RateMovieButton_Click(object sender, EventArgs e)
         {
-
+            string AID;
+            int score;
+            actorCommand.CommandText = "";
+            if (ScoreNumberBox.Text != "" && RateMIDBox.Text != "")
+            {
+                score = Int32.Parse(ScoreNumberBox.Text);
+                if (score<6 && score > 0) { 
+                //set all customers movie scores
+                myCommand.CommandText = "update dbo.\"Order\" set Rating = " + ScoreNumberBox.Text + " where MID = "+ RateMIDBox.Text+" and CID = " + IDtracker.CustomerID;
+                // runs command
+                myCommand.ExecuteNonQuery();
+                //update the movies score
+                myCommand.CommandText = "update dbo.Movies set mRating = (select avg(Rating) from (select distinct CID, Rating from dbo.\"Order\" where MID = "+ RateMIDBox.Text + ")x where Rating > 0) where MID = " + RateMIDBox.Text;
+                myCommand.ExecuteNonQuery();
+                //update all actor scores
+                myCommand.CommandText = "select AID from Participated_IN where MID = " + RateMIDBox.Text;
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    // gets the AID to update score for all actors
+                    AID = myReader["AID"].ToString();
+                    actorCommand.CommandText += "update dbo.Actor set Rating = (select avg(mRating) from dbo.Participated_IN as p, dbo.Movies as m where p.AID = " + AID + " and p.MID = m.MID and m.mRating >0) where AID = " + AID + "\n";
+                }
+                myReader.Close();
+                actorCommand.ExecuteNonQuery();
+                MessageBox.Show("rating received");
+                }else MessageBox.Show("Score must be between 1-5");
+            }
         }
     }
 }

@@ -65,9 +65,12 @@ namespace CMPT291_Project
 
         private void RentButton_Click(object sender, EventArgs e)
         {
+            int orderMonths = 0;
+            int startYear, startMonth, totalOrders = 0, nMonth, nYear;
             int year = DateTime.Now.Year;
             int month = DateTime.Now.Month;
             int day = DateTime.Now.Day;
+            int score;
             // needs to replace with login
             int dueYear, dueMonth;
             string CheckOutDay = year.ToString() + "-" + month.ToString() + "-" + day.ToString() + " " + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString(), availability;
@@ -118,7 +121,40 @@ namespace CMPT291_Project
                 // executes the sql commend
                 myCommand.ExecuteNonQuery();
                 Close();
-            }else MessageBox.Show("Copy is not available");
+                // update score for user
+                // get dates to calculate score
+                myCommand.CommandText = "select MONTH(START_Date) as month, YEAR(START_Date) as year from dbo.Customer where CID = " + IDtracker.CustomerID;
+                myReader = myCommand.ExecuteReader();
+                myReader.Read();
+                startYear = Int32.Parse(myReader["year"].ToString());
+                startMonth = Int32.Parse(myReader["month"].ToString());
+                month += 1;
+                if (month == 13) { month = 1; year += 1; }
+                myReader.Close();
+                // calculate score
+                while ((startYear != year && startMonth != month) || orderMonths == 0)
+                {
+                    nMonth = startMonth + 1;
+                    nYear = startYear;
+                    if (nMonth == 13) { nMonth = 1; nYear += 1; }
+                    myCommand.CommandText = "select count(*) as orderPerMonth from dbo.\"order\" where CID = "+IDtracker.CustomerID+" and CheckOutDate > '"+startYear.ToString()+"-"+startMonth.ToString()+"-1 0:0:0' and CheckOutDate <'"+ nYear.ToString()+"-"+ nMonth.ToString()+"-1 0:0:0'";
+                    myReader = myCommand.ExecuteReader();
+                    myReader.Read();
+                    totalOrders += Int32.Parse(myReader["orderPerMonth"].ToString());
+                    startMonth += 1;
+                    orderMonths += 1;
+                    if (startMonth == 13) {startMonth = 1; startYear += 1; }
+                    myReader.Close();
+                }
+                if (totalOrders / orderMonths <= 2) score = 1;
+                else if (totalOrders / orderMonths <= 4) score = 2;
+                else if (orderMonths / orderMonths <= 6) score = 3;
+                else if (orderMonths / orderMonths <= 8) score = 4;
+                else score = 5;
+                myCommand.CommandText = "update dbo.Customer set Rating = " + score.ToString() + " where CID = " + IDtracker.CustomerID;
+                myCommand.ExecuteNonQuery();
+            }
+            else MessageBox.Show("Copy is not available");
         }
 
         private void MovieSearch_Click(object sender, EventArgs e)

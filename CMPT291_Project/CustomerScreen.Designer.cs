@@ -71,6 +71,8 @@
             this.label12 = new System.Windows.Forms.Label();
             this.CustomerHistory = new System.Windows.Forms.TabPage();
             this.panel6 = new System.Windows.Forms.Panel();
+            this.ScoreNumberBox = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.RateMIDBox = new System.Windows.Forms.TextBox();
             this.RateMovieButton = new System.Windows.Forms.Button();
@@ -548,6 +550,8 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.Gray;
+            this.panel6.Controls.Add(this.ScoreNumberBox);
+            this.panel6.Controls.Add(this.label7);
             this.panel6.Controls.Add(this.label17);
             this.panel6.Controls.Add(this.RateMIDBox);
             this.panel6.Controls.Add(this.RateMovieButton);
@@ -556,6 +560,22 @@
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(185, 139);
             this.panel6.TabIndex = 5;
+            // 
+            // ScoreNumberBox
+            // 
+            this.ScoreNumberBox.Location = new System.Drawing.Point(32, 81);
+            this.ScoreNumberBox.Name = "ScoreNumberBox";
+            this.ScoreNumberBox.Size = new System.Drawing.Size(100, 23);
+            this.ScoreNumberBox.TabIndex = 6;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(32, 63);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(36, 15);
+            this.label7.TabIndex = 5;
+            this.label7.Text = "Score";
             // 
             // label17
             // 
@@ -575,7 +595,7 @@
             // 
             // RateMovieButton
             // 
-            this.RateMovieButton.Location = new System.Drawing.Point(50, 102);
+            this.RateMovieButton.Location = new System.Drawing.Point(50, 110);
             this.RateMovieButton.Name = "RateMovieButton";
             this.RateMovieButton.Size = new System.Drawing.Size(75, 23);
             this.RateMovieButton.TabIndex = 2;
@@ -862,5 +882,7 @@
         private DataGridViewTextBoxColumn rentMovieName;
         private DataGridViewTextBoxColumn CheckOutDate;
         private DataGridViewTextBoxColumn ReturnDate;
+        private TextBox ScoreNumberBox;
+        private Label label7;
     }
 }
