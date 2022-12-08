@@ -98,46 +98,66 @@ namespace CMPT291_Project
 
         private void add_employee_btn_Click(object sender, EventArgs e)
         {
-            // finds avalible EID by finding highest EID
-            string MaxEID = "";
-            int EID;
-            myCommand.CommandText = "select max(EID) as EID from dbo.Employees";
-            try
+            //checks if importent boxes are empty
+            if (LName_add_box.Text != "" && FName_add_box.Text != "" && Email_add_box.Text != "" && socialSEC_add_box.Text != "" && Password_add_box.Text != "" && HourRate_add_box.Text != "")
             {
+                // check if repeat email
+                myCommand.CommandText = "select count(*) as repeat from dbo.Employees where Email = '" + Email_add_box.Text + "'";
                 myReader = myCommand.ExecuteReader();
-                while (myReader.Read())
+                myReader.Read();
+                if (myReader["repeat"].ToString() == "0")
                 {
-                    // returns highest EID
-                    MaxEID += (myReader["EID"].ToString());
-                }
-                myReader.Close();
-            }
-            catch (Exception e3)
-            {
-                MessageBox.Show(e3.ToString(), "Error");
+                    myReader.Close();
+                    // finds avalible EID by finding highest EID
+                    string MaxEID = "";
+                    int EID;
+                    myCommand.CommandText = "select max(EID) as EID from dbo.Employees";
+                    try
+                    {
+                        myReader = myCommand.ExecuteReader();
+                        while (myReader.Read())
+                        {
+                            // returns highest EID
+                            MaxEID += (myReader["EID"].ToString());
+                        }
+                        myReader.Close();
+                    }
+                    catch (Exception e3)
+                    {
+                        MessageBox.Show(e3.ToString(), "Error");
 
+                    }
+                    // gets the avalible EID
+                    if (MaxEID == "") EID = 1;
+                    else EID = Convert.ToInt32(MaxEID) + 1;
+                    // gets date and converts to proper format
+                    int day = StartDate.Value.Day;
+                    int month = StartDate.Value.Month;
+                    int year = StartDate.Value.Year;
+                    try
+                    {
+                        //make the sql to add the typed in data to customer table
+                        myCommand.CommandText = "insert into dbo.Employees values (" + EID.ToString() + "," + socialSEC_add_box.Text +
+                            ",'" + LName_add_box.Text + "','" + FName_add_box.Text + "','" + Address_add_box.Text + "','" +
+                            City_add_box.Text + "','" + State_add_box.Text + "','" + ZIP_add_box.Text + "','" +
+                            year.ToString() + "-" + month.ToString() + "-" + day.ToString() + "'," + HourRate_add_box.Text + ",0" + phone_add_box.Text + ",'" + Email_add_box.Text + "','" + Password_add_box.Text + "')";
+                        MessageBox.Show(myCommand.CommandText);
+                        // executes the sql commend
+                        myCommand.ExecuteNonQuery();
+                    }
+                    catch (Exception e2)
+                    {
+                        MessageBox.Show("please make sure all boxes are filled in the right format EX: phone: numbers");
+                    }
+                }
+                else { 
+                    MessageBox.Show("Email is already registored");
+                    myReader.Close();
+                }
             }
-            // gets the avalible EID
-            if (MaxEID == "") EID = 1;
-            else EID = Convert.ToInt32(MaxEID)+1;
-            // gets date and converts to proper format
-            int day = StartDate.Value.Day;
-            int month = StartDate.Value.Month;
-            int year = StartDate.Value.Year;
-            try
-            {
-                //make the sql to add the typed in data to customer table
-                myCommand.CommandText = "insert into dbo.Employees values (" + EID.ToString() + ",0" + socialSEC_add_box.Text + 
-                    ",'" + LName_add_box.Text + "','" + FName_add_box.Text + "','" + Address_add_box.Text + "','" + 
-                    City_add_box.Text + "','" + State_add_box.Text + "','" + ZIP_add_box.Text + "','" +
-                    year.ToString() + "-" + month.ToString() + "-" + day.ToString() + "',0" + HourRate_add_box.Text + ",'" + phone_add_box.Text + "','" + Email_add_box.Text + "','" + Password_add_box.Text + "')";
-                MessageBox.Show(myCommand.CommandText);
-                // executes the sql commend
-                myCommand.ExecuteNonQuery();
-            }
-            catch (Exception e2)
-            {
-                MessageBox.Show(e2.ToString(), "Error");
+            else
+                {
+                MessageBox.Show("Please fill in all boxes with asteries");
             }
 
         }
@@ -150,8 +170,8 @@ namespace CMPT291_Project
         private void delete_employee_Click(object sender, EventArgs e)
         {
             // command to delete base on EID from the box
-            myCommand.CommandText = "delete from dbo.Employees where EID = " + EID_DELETE_BOX.Text;
-            MessageBox.Show(myCommand.CommandText);
+            myCommand.CommandText = "update dbo.Customer set Hourly_Rate = 0 where CID = " + EID_DELETE_BOX.Text;
+            MessageBox.Show("Employee removed");
             myCommand.ExecuteNonQuery();
         }
 
@@ -172,15 +192,39 @@ namespace CMPT291_Project
             int day = StartDatePickerEdit.Value.Day;
             int month = StartDatePickerEdit.Value.Month;
             int year = StartDatePickerEdit.Value.Year;
-            // makes the command for change
-            myCommand.CommandText = "update dbo.Employees set SSN = '" + SSN + "', LName = '" + LName +
-                   "', FName = '" + FName + "', Address = '" + Address + "', City = '" + City + "' , State = '" +
-                   State + "', ZIP = '" + Zip + "', Start_Date = '" + year.ToString() + "-" + month.ToString() + "-" + day.ToString() + "', Hourly_Rate = " +
-                    Hourly_Rate + ", PhoneNum = '" + PhoneNum + "', Email = '" + Email + "', password = '" + Password + "' where EID = " + EID_edit_box.Text;
-            MessageBox.Show(myCommand.CommandText);
-            // runs command
-            myCommand.ExecuteNonQuery();
-        }
+            if (LName_edit_box_emp.Text != "" && FName_edit_box.Text != "" && socialSEC_edit_box_emp.Text != "" && HourRate_edit_box_emp.Text != "" && Password_edit_box_emp.Text != "" && Email_edit_box_emp.Text != "")
+            {
+                myCommand.CommandText = "select count(*) as repeat from dbo.Employees where Email = '" + Email_add_box.Text + "' and EID != " + EID_edit_box.Text;
+                myReader = myCommand.ExecuteReader();
+                myReader.Read();
+                if (myReader["repeat"].ToString() == "0")
+                {
+                    myReader.Close();
+                    try
+                    {
+                        // makes the command for change
+                        myCommand.CommandText = "update dbo.Employees set SSN = " + SSN + ", LName = '" + LName +
+                       "', FName = '" + FName + "', Address = '" + Address + "', City = '" + City + "' , State = '" +
+                       State + "', ZIP = '" + Zip + "', Start_Date = '" + year.ToString() + "-" + month.ToString() + "-" + day.ToString() + "', Hourly_Rate = " +
+                        Hourly_Rate + ", PhoneNum = " + PhoneNum + ", Email = '" + Email + "', password = '" + Password + "' where EID = " + EID_edit_box.Text;
+                        MessageBox.Show(myCommand.CommandText);
+                        // runs command
+                        myCommand.ExecuteNonQuery();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("please make sure all boxes are filled in the right format Ex: phone: numbers");
+                    }
+                }
+                else
+                {
+                    myReader.Close();
+                    MessageBox.Show("Email is already registored");
+                }
+            }
+            else
+                MessageBox.Show("Please fill in all boxes with asteries");
+    }
 
         private void button2_Click(object sender, EventArgs e)
         {
@@ -188,7 +232,9 @@ namespace CMPT291_Project
             myCommand.CommandText = "select * from dbo.Employees where EID = " + EID_edit_box.Text;
             myReader = myCommand.ExecuteReader();
             myReader.Read();
-            string Start_Date = myReader["Start_Date"].ToString();
+            try
+            {
+                string Start_Date = myReader["Start_Date"].ToString();
             int year = Int32.Parse(Start_Date.Substring(0, 4)),month,day = 1;
             if (Start_Date.IndexOf('-', 5) == 6)
             {
@@ -215,6 +261,12 @@ namespace CMPT291_Project
             Email_edit_box_emp.Text = myReader["Email"].ToString();
             Password_edit_box_emp.Text = myReader["password"].ToString();
             myReader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Customer Id does not exist");
+                myReader.Close();
+            }
         }
     }
 }

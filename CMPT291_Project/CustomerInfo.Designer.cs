@@ -69,7 +69,6 @@
             this.StandardEdit = new System.Windows.Forms.RadioButton();
             this.BasicEdit = new System.Windows.Forms.RadioButton();
             this.LimitedEdit = new System.Windows.Forms.RadioButton();
-            this.NotActiveEdit = new System.Windows.Forms.RadioButton();
             this.endDate_edit_box = new System.Windows.Forms.DateTimePicker();
             this.startDate_edit_box = new System.Windows.Forms.DateTimePicker();
             this.ConfirmCustomerEditButton = new System.Windows.Forms.Button();
@@ -308,9 +307,9 @@
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(353, 110);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(57, 15);
+            this.label9.Size = new System.Drawing.Size(65, 15);
             this.label9.TabIndex = 21;
-            this.label9.Text = "Password";
+            this.label9.Text = "* Password";
             // 
             // Credit_add_box
             // 
@@ -324,9 +323,9 @@
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(233, 110);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(77, 15);
+            this.label10.Size = new System.Drawing.Size(85, 15);
             this.label10.TabIndex = 19;
-            this.label10.Text = "Credit Card #";
+            this.label10.Text = "* Credit Card #";
             // 
             // Email_add_box
             // 
@@ -347,9 +346,9 @@
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(119, 110);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(36, 15);
+            this.label11.Size = new System.Drawing.Size(44, 15);
             this.label11.TabIndex = 16;
-            this.label11.Text = "Email";
+            this.label11.Text = "* Email";
             // 
             // label12
             // 
@@ -444,18 +443,18 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(119, 54);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 15);
+            this.label4.Size = new System.Drawing.Size(71, 15);
             this.label4.TabIndex = 4;
-            this.label4.Text = "Last Name";
+            this.label4.Text = "* Last Name";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 54);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(64, 15);
+            this.label3.Size = new System.Drawing.Size(72, 15);
             this.label3.TabIndex = 3;
-            this.label3.Text = "First Name";
+            this.label3.Text = "* First Name";
             // 
             // label1
             // 
@@ -521,11 +520,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 172);
+            this.label2.Location = new System.Drawing.Point(18, 185);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(79, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "Account Type";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // panel2
             // 
@@ -533,17 +533,16 @@
             this.panel2.Controls.Add(this.StandardEdit);
             this.panel2.Controls.Add(this.BasicEdit);
             this.panel2.Controls.Add(this.LimitedEdit);
-            this.panel2.Controls.Add(this.NotActiveEdit);
-            this.panel2.Location = new System.Drawing.Point(10, 178);
+            this.panel2.Location = new System.Drawing.Point(10, 190);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(125, 142);
+            this.panel2.Size = new System.Drawing.Size(125, 130);
             this.panel2.TabIndex = 61;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // PremiumEdit
             // 
             this.PremiumEdit.AutoSize = true;
-            this.PremiumEdit.Location = new System.Drawing.Point(13, 115);
+            this.PremiumEdit.Location = new System.Drawing.Point(13, 94);
             this.PremiumEdit.Name = "PremiumEdit";
             this.PremiumEdit.Size = new System.Drawing.Size(74, 19);
             this.PremiumEdit.TabIndex = 4;
@@ -554,7 +553,7 @@
             // StandardEdit
             // 
             this.StandardEdit.AutoSize = true;
-            this.StandardEdit.Location = new System.Drawing.Point(13, 90);
+            this.StandardEdit.Location = new System.Drawing.Point(13, 69);
             this.StandardEdit.Name = "StandardEdit";
             this.StandardEdit.Size = new System.Drawing.Size(72, 19);
             this.StandardEdit.TabIndex = 3;
@@ -565,7 +564,7 @@
             // BasicEdit
             // 
             this.BasicEdit.AutoSize = true;
-            this.BasicEdit.Location = new System.Drawing.Point(13, 64);
+            this.BasicEdit.Location = new System.Drawing.Point(13, 43);
             this.BasicEdit.Name = "BasicEdit";
             this.BasicEdit.Size = new System.Drawing.Size(52, 19);
             this.BasicEdit.TabIndex = 2;
@@ -576,24 +575,13 @@
             // LimitedEdit
             // 
             this.LimitedEdit.AutoSize = true;
-            this.LimitedEdit.Location = new System.Drawing.Point(13, 39);
+            this.LimitedEdit.Location = new System.Drawing.Point(13, 18);
             this.LimitedEdit.Name = "LimitedEdit";
             this.LimitedEdit.Size = new System.Drawing.Size(65, 19);
             this.LimitedEdit.TabIndex = 1;
             this.LimitedEdit.TabStop = true;
             this.LimitedEdit.Text = "Limited";
             this.LimitedEdit.UseVisualStyleBackColor = true;
-            // 
-            // NotActiveEdit
-            // 
-            this.NotActiveEdit.AutoSize = true;
-            this.NotActiveEdit.Location = new System.Drawing.Point(13, 14);
-            this.NotActiveEdit.Name = "NotActiveEdit";
-            this.NotActiveEdit.Size = new System.Drawing.Size(81, 19);
-            this.NotActiveEdit.TabIndex = 0;
-            this.NotActiveEdit.TabStop = true;
-            this.NotActiveEdit.Text = "Not Active";
-            this.NotActiveEdit.UseVisualStyleBackColor = true;
             // 
             // endDate_edit_box
             // 
@@ -649,9 +637,9 @@
             this.label19.AutoSize = true;
             this.label19.Location = new System.Drawing.Point(375, 115);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(57, 15);
+            this.label19.Size = new System.Drawing.Size(65, 15);
             this.label19.TabIndex = 50;
-            this.label19.Text = "Password";
+            this.label19.Text = "* Password";
             // 
             // Credit_edit_box
             // 
@@ -665,9 +653,9 @@
             this.label20.AutoSize = true;
             this.label20.Location = new System.Drawing.Point(253, 115);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(77, 15);
+            this.label20.Size = new System.Drawing.Size(85, 15);
             this.label20.TabIndex = 48;
-            this.label20.Text = "Credit Card #";
+            this.label20.Text = "* Credit Card #";
             // 
             // Email_edit_box
             // 
@@ -688,9 +676,9 @@
             this.label21.AutoSize = true;
             this.label21.Location = new System.Drawing.Point(131, 115);
             this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(36, 15);
+            this.label21.Size = new System.Drawing.Size(44, 15);
             this.label21.TabIndex = 45;
-            this.label21.Text = "Email";
+            this.label21.Text = "* Email";
             // 
             // label22
             // 
@@ -784,27 +772,27 @@
             this.label27.AutoSize = true;
             this.label27.Location = new System.Drawing.Point(131, 72);
             this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(63, 15);
+            this.label27.Size = new System.Drawing.Size(71, 15);
             this.label27.TabIndex = 33;
-            this.label27.Text = "Last Name";
+            this.label27.Text = "* Last Name";
             // 
             // label28
             // 
             this.label28.AutoSize = true;
             this.label28.Location = new System.Drawing.Point(7, 75);
             this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(64, 15);
+            this.label28.Size = new System.Drawing.Size(72, 15);
             this.label28.TabIndex = 32;
-            this.label28.Text = "First Name";
+            this.label28.Text = "* First Name";
             // 
             // label29
             // 
             this.label29.AutoSize = true;
             this.label29.Location = new System.Drawing.Point(7, 31);
             this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(73, 15);
+            this.label29.Size = new System.Drawing.Size(81, 15);
             this.label29.TabIndex = 31;
-            this.label29.Text = "Customer ID";
+            this.label29.Text = "* Customer ID";
             // 
             // CID_edit_box
             // 
@@ -834,7 +822,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(791, 330);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Delete";
+            this.tabPage3.Text = "deactive account";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // DeleteCustomerButton
@@ -1186,7 +1174,6 @@
         private RadioButton StandardEdit;
         private RadioButton BasicEdit;
         private RadioButton LimitedEdit;
-        private RadioButton NotActiveEdit;
         private DataGridViewTextBoxColumn CID;
         private DataGridViewTextBoxColumn LName;
         private DataGridViewTextBoxColumn FName;

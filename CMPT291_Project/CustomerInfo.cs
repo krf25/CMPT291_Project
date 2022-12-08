@@ -58,62 +58,81 @@ namespace CMPT291_Project
 
         private void addCustomerButton_Click(object sender, EventArgs e)
         {
-            // finds avalible CID by finding highest CID
-            string MaxCID = "";
-            int CID, TID;
-            myCommand.CommandText = "select max(CID) as CID from dbo.Customer";
-            try
+            //checks if importent boxes are empty
+            if (LName_add_box.Text != "" && FName_add_box.Text != "" && Email_add_box.Text != "" && Credit_add_box.Text != "" && Password_add_box.Text != "")
             {
+                // check if repeat email
+                myCommand.CommandText = "select count(*) as repeat from dbo.Customer where Email = '" + Email_add_box.Text+"'";
                 myReader = myCommand.ExecuteReader();
-                while (myReader.Read())
-                {
-                    // returns highest CID
-                    MaxCID += (myReader["CID"].ToString());
-                }
+                myReader.Read();
+                if (myReader["repeat"].ToString() == "0") { 
                 myReader.Close();
-            }
-            catch (Exception e3)
-            {
-                MessageBox.Show(e3.ToString(), "Error");
+                // finds avalible CID by finding highest CID
+                string MaxCID = "";
+                int CID, TID;
+                myCommand.CommandText = "select max(CID) as CID from dbo.Customer";
+                try
+                {
+                    myReader = myCommand.ExecuteReader();
+                    while (myReader.Read())
+                    {
+                        // returns highest CID
+                        MaxCID += (myReader["CID"].ToString());
+                    }
+                    myReader.Close();
+                }
+                catch (Exception e3)
+                {
+                    MessageBox.Show(e3.ToString(), "Error");
 
+                }
+                // gets the avalible CID
+                if (MaxCID == "") CID = 1;
+                else CID = Convert.ToInt32(MaxCID) + 1;
+                // gets the selected account type
+                if (LimitedAdd.Checked) TID = 1;
+                else if (BasicAdd.Checked) TID = 2;
+                else if (StandardAdd.Checked) TID = 3;
+                else TID = 4;
+                // gets date
+                int StartDay = StartDatePicker.Value.Day;
+                int StartMonth = StartDatePicker.Value.Month;
+                int StartYear = StartDatePicker.Value.Year;
+                int EndDay = EndDatePicker.Value.Day;
+                int EndMonth = EndDatePicker.Value.Month;
+                int EndYear = EndDatePicker.Value.Year;
+                try
+                {
+                    //make the sql to add the typed in data to customer table
+                    myCommand.CommandText = "insert into dbo.Customer values (" + CID.ToString() + ",'" +
+                        LName_add_box.Text + "','" + FName_add_box.Text + "','" + Address_add_box.Text + "','" +
+                        City_add_box.Text + "','" + State_add_box.Text + "','" + ZIP_add_box.Text + "','" + phone_add_box.Text + "','" +
+                        Email_add_box.Text + "','" + Password_add_box.Text + "','" + Credit_add_box.Text + "',0," + TID.ToString() + ",'" + StartYear.ToString() + "-" + StartMonth.ToString() + "-" + StartDay.ToString() + "','" + EndYear.ToString() + "-" + EndMonth.ToString() + "-" + EndDay.ToString() + "')";
+                    MessageBox.Show(myCommand.CommandText);
+                    // executes the sql command
+                    myCommand.ExecuteNonQuery();
+                }
+                catch (Exception e2)
+                {
+                    MessageBox.Show("please make sure all boxes are filled in the right format EX: phone: numbers");
+                }
+                }else
+                {
+                    myReader.Close();
+                    MessageBox.Show("Email is already registored");
+                }
             }
-            // gets the avalible CID
-            if (MaxCID == "") CID = 1;
-            else CID = Convert.ToInt32(MaxCID) + 1;
-            // gets the selected account type
-            if (LimitedAdd.Checked) TID = 1;
-            else if (BasicAdd.Checked) TID = 2;
-            else if (StandardAdd.Checked) TID = 3;
-            else TID = 4;
-            // gets date
-            int StartDay = StartDatePicker.Value.Day;
-            int StartMonth = StartDatePicker.Value.Month;
-            int StartYear = StartDatePicker.Value.Year;
-            int EndDay = EndDatePicker.Value.Day;
-            int EndMonth = EndDatePicker.Value.Month;
-            int EndYear = EndDatePicker.Value.Year;
-            try
-            {
-                //make the sql to add the typed in data to customer table
-                myCommand.CommandText = "insert into dbo.Customer values (" + CID.ToString() + ",'" +
-                    LName_add_box.Text + "','" + FName_add_box.Text + "','" + Address_add_box.Text + "','" +
-                    City_add_box.Text + "','" + State_add_box.Text + "','" + ZIP_add_box.Text + "','" + phone_add_box.Text + "','" +
-                    Email_add_box.Text + "','" + Password_add_box.Text + "','" + Credit_add_box.Text + "',0," + TID.ToString() + ",'" + StartYear.ToString() + "-" + StartMonth.ToString() + "-" + StartDay.ToString() + "','" + EndYear.ToString() + "-" + EndMonth.ToString() + "-" + EndDay.ToString() + "')";
-                MessageBox.Show(myCommand.CommandText);
-                // executes the sql command
-                myCommand.ExecuteNonQuery();
-            }
-            catch (Exception e2)
-            {
-                MessageBox.Show(e2.ToString(), "Error");
-            }
+            else MessageBox.Show("Please fill in all boxes with asteries");
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // command to delete customer base on CID from the box
-            myCommand.CommandText = "delete from dbo.Customer where CID = " + CID_DELETE_BOX.Text;
-            MessageBox.Show(myCommand.CommandText);
+            int year = DateTime.Now.Year;
+            int month = DateTime.Now.Month;
+            int day = DateTime.Now.Day;
+            // command to change customer to not active account
+            myCommand.CommandText = "update dbo.Customer set TID = 0, END_Date = '" + year.ToString() + "-" + month.ToString() + "-" + day.ToString() + "' where CID = " + CID_DELETE_BOX.Text;
+            MessageBox.Show("Account deactived");
             myCommand.ExecuteNonQuery();
         }
 
@@ -136,7 +155,7 @@ namespace CMPT291_Project
                 else if (SearchLastName.Checked)
                     myCommand.CommandText += " where LName = " + "'" + SearchBy.Text + "'";
                 else if (SearchPhone.Checked)
-                    myCommand.CommandText += " where PhoneNum = " + "'" + SearchBy.Text + "'";
+                    myCommand.CommandText += " where PhoneNum = " + SearchBy.Text;
                 else
                     myCommand.CommandText += " where Address = " + "'" + SearchBy.Text + "'";
             }
@@ -183,14 +202,40 @@ namespace CMPT291_Project
             else if (StandardEdit.Checked) TID = 3;
             else if (PremiumEdit.Checked) TID = 4;
             else TID = 0;
-            // makes the command for change
-            myCommand.CommandText = "update dbo.Customer set LName = '" + LName + "', FName = '" + FName +
-                   "', Address = '" + Address + "', City = '" + City + "', State = '" + State + "' , ZIP = '" +
-                   Zip + "', Phone = '" + Phone + "', Email = '" + Email + "', password = " +
-                    Password + ", CreditCardNum = '" + CreditCardNum + "', TID = '" + TID + "', START_Date = '" + StartYear.ToString() + "-" + StartMonth.ToString() + "-" + StartDay.ToString() + "', END_Date = '" + EndYear.ToString() + "-" + EndMonth.ToString() + "-" + EndDay.ToString() + "' where CID = " + CID_edit_box.Text;
-            MessageBox.Show(myCommand.CommandText);
-            // runs command
-            myCommand.ExecuteNonQuery();
+            
+            if (LName_edit_box.Text != "" && FName_edit_box.Text != "" && Email_edit_box.Text != "" && Credit_edit_box.Text != "" && Password_edit_box.Text != "")
+            {
+                myCommand.CommandText = "select count(*) as repeat from dbo.Customer where Email = '" + Email_add_box.Text + "' and CID != "+CID_edit_box.Text;
+                myReader = myCommand.ExecuteReader();
+                myReader.Read();
+                if (myReader["repeat"].ToString() == "0")
+                {
+                    myReader.Close();
+                    try
+                    {
+                        // makes the command for change
+                        myCommand.CommandText = "update dbo.Customer set LName = '" + LName + "', FName = '" + FName +
+                           "', Address = '" + Address + "', City = '" + City + "', State = '" + State + "' , ZIP = '" +
+                           Zip + "', Phone = " + Phone + ", Email = '" + Email + "', password = '" +
+                            Password + "', CreditCardNum = " + CreditCardNum + ", TID = " + TID + ", START_Date = '" + StartYear.ToString() + "-" + StartMonth.ToString() + "-" + StartDay.ToString() + "', END_Date = '" + EndYear.ToString() + "-" + EndMonth.ToString() + "-" + EndDay.ToString() + "' where CID = " + CID_edit_box.Text;
+                        // runs command
+                        myCommand.ExecuteNonQuery();
+                        MessageBox.Show(myCommand.CommandText);
+
+                    }
+                    catch
+                    {
+                        MessageBox.Show("please make sure all boxes are filled in the right format Ex: phone: numbers");
+                    }
+                }
+                else
+                {
+                    myReader.Close();
+                    MessageBox.Show("Email is already registored");
+                }
+                }
+            else
+            MessageBox.Show("Please fill in all boxes with asteries");
         }
 
         private void EditWithCID_Click(object sender, EventArgs e)
@@ -199,6 +244,7 @@ namespace CMPT291_Project
             myCommand.CommandText = "select * from dbo.Customer where CID = " + CID_edit_box.Text;
             myReader = myCommand.ExecuteReader();
             myReader.Read();
+            try { 
             int TID = Int32.Parse(myReader["TID"].ToString());
             string Start_Date = myReader["Start_Date"].ToString();
             string End_Date = myReader["END_Date"].ToString();
@@ -245,10 +291,20 @@ namespace CMPT291_Project
             else if (TID == 3) StandardEdit.Checked = true;
             else if (TID == 2) BasicEdit.Checked = true;
             else if (TID == 1) LimitedEdit.Checked = true;
-            else NotActiveEdit.Checked = true;
             startDate_edit_box.Value = new DateTime(StartYear, StartMonth, StartDay);
             endDate_edit_box.Value = new DateTime(EndYear, EndMonth, EndDay);
             myReader.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Customer Id does not exist");
+                myReader.Close();
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

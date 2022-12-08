@@ -50,6 +50,15 @@ namespace CMPT291_Project
             // one row returned from the employee query assumes correct login
             if (emp_emails.Rows.Count > 0)
             {
+                //get EID
+                db.Open();
+                string LID_query = "Select EID FROM Employees WHERE Email ='" + user + "' AND password = '" + pass + "'";
+                SqlCommand cmd = new SqlCommand(LID_query, db);
+                int EID;
+                EID = (int)cmd.ExecuteScalar(); // executescalar returns first col/row item from queried table
+                IDtracker.EmployeeID = EID.ToString();
+                db.Close();
+                //open employee screen
                 landingpage lp = new landingpage();
                 this.Hide();
                 db.Close();
@@ -67,6 +76,15 @@ namespace CMPT291_Project
                 // one row returned from the employee query assumes correct login
                 if (c_emails.Rows.Count > 0)
                 {
+                    //get CID
+                    db.Open();
+                    string LID_query = "Select CID FROM Customer WHERE Email ='" + user + "' AND password = '" + pass + "'";
+                    SqlCommand cmd = new SqlCommand(LID_query, db);
+                    int CID;
+                    CID = (int)cmd.ExecuteScalar(); // executescalar returns first col/row item from queried table
+                    IDtracker.CustomerID = CID.ToString();
+                    db.Close();
+                    //open customer screen
                     CustomerScreen c = new CustomerScreen();
                     this.Hide();
                     db.Close();

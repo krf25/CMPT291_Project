@@ -160,3 +160,5 @@ C:\Users\tee\OneDrive\Desktop\newcurr\CMPT291_Project\obj\Debug\net6.0-windows\r
 C:\Users\tee\OneDrive\Desktop\newcurr\CMPT291_Project\obj\Debug\net6.0-windows\CMPT291_Project.pdb
 C:\Users\tee\OneDrive\Desktop\newcurr\CMPT291_Project\obj\Debug\net6.0-windows\CMPT291_Project.genruntimeconfig.cache
 C:\Users\tee\OneDrive\Desktop\newcurr\CMPT291_Project\obj\Debug\net6.0-windows\ref\CMPT291_Project.dll
+C:\Users\e2467\Desktop\Eric\homework\cmpt 291\project\CMPT291_Project\obj\Debug\net6.0-windows\CMPT291_Project.Rental.resources
+C:\Users\e2467\Desktop\Eric\homework\cmpt 291\project\CMPT291_Project\obj\Debug\net6.0-windows\CMPT291_Project.Return.resources

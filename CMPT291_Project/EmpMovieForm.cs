@@ -145,13 +145,15 @@ namespace CMPT291_Project
                 return;
             }
             // command to delete copy base on CPID from the box
-            myCommand.CommandText = "delete from dbo.Copies where CPID = " + CPID_Delete_Box.Text + "";
+            myCommand.CommandText = "update dbo.Copies set Availability = 'N', ReturnDate = '' where CID = " + CPID_Delete_Box.Text;
             MessageBox.Show(myCommand.CommandText);
             myCommand.ExecuteNonQuery();
         }
 
         private void AddCopiesButton_Click(object sender, EventArgs e)
         {
+            //make sure all the boxes are filled
+
             // finds avalible CPID by finding highest CPID
             string MaxCPID = "";
             int CPID;
@@ -182,7 +184,7 @@ namespace CMPT291_Project
                 {
                     //make the sql to add the typed in data to copy table
                     myCommand.CommandText = "insert into dbo.Copies values (" + CPID.ToString() + "," + Add_MID_Box.Text +
-                        ",'" + Add_CopyType_Box.Text + "','New','Y')";
+                        ",'" + Add_CopyType_Box.Text + "','New','Y', '')";
                     // executes the sql commend
                     myCommand.ExecuteNonQuery();
                     //add value for loop

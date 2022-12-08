@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CMPT291_Group3_Project;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -47,29 +48,7 @@ namespace CMPT291_Project
 
         private void OrderButton_Click(object sender, EventArgs e)
         {
-            // finds avalible OID by finding highest OID
-            string MaxOID = "";
-            //temp EID until global variable is made
-            int OID, MID, EID = 1;
-            myCommand.CommandText = "select max(OID) as OID from dbo.\"Order\"";
-            try
-            {
-                myReader = myCommand.ExecuteReader();
-                while (myReader.Read())
-                {
-                    // returns highest EID
-                    MaxOID += (myReader["OID"].ToString());
-                }
-                myReader.Close();
-            }
-            catch (Exception e3)
-            {
-                MessageBox.Show(e3.ToString(), "Error");
-
-            }
-            // gets the avalible EID
-            if (MaxOID == "") OID = 1;
-            else OID = Convert.ToInt32(MaxOID) + 1;
+            
             int year = DateTime.Now.Year;
             int month = DateTime.Now.Month;
             int day = DateTime.Now.Day;
@@ -83,7 +62,7 @@ namespace CMPT291_Project
             MaxConcurrently = Int32.Parse(myReader["Concurrently"].ToString());
             myReader.Close();
             //gets customer current concurrent movies
-            myCommand.CommandText = "select count(CID) as Concurrently from dbo.\"Order\" where CID = "+ CIDBox.Text + " and ReturnDate = '0'";
+            myCommand.CommandText = "select count(CID) as Concurrently from dbo.\"Order\" where CID = "+ CIDBox.Text + " and Returned = 'N'";
             myReader = myCommand.ExecuteReader();
             myReader.Read();
             CustomerConcurrently = Int32.Parse(myReader["Concurrently"].ToString());
@@ -94,59 +73,63 @@ namespace CMPT291_Project
             myReader.Read();
             CustomerMonthlyNum = Int32.Parse(myReader["MonthlyNum"].ToString());
             myReader.Close();
-            //check if copy is available
-            myCommand.CommandText = "select available, MID from dbo.Copies where CPID = "+CopyIDBox.Text;
-            myReader = myCommand.ExecuteReader();
-            myReader.Read();
-            availability = myReader["available"].ToString();
-            MID = Int32.Parse(myReader["MID"].ToString());
-            myReader.Close();
             //check if all requirements are met
             if (MaxMonthlyNum > CustomerMonthlyNum)
             {
                 if (MaxConcurrently > CustomerConcurrently)
                 {
-                    if (availability == "Y")
-                    {
-                        //make sql command change copy as unavalible
-                        myCommand.CommandText = "update dbo.Copies set available = 'N' where CPID = " + CopyIDBox.Text;
-                        // executes the sql commend
-                        myCommand.ExecuteNonQuery();
-                        //makes sql command to make order
-                        myCommand.CommandText = "insert into dbo.\"Order\" values(" + OID.ToString() + "," + MID.ToString() +
-                        "," + CopyIDBox.Text + ","+CIDBox.Text+","+EID.ToString()+",'"+ CheckOutDay+ "','0',0)";
-                        MessageBox.Show(myCommand.CommandText);
-                        // executes the sql commend
-                        myCommand.ExecuteNonQuery();
-                    }
+                    IDtracker.CustomerID = CIDBox.Text;
+                    Rental r = new Rental();
+                    r.Show();
                 }
-                else MessageBox.Show("YUP IT WORKS");
+                else MessageBox.Show("Customer has reach max concurrent movies");
             }
+            else MessageBox.Show("Customer has reach max movies for this month");
 
         }
 
         private void ReturnButton_Click(object sender, EventArgs e)
         {
-            int year = DateTime.Now.Year;
-            int month = DateTime.Now.Month;
-            int day = DateTime.Now.Day;
-            int CPID;
-            string ReturnDate = year.ToString() + "-" + month.ToString() + "-" + day.ToString() + " " + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString();
-            // make sql for return date on order
-            myCommand.CommandText = "update dbo.\"Order\" set ReturnDate = '"+ ReturnDate + "' where OID = " + ReturnOID.Text;
-            MessageBox.Show(myCommand.CommandText);
-            // executes the sql commend
-            myCommand.ExecuteNonQuery();
-            //get CPID
-            myCommand.CommandText = "select CPID from dbo.\"Order\" where OID = " + ReturnOID.Text;
-            myReader = myCommand.ExecuteReader();
-            myReader.Read();
-            CPID = Int32.Parse(myReader["CPID"].ToString());
-            myReader.Close();
-            // make sql to set order as avaliable
-            myCommand.CommandText = "update dbo.Copies set available = 'Y' where CPID = " + CPID.ToString();
-            //executes the sql commend
-            myCommand.ExecuteNonQuery();
+            IDtracker.CustomerID = ReturnCID.Text;
+            Return r = new Return();
+            r.Show();
+        }
+
+        private void RentalSearchButton_Click(object sender, EventArgs e)
+        {
+            myCommand.CommandText = "select * from dbo.\"Order\" as o, dbo.Movies as m, dbo.Customer as c where o.MID = m.MID and c.CID = o.CID and ";
+            // fill in filters in command
+            if (MovieNameSearchBox.Text != "")
+                myCommand.CommandText += "mName like  '%" + MovieNameSearchBox.Text + "%' and ";
+            if (MovieTypeSearchBox.Text != "")
+                myCommand.CommandText += "mType = '" + MovieTypeSearchBox.Text + "' and ";
+            if (FirstNameSearchBox.Text != "")
+                myCommand.CommandText += "FName = '" + FirstNameSearchBox.Text + "' and ";
+            if (LastNameSearchBox.Text != "")
+                myCommand.CommandText += "LName = '" + LastNameSearchBox.Text + "' and ";
+            if (CIDSearchBox.Text != "")
+                myCommand.CommandText += "o.CID = " + CIDSearchBox.Text + " and ";
+            myCommand.CommandText += "OID > 0";
+            try
+            {
+                // shows the command
+                MessageBox.Show(myCommand.CommandText);
+                // runs command
+                myReader = myCommand.ExecuteReader();
+
+                RentalGrid.Rows.Clear();
+                while (myReader.Read())
+                {
+                    // fills in the box with the sql return
+                    RentalGrid.Rows.Add(myReader["MID"].ToString(), myReader["CPID"].ToString(), myReader["EID"].ToString(), myReader["mName"].ToString(), myReader["mType"].ToString(), myReader["CheckOutDate"].ToString(), myReader["ReturnDate"].ToString());
+                }
+
+                myReader.Close();
+            }
+            catch (Exception e3)
+            {
+                MessageBox.Show(e3.ToString(), "Error");
+            }
         }
     }
 }

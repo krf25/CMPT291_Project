@@ -222,5 +222,128 @@ namespace CMPT291_Project
         {
 
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            if (RemoveMovieId.Text != "")
+            {
+                myCommand.CommandText = "DELETE FROM dbo.MovieQueue WHERE MID = " + RemoveMovieId.Text + " and CID = " + IDtracker.CustomerID;
+                MessageBox.Show("MID:" + RemoveMovieId.Text + " Removed from queue");
+                myCommand.ExecuteNonQuery();
+                MovieQueueGrid.Rows.Clear();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (AddMovieId.Text != "")
+            {
+                // check if repeat email
+                myCommand.CommandText = "select count(*) as repeat from dbo.MovieQueue where MID = " + AddMovieId.Text;
+                myReader = myCommand.ExecuteReader();
+                myReader.Read();
+                if (myReader["repeat"].ToString() == "0")
+                {
+                    myReader.Close();
+                    // finds avalible QID by finding highest QID
+                    string MaxQID = "";
+                    int QID;
+                    myCommand.CommandText = "select max(QID) as QID from dbo.MovieQueue";
+                    try
+                    {
+                        myReader = myCommand.ExecuteReader();
+                        while (myReader.Read())
+                        {
+                            // returns highest CID
+                            MaxQID += (myReader["QID"].ToString());
+                        }
+                        myReader.Close();
+                    }
+                    catch (Exception e3)
+                    {
+                        MessageBox.Show(e3.ToString(), "Error");
+
+                    }
+                    // gets the avalible CID
+                    if (MaxQID == "") QID = 1;
+                    else QID = Convert.ToInt32(MaxQID) + 1;
+                    myCommand.CommandText = "insert into dbo.MovieQueue values (" + QID.ToString() + "," +
+                            IDtracker.CustomerID + "," + AddMovieId.Text + ")";
+                    MessageBox.Show(myCommand.CommandText);
+                    // executes the sql command
+                    myCommand.ExecuteNonQuery();
+                }
+                else
+                {
+                    MessageBox.Show("Movie Already in queue");
+                    myReader.Close();
+                }
+            }
+        }
+
+        private void SearchMovieQueueButton_Click(object sender, EventArgs e)
+        {
+            myCommand.CommandText = "select * from dbo.MovieQueue as q, dbo.Movies as m where q.MID = m.MID and CID = " + IDtracker.CustomerID;
+            try
+            {
+                // shows the command
+                MessageBox.Show(myCommand.CommandText);
+                // runs command
+                myReader = myCommand.ExecuteReader();
+
+                MovieQueueGrid.Rows.Clear();
+                while (myReader.Read())
+                {
+                    // fills in the box with the sql return
+                    MovieQueueGrid.Rows.Add(myReader["MID"].ToString(), myReader["mName"].ToString(), myReader["mType"].ToString(), myReader["mRating"].ToString());
+                }
+
+                myReader.Close();
+            }
+            catch (Exception e3)
+            {
+                MessageBox.Show(e3.ToString(), "Error");
+            }
+        }
+
+        private void ViewRentalButton_Click(object sender, EventArgs e)
+        {
+            myCommand.CommandText = "select * from dbo.\"Order\" as o, dbo.Movies as m where o.MID = m.MID and o.CID = " + IDtracker.CustomerID + " and ";
+            int year = DateTime.Now.Year;
+            int month = DateTime.Now.Month;
+            int day = DateTime.Now.Day;
+            string today = year.ToString() + "-" + month.ToString() + "-" + day.ToString() + " " + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString();
+            // fill in filters in command
+            if (HeldMovieCheckBox.Checked)
+                myCommand.CommandText += "Returned = 'N' and ";
+            if (OverDueMovieCheckBox.Checked)
+                myCommand.CommandText += "CheckOutDate < '" + today + "' and ";
+            myCommand.CommandText += "OID > 0";
+            try
+            {
+                // shows the command
+                MessageBox.Show(myCommand.CommandText);
+                // runs command
+                myReader = myCommand.ExecuteReader();
+
+                CustomerRentalGrid.Rows.Clear();
+                while (myReader.Read())
+                {
+                    // fills in the box with the sql return
+                    CustomerRentalGrid.Rows.Add(myReader["MID"].ToString(), myReader["CPID"].ToString(), myReader["mName"].ToString(), myReader["CheckOutDate"].ToString(), myReader["ReturnDate"].ToString());
+                }
+
+                myReader.Close();
+            }
+            catch (Exception e3)
+            {
+                MessageBox.Show(e3.ToString(), "Error");
+            }
+        }
+
+        private void RateMovieButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
