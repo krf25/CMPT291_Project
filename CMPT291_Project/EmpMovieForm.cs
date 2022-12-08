@@ -126,7 +126,7 @@ namespace CMPT291_Project
                 while (myReader.Read())
                 {
                     // fills in the box with the sql return
-                    CopyDisplay.Rows.Add(myReader["CPID"].ToString(), myReader["MID"].ToString(), myReader["mType"].ToString(), myReader["State"].ToString());
+                    CopyDisplay.Rows.Add(myReader["CPID"].ToString(), myReader["MID"].ToString(), myReader["mType"].ToString(), myReader["State"].ToString(), myReader["Availability"].ToString(), myReader["ReturnDate"].ToString());
                 }
 
                 myReader.Close();
@@ -144,8 +144,17 @@ namespace CMPT291_Project
                 MessageBox.Show("Please fill in the Copy ID field.");
                 return;
             }
+            myCommand.CommandText = "select * from dbo.Copies where CPID = " + CPID_Delete_Box.Text;
+            myReader = myCommand.ExecuteReader();
+            myReader.Read();
+            string MID = myReader["MID"].ToString();
+            myReader.Close();
             // command to delete copy base on CPID from the box
-            myCommand.CommandText = "update dbo.Copies set Availability = 'N', ReturnDate = '' where CID = " + CPID_Delete_Box.Text;
+            if (MID != "0") { 
+            myCommand.CommandText = "update dbo.Movies set NumCopies = NumCopies - 1 where MID = " + MID;
+            myCommand.ExecuteNonQuery();
+            }
+            myCommand.CommandText = "update dbo.Copies set Availability = 'N', ReturnDate = '', State = 'Removed' where CPID = " + CPID_Delete_Box.Text;
             MessageBox.Show(myCommand.CommandText);
             myCommand.ExecuteNonQuery();
         }
@@ -184,7 +193,7 @@ namespace CMPT291_Project
                 {
                     //make the sql to add the typed in data to copy table
                     myCommand.CommandText = "insert into dbo.Copies values (" + CPID.ToString() + "," + Add_MID_Box.Text +
-                        ",'" + Add_CopyType_Box.Text + "','New','Y', '')";
+                        ",'" + Add_CopyType_Box.Text + "','Good','Y', '')";
                     // executes the sql commend
                     myCommand.ExecuteNonQuery();
                     //add value for loop
@@ -459,7 +468,7 @@ namespace CMPT291_Project
             // random number between 1 and 5 for deciding how many copies exist for a movie; unconcerned with potential hanging random int being duplicated in following entries
             Random num_gen = new Random();
             int movie_copies = num_gen.Next(1, 6);
-            myCommand.CommandText = "insert into dbo.Movies values (" + max_MID + ", '" + title + "', '" + genre + "', " + distro_FEE + ", " + movie_copies + ", 0)";
+            myCommand.CommandText = "insert into dbo.Movies values (" + max_MID + ", '" + title + "', '" + genre + "', " + distro_FEE + ", " + 0 + ", 0)";
             myCommand.ExecuteNonQuery();
             MessageBox.Show(myCommand.CommandText);
 
@@ -566,6 +575,18 @@ namespace CMPT291_Project
                 int movie_ID = (int)myCommand.ExecuteScalar();
                 // delete participated_in entry where MID exists before deleting the movie entry from Movies because of FK constraint
                 myCommand.CommandText = "DELETE FROM Participated_IN WHERE MID=" + movie_ID + "";
+                myCommand.ExecuteNonQuery();
+
+                // updates all order to refernce deleted movie
+                myCommand.CommandText = "update dbo.\"Order\" set MID = 0 where MID = " + movie_ID + "";
+                myCommand.ExecuteNonQuery();
+
+                // updates all copies to refernce deleted movie
+                myCommand.CommandText = "update dbo.Copies set MID = 0, Availability = 'N', ReturnDate = '', State = 'Removed' where MID = " + movie_ID + "";
+                myCommand.ExecuteNonQuery();
+
+                // delete all movie queue refernce
+                myCommand.CommandText = "DELETE FROM MovieQueue WHERE MID=" + movie_ID + "";
                 myCommand.ExecuteNonQuery();
 
                 // grab name of movie from MID

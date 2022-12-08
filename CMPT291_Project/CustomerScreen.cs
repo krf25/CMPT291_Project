@@ -289,11 +289,8 @@ namespace CMPT291_Project
             myCommand.CommandText = "select * from dbo.MovieQueue as q, dbo.Movies as m where q.MID = m.MID and CID = " + IDtracker.CustomerID;
             try
             {
-                // shows the command
-                MessageBox.Show(myCommand.CommandText);
                 // runs command
                 myReader = myCommand.ExecuteReader();
-
                 MovieQueueGrid.Rows.Clear();
                 while (myReader.Read())
                 {
@@ -321,7 +318,7 @@ namespace CMPT291_Project
                 myCommand.CommandText += "Returned = 'N' and ";
             if (OverDueMovieCheckBox.Checked)
                 myCommand.CommandText += "CheckOutDate < '" + today + "' and ";
-            myCommand.CommandText += "OID > 0";
+            myCommand.CommandText += "m.MID > 0";
             try
             {
                 // shows the command
@@ -351,6 +348,9 @@ namespace CMPT291_Project
             actorCommand.CommandText = "";
             if (ScoreNumberBox.Text != "" && RateMIDBox.Text != "")
             {
+                myCommand.CommandText = "select Count(*) from Movies where MID = '" + RateMIDBox.Text + "'";
+                int exist = (int)myCommand.ExecuteScalar();
+                if (exist == 0) { MessageBox.Show("You have not rented this movie"); return; }
                 score = Int32.Parse(ScoreNumberBox.Text);
                 if (score<6 && score > 0) { 
                 //set all customers movie scores

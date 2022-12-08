@@ -97,11 +97,6 @@
             this.label29 = new System.Windows.Forms.Label();
             this.CID_edit_box = new System.Windows.Forms.TextBox();
             this.label30 = new System.Windows.Forms.Label();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.DeleteCustomerButton = new System.Windows.Forms.Button();
-            this.label44 = new System.Windows.Forms.Label();
-            this.CID_DELETE_BOX = new System.Windows.Forms.TextBox();
-            this.label45 = new System.Windows.Forms.Label();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.SearchBy = new System.Windows.Forms.TextBox();
@@ -127,23 +122,35 @@
             this.TID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.START_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.END_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.DEACTIVATECustomerButton = new System.Windows.Forms.Button();
+            this.label44 = new System.Windows.Forms.Label();
+            this.CID_DEACTIVATE_BOX = new System.Windows.Forms.TextBox();
+            this.label45 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.DeleteAccountButton = new System.Windows.Forms.Button();
+            this.CIDDeleteAccount = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabcontrol_customer.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerDisplay)).BeginInit();
+            this.tabPage3.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabcontrol_customer
             // 
             this.tabcontrol_customer.Controls.Add(this.tabPage1);
             this.tabcontrol_customer.Controls.Add(this.tabPage2);
-            this.tabcontrol_customer.Controls.Add(this.tabPage3);
             this.tabcontrol_customer.Controls.Add(this.tabPage4);
+            this.tabcontrol_customer.Controls.Add(this.tabPage3);
+            this.tabcontrol_customer.Controls.Add(this.tabPage5);
             this.tabcontrol_customer.Location = new System.Drawing.Point(-2, 8);
             this.tabcontrol_customer.Name = "tabcontrol_customer";
             this.tabcontrol_customer.SelectedIndex = 0;
@@ -811,56 +818,6 @@
             this.label30.TabIndex = 29;
             this.label30.Text = "Edit customer info";
             // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.DeleteCustomerButton);
-            this.tabPage3.Controls.Add(this.label44);
-            this.tabPage3.Controls.Add(this.CID_DELETE_BOX);
-            this.tabPage3.Controls.Add(this.label45);
-            this.tabPage3.Location = new System.Drawing.Point(4, 24);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(791, 330);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "deactive account";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // DeleteCustomerButton
-            // 
-            this.DeleteCustomerButton.Location = new System.Drawing.Point(315, 166);
-            this.DeleteCustomerButton.Name = "DeleteCustomerButton";
-            this.DeleteCustomerButton.Size = new System.Drawing.Size(140, 23);
-            this.DeleteCustomerButton.TabIndex = 32;
-            this.DeleteCustomerButton.Text = "Delete Customer";
-            this.DeleteCustomerButton.UseVisualStyleBackColor = true;
-            this.DeleteCustomerButton.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label44
-            // 
-            this.label44.AutoSize = true;
-            this.label44.Location = new System.Drawing.Point(344, 119);
-            this.label44.Name = "label44";
-            this.label44.Size = new System.Drawing.Size(73, 15);
-            this.label44.TabIndex = 31;
-            this.label44.Text = "Customer ID";
-            // 
-            // CID_DELETE_BOX
-            // 
-            this.CID_DELETE_BOX.Location = new System.Drawing.Point(331, 137);
-            this.CID_DELETE_BOX.Name = "CID_DELETE_BOX";
-            this.CID_DELETE_BOX.Size = new System.Drawing.Size(100, 23);
-            this.CID_DELETE_BOX.TabIndex = 30;
-            // 
-            // label45
-            // 
-            this.label45.AutoSize = true;
-            this.label45.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label45.Location = new System.Drawing.Point(261, 52);
-            this.label45.Name = "label45";
-            this.label45.Size = new System.Drawing.Size(243, 32);
-            this.label45.TabIndex = 29;
-            this.label45.Text = "Delete Customer Info";
-            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.panel1);
@@ -1061,6 +1018,106 @@
             this.END_Date.HeaderText = "END_Date";
             this.END_Date.Name = "END_Date";
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.DEACTIVATECustomerButton);
+            this.tabPage3.Controls.Add(this.label44);
+            this.tabPage3.Controls.Add(this.CID_DEACTIVATE_BOX);
+            this.tabPage3.Controls.Add(this.label45);
+            this.tabPage3.Location = new System.Drawing.Point(4, 24);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(791, 330);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "deactive account";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // DEACTIVATECustomerButton
+            // 
+            this.DEACTIVATECustomerButton.Location = new System.Drawing.Point(315, 166);
+            this.DEACTIVATECustomerButton.Name = "DEACTIVATECustomerButton";
+            this.DEACTIVATECustomerButton.Size = new System.Drawing.Size(140, 23);
+            this.DEACTIVATECustomerButton.TabIndex = 32;
+            this.DEACTIVATECustomerButton.Text = "DEACTIVATE ACCOUNT";
+            this.DEACTIVATECustomerButton.UseVisualStyleBackColor = true;
+            this.DEACTIVATECustomerButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // label44
+            // 
+            this.label44.AutoSize = true;
+            this.label44.Location = new System.Drawing.Point(344, 119);
+            this.label44.Name = "label44";
+            this.label44.Size = new System.Drawing.Size(73, 15);
+            this.label44.TabIndex = 31;
+            this.label44.Text = "Customer ID";
+            // 
+            // CID_DEACTIVATE_BOX
+            // 
+            this.CID_DEACTIVATE_BOX.Location = new System.Drawing.Point(331, 137);
+            this.CID_DEACTIVATE_BOX.Name = "CID_DEACTIVATE_BOX";
+            this.CID_DEACTIVATE_BOX.Size = new System.Drawing.Size(100, 23);
+            this.CID_DEACTIVATE_BOX.TabIndex = 30;
+            // 
+            // label45
+            // 
+            this.label45.AutoSize = true;
+            this.label45.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label45.Location = new System.Drawing.Point(261, 52);
+            this.label45.Name = "label45";
+            this.label45.Size = new System.Drawing.Size(306, 32);
+            this.label45.TabIndex = 29;
+            this.label45.Text = "Deactivating Customer Info";
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.DeleteAccountButton);
+            this.tabPage5.Controls.Add(this.CIDDeleteAccount);
+            this.tabPage5.Controls.Add(this.label18);
+            this.tabPage5.Controls.Add(this.label8);
+            this.tabPage5.Location = new System.Drawing.Point(4, 24);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(791, 330);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Delete Customer";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // DeleteAccountButton
+            // 
+            this.DeleteAccountButton.Location = new System.Drawing.Point(328, 173);
+            this.DeleteAccountButton.Name = "DeleteAccountButton";
+            this.DeleteAccountButton.Size = new System.Drawing.Size(100, 23);
+            this.DeleteAccountButton.TabIndex = 3;
+            this.DeleteAccountButton.Text = "Delete Account";
+            this.DeleteAccountButton.UseVisualStyleBackColor = true;
+            this.DeleteAccountButton.Click += new System.EventHandler(this.DeleteAccountButton_Click);
+            // 
+            // CIDDeleteAccount
+            // 
+            this.CIDDeleteAccount.Location = new System.Drawing.Point(328, 131);
+            this.CIDDeleteAccount.Name = "CIDDeleteAccount";
+            this.CIDDeleteAccount.Size = new System.Drawing.Size(100, 23);
+            this.CIDDeleteAccount.TabIndex = 2;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(342, 113);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(73, 15);
+            this.label18.TabIndex = 1;
+            this.label18.Text = "Customer ID";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.label8.Location = new System.Drawing.Point(259, 61);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(248, 32);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "Delete Customer User";
+            // 
             // CustomerInfo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -1078,12 +1135,14 @@
             this.tabPage2.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage3.PerformLayout();
             this.tabPage4.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerDisplay)).EndInit();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1142,9 +1201,9 @@
         private Label label29;
         private TextBox CID_edit_box;
         private Label label30;
-        private Button DeleteCustomerButton;
+        private Button DEACTIVATECustomerButton;
         private Label label44;
-        private TextBox CID_DELETE_BOX;
+        private TextBox CID_DEACTIVATE_BOX;
         private Label label45;
         private Button ConfirmCustomerEditButton;
         private DateTimePicker EndDatePicker;
@@ -1189,5 +1248,10 @@
         private DataGridViewTextBoxColumn TID;
         private DataGridViewTextBoxColumn START_Date;
         private DataGridViewTextBoxColumn END_Date;
+        private TabPage tabPage5;
+        private Button DeleteAccountButton;
+        private TextBox CIDDeleteAccount;
+        private Label label18;
+        private Label label8;
     }
 }

@@ -39,7 +39,7 @@ namespace CMPT291_Project
                     myCommand.CommandText += "c.mType = '" + CopyTypeSearch.Text + "' and ";
                 if (AvailableCheckBox.Checked)
                     myCommand.CommandText += "Availability = 'Y' and ";
-                myCommand.CommandText += "c.MID > 0";
+                myCommand.CommandText += "c.MID > 0 and c.State != 'Removed'";
             try
             {
                 // shows the command
@@ -65,12 +65,13 @@ namespace CMPT291_Project
 
         private void RentButton_Click(object sender, EventArgs e)
         {
+            if (CPIDRent.Text == "") { return; }
             int orderMonths = 0;
             int startYear, startMonth, totalOrders = 0, nMonth, nYear;
+            int score;
             int year = DateTime.Now.Year;
             int month = DateTime.Now.Month;
             int day = DateTime.Now.Day;
-            int score;
             // needs to replace with login
             int dueYear, dueMonth;
             string CheckOutDay = year.ToString() + "-" + month.ToString() + "-" + day.ToString() + " " + DateTime.Now.Hour.ToString() + ":" + DateTime.Now.Minute.ToString() + ":" + DateTime.Now.Second.ToString(), availability;
@@ -194,6 +195,20 @@ namespace CMPT291_Project
                 {
                     MessageBox.Show(e3.ToString(), "Error");
                 }
+        }
+
+        private void MovieQueueButton_Click(object sender, EventArgs e)
+        {
+            myCommand.CommandText = "select * from dbo.MovieQueue as q, dbo.Movies as m where q.MID = m.MID and CID = " + IDtracker.CustomerID;
+            myReader = myCommand.ExecuteReader();
+            MovieQueueGrid.Rows.Clear();
+            while (myReader.Read())
+            {
+                // fills in the box with the sql return
+                MovieQueueGrid.Rows.Add(myReader["MID"].ToString(), myReader["mName"].ToString(), myReader["mType"].ToString(), myReader["mRating"].ToString());
+            }
+
+            myReader.Close();
         }
     }
 }

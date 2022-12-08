@@ -131,7 +131,7 @@ namespace CMPT291_Project
             int month = DateTime.Now.Month;
             int day = DateTime.Now.Day;
             // command to change customer to not active account
-            myCommand.CommandText = "update dbo.Customer set TID = 0, END_Date = '" + year.ToString() + "-" + month.ToString() + "-" + day.ToString() + "' where CID = " + CID_DELETE_BOX.Text;
+            myCommand.CommandText = "update dbo.Customer set TID = 0, END_Date = '" + year.ToString() + "-" + month.ToString() + "-" + day.ToString() + "' where CID = " + CID_DEACTIVATE_BOX.Text;
             MessageBox.Show("Account deactived");
             myCommand.ExecuteNonQuery();
         }
@@ -305,6 +305,21 @@ namespace CMPT291_Project
         private void label2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void DeleteAccountButton_Click(object sender, EventArgs e)
+        {
+            if (CIDDeleteAccount.Text != "") {
+                // update all refence to 0
+                myCommand.CommandText = "update dbo.\"Order\" set CID = 0 where CID = " + CIDDeleteAccount.Text;
+                myCommand.ExecuteNonQuery();
+                myCommand.CommandText = "delete from dbo.MovieQueue where CID = " + CIDDeleteAccount.Text;
+                myCommand.ExecuteNonQuery();
+                // command to change customer to not active account
+                myCommand.CommandText = "delete from dbo.Customer where CID = "+CIDDeleteAccount.Text;
+                MessageBox.Show("Account deleted");
+                myCommand.ExecuteNonQuery();
+            }
         }
     }
 }

@@ -60,14 +60,19 @@
             this.mType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.mRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.MovieQueueButton = new System.Windows.Forms.Button();
+            this.MovieQueueGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QueuedName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.QueuedType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.movieRating = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Movies.SuspendLayout();
             this.Rent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CopyGrid)).BeginInit();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MovieGrid)).BeginInit();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MovieQueueGrid)).BeginInit();
             this.SuspendLayout();
             // 
             // Movies
@@ -346,7 +351,8 @@
             // 
             // tabPage1
             // 
-            this.tabPage1.Controls.Add(this.dataGridView1);
+            this.tabPage1.Controls.Add(this.MovieQueueGrid);
+            this.tabPage1.Controls.Add(this.MovieQueueButton);
             this.tabPage1.Location = new System.Drawing.Point(4, 24);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -355,14 +361,51 @@
             this.tabPage1.Text = "Customer Movie Queue";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // dataGridView1
+            // MovieQueueButton
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(15, 17);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 25;
-            this.dataGridView1.Size = new System.Drawing.Size(571, 364);
-            this.dataGridView1.TabIndex = 0;
+            this.MovieQueueButton.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.MovieQueueButton.Location = new System.Drawing.Point(335, 323);
+            this.MovieQueueButton.Name = "MovieQueueButton";
+            this.MovieQueueButton.Size = new System.Drawing.Size(110, 49);
+            this.MovieQueueButton.TabIndex = 1;
+            this.MovieQueueButton.Text = "Search";
+            this.MovieQueueButton.UseVisualStyleBackColor = true;
+            this.MovieQueueButton.Click += new System.EventHandler(this.MovieQueueButton_Click);
+            // 
+            // MovieQueueGrid
+            // 
+            this.MovieQueueGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.MovieQueueGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.QueuedName,
+            this.QueuedType,
+            this.movieRating});
+            this.MovieQueueGrid.Location = new System.Drawing.Point(19, 31);
+            this.MovieQueueGrid.Name = "MovieQueueGrid";
+            this.MovieQueueGrid.RowTemplate.Height = 25;
+            this.MovieQueueGrid.Size = new System.Drawing.Size(731, 253);
+            this.MovieQueueGrid.TabIndex = 12;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "MID";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            // 
+            // QueuedName
+            // 
+            this.QueuedName.HeaderText = "MovieName";
+            this.QueuedName.Name = "QueuedName";
+            this.QueuedName.Width = 300;
+            // 
+            // QueuedType
+            // 
+            this.QueuedType.HeaderText = "MType";
+            this.QueuedType.Name = "QueuedType";
+            // 
+            // movieRating
+            // 
+            this.movieRating.HeaderText = "mRating";
+            this.movieRating.Name = "movieRating";
             // 
             // Rental
             // 
@@ -380,7 +423,7 @@
             this.tabPage2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.MovieGrid)).EndInit();
             this.tabPage1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.MovieQueueGrid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -419,6 +462,11 @@
         private DataGridViewTextBoxColumn Availability;
         private DataGridViewTextBoxColumn ReturnDate;
         private TabPage tabPage1;
-        private DataGridView dataGridView1;
+        private Button MovieQueueButton;
+        private DataGridView MovieQueueGrid;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn QueuedName;
+        private DataGridViewTextBoxColumn QueuedType;
+        private DataGridViewTextBoxColumn movieRating;
     }
 }

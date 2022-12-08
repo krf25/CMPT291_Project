@@ -169,10 +169,16 @@ namespace CMPT291_Project
 
         private void delete_employee_Click(object sender, EventArgs e)
         {
-            // command to delete base on EID from the box
-            myCommand.CommandText = "update dbo.Customer set Hourly_Rate = 0 where CID = " + EID_DELETE_BOX.Text;
-            MessageBox.Show("Employee removed");
-            myCommand.ExecuteNonQuery();
+            if (EID_DELETE_BOX.Text != "")
+            {
+                // update orders to be delete accounts
+                myCommand.CommandText = "update dbo.\"Order\" set EID = 0 where EID = " + EID_DELETE_BOX.Text;
+                myCommand.ExecuteNonQuery();
+                // command to delete base on EID from the box
+                myCommand.CommandText = "delete from dbo.Employees where EID = " + EID_DELETE_BOX.Text;
+                MessageBox.Show("Employee removed");
+                myCommand.ExecuteNonQuery();
+            }
         }
 
         private void searchEmail_CheckedChanged(object sender, EventArgs e)

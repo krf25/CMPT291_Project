@@ -30,6 +30,12 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.ViewMovie = new System.Windows.Forms.TabPage();
+            this.movie_list_grid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gen_movies_btn = new System.Windows.Forms.Button();
             this.AddMovie = new System.Windows.Forms.TabPage();
             this.lead_2_gender = new System.Windows.Forms.ComboBox();
@@ -123,10 +129,6 @@
             this.CopyTypeSearch = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.CopyDisplay = new System.Windows.Forms.DataGridView();
-            this.CPID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.FindCopies = new System.Windows.Forms.Button();
             this.MovieIDSearch = new System.Windows.Forms.TextBox();
@@ -155,14 +157,15 @@
             this.CPID_Delete_Box = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.movie_list_grid = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CPID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Availability = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReturnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.ViewMovie.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.movie_list_grid)).BeginInit();
             this.AddMovie.SuspendLayout();
             this.EditMovie.SuspendLayout();
             this.DeleteMovie.SuspendLayout();
@@ -175,7 +178,6 @@
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.RemoveCopy.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.movie_list_grid)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -207,6 +209,50 @@
             this.ViewMovie.TabIndex = 3;
             this.ViewMovie.Text = "View Movies";
             this.ViewMovie.UseVisualStyleBackColor = true;
+            // 
+            // movie_list_grid
+            // 
+            this.movie_list_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.movie_list_grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.Column1,
+            this.Column2,
+            this.Column3});
+            this.movie_list_grid.Location = new System.Drawing.Point(-4, 0);
+            this.movie_list_grid.Name = "movie_list_grid";
+            this.movie_list_grid.RowTemplate.Height = 25;
+            this.movie_list_grid.Size = new System.Drawing.Size(716, 410);
+            this.movie_list_grid.TabIndex = 12;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Title";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 150;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Genre";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 150;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Rating";
+            this.Column1.Name = "Column1";
+            // 
+            // Column2
+            // 
+            this.Column2.HeaderText = "Copies Remaining";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 50;
+            // 
+            // Column3
+            // 
+            this.Column3.HeaderText = "Distribution Fee";
+            this.Column3.Name = "Column3";
+            this.Column3.Width = 220;
             // 
             // gen_movies_btn
             // 
@@ -1121,7 +1167,7 @@
             // 
             // CopyTypeSearch
             // 
-            this.CopyTypeSearch.Location = new System.Drawing.Point(560, 194);
+            this.CopyTypeSearch.Location = new System.Drawing.Point(630, 197);
             this.CopyTypeSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.CopyTypeSearch.Name = "CopyTypeSearch";
             this.CopyTypeSearch.Size = new System.Drawing.Size(110, 23);
@@ -1131,7 +1177,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(560, 167);
+            this.label14.Location = new System.Drawing.Point(630, 170);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(99, 25);
             this.label14.TabIndex = 5;
@@ -1144,38 +1190,20 @@
             this.CPID,
             this.MID,
             this.mType,
-            this.State});
+            this.State,
+            this.Availability,
+            this.ReturnDate});
             this.CopyDisplay.Location = new System.Drawing.Point(33, 20);
             this.CopyDisplay.Name = "CopyDisplay";
             this.CopyDisplay.RowTemplate.Height = 25;
-            this.CopyDisplay.Size = new System.Drawing.Size(445, 352);
+            this.CopyDisplay.Size = new System.Drawing.Size(555, 365);
             this.CopyDisplay.TabIndex = 3;
-            // 
-            // CPID
-            // 
-            this.CPID.HeaderText = "CPID";
-            this.CPID.Name = "CPID";
-            // 
-            // MID
-            // 
-            this.MID.HeaderText = "MID";
-            this.MID.Name = "MID";
-            // 
-            // mType
-            // 
-            this.mType.HeaderText = "mType";
-            this.mType.Name = "mType";
-            // 
-            // State
-            // 
-            this.State.HeaderText = "State";
-            this.State.Name = "State";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(560, 67);
+            this.label3.Location = new System.Drawing.Point(630, 70);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(87, 25);
             this.label3.TabIndex = 2;
@@ -1184,7 +1212,7 @@
             // FindCopies
             // 
             this.FindCopies.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.FindCopies.Location = new System.Drawing.Point(590, 331);
+            this.FindCopies.Location = new System.Drawing.Point(614, 331);
             this.FindCopies.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.FindCopies.Name = "FindCopies";
             this.FindCopies.Size = new System.Drawing.Size(150, 41);
@@ -1195,7 +1223,7 @@
             // 
             // MovieIDSearch
             // 
-            this.MovieIDSearch.Location = new System.Drawing.Point(560, 94);
+            this.MovieIDSearch.Location = new System.Drawing.Point(630, 97);
             this.MovieIDSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MovieIDSearch.Name = "MovieIDSearch";
             this.MovieIDSearch.Size = new System.Drawing.Size(110, 23);
@@ -1457,49 +1485,41 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "Copy ID";
             // 
-            // movie_list_grid
+            // CPID
             // 
-            this.movie_list_grid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.movie_list_grid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.Column1,
-            this.Column2,
-            this.Column3});
-            this.movie_list_grid.Location = new System.Drawing.Point(-4, 0);
-            this.movie_list_grid.Name = "movie_list_grid";
-            this.movie_list_grid.RowTemplate.Height = 25;
-            this.movie_list_grid.Size = new System.Drawing.Size(716, 410);
-            this.movie_list_grid.TabIndex = 12;
+            this.CPID.HeaderText = "CPID";
+            this.CPID.Name = "CPID";
+            this.CPID.Width = 70;
             // 
-            // dataGridViewTextBoxColumn1
+            // MID
             // 
-            this.dataGridViewTextBoxColumn1.HeaderText = "Title";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Width = 150;
+            this.MID.HeaderText = "MID";
+            this.MID.Name = "MID";
+            this.MID.Width = 70;
             // 
-            // dataGridViewTextBoxColumn2
+            // mType
             // 
-            this.dataGridViewTextBoxColumn2.HeaderText = "Genre";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 150;
+            this.mType.HeaderText = "mType";
+            this.mType.Name = "mType";
+            this.mType.Width = 70;
             // 
-            // Column1
+            // State
             // 
-            this.Column1.HeaderText = "Rating";
-            this.Column1.Name = "Column1";
+            this.State.HeaderText = "State";
+            this.State.Name = "State";
+            this.State.Width = 70;
             // 
-            // Column2
+            // Availability
             // 
-            this.Column2.HeaderText = "Copies Remaining";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 50;
+            this.Availability.HeaderText = "Availability";
+            this.Availability.Name = "Availability";
+            this.Availability.Width = 80;
             // 
-            // Column3
+            // ReturnDate
             // 
-            this.Column3.HeaderText = "Distribution Fee";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 220;
+            this.ReturnDate.HeaderText = "ReturnDate";
+            this.ReturnDate.Name = "ReturnDate";
+            this.ReturnDate.Width = 130;
             // 
             // emp_movie_form
             // 
@@ -1511,6 +1531,7 @@
             this.Text = "Movie";
             this.tabControl1.ResumeLayout(false);
             this.ViewMovie.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.movie_list_grid)).EndInit();
             this.AddMovie.ResumeLayout(false);
             this.AddMovie.PerformLayout();
             this.EditMovie.ResumeLayout(false);
@@ -1534,7 +1555,6 @@
             this.panel1.PerformLayout();
             this.RemoveCopy.ResumeLayout(false);
             this.RemoveCopy.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.movie_list_grid)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1583,10 +1603,6 @@
         private DataGridView CopyDisplay;
         private TextBox CopyTypeSearch;
         private Label label14;
-        private DataGridViewTextBoxColumn CPID;
-        private DataGridViewTextBoxColumn MID;
-        private DataGridViewTextBoxColumn mType;
-        private DataGridViewTextBoxColumn State;
         private Label label5;
         private Panel panel2;
         private Button EditCPIDButton;
@@ -1675,5 +1691,11 @@
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn CPID;
+        private DataGridViewTextBoxColumn MID;
+        private DataGridViewTextBoxColumn mType;
+        private DataGridViewTextBoxColumn State;
+        private DataGridViewTextBoxColumn Availability;
+        private DataGridViewTextBoxColumn ReturnDate;
     }
 }

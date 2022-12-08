@@ -27,7 +27,13 @@ namespace CMPT291_Group3_Project
         }
 
         private void Register_button_Click(object sender, EventArgs e)
-        {   // check for empty text boxes
+        {
+            int year = DateTime.Now.Year;
+            int month = DateTime.Now.Month;
+            int day = DateTime.Now.Day;
+            string Today = year.ToString() + "-" + month.ToString() + "-" + day.ToString();
+
+            // check for empty text boxes
             if (password.Text != String.Empty || password_confirm.Text != String.Empty || email.Text != String.Empty)
             {   // wrong confirm password
                 if (password.Text != password_confirm.Text)
@@ -70,7 +76,7 @@ namespace CMPT291_Group3_Project
                     string password_text = password.Text;
                     string r = "Insert into Customer values('" + max_value + "'" +
                         ", '', '', '', '', '', '', '', '" + email_text + "'," +
-                        "'" + password_text + "', '', 1, 1, '', '')";
+                        "'" + password_text + "', '', 0, 0, '"+ year + "', '"+ year + "')";
 
                     // executeNonQuery - "Executes a Transact-SQL statement against the connection and returns the number of rows affected."
                     SqlCommand insertion = new SqlCommand(r, db);
