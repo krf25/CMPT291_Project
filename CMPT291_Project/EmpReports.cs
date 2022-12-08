@@ -49,32 +49,20 @@ namespace CMPT291_Project
         // SALES REPORT TAB
         private void gen_sales_report_btn_Click(object sender, EventArgs e)
         {
-            string temp_sales = sales_datetimepicker.Value.ToLongDateString();
-            string[] date_time_list = temp_sales.Split(" ");
-            string month_name_sales = date_time_list[0];
-            string year_sales = date_time_list[2];
-            Dictionary<string, int> month_dict_sales = new Dictionary<string, int>();
-            month_dict_sales.Add("January", 1);
-            month_dict_sales.Add("February", 2);
-            month_dict_sales.Add("March", 3);
-            month_dict_sales.Add("April", 4);
-            month_dict_sales.Add("May", 5);
-            month_dict_sales.Add("June", 6);
-            month_dict_sales.Add("July", 7);
-            month_dict_sales.Add("August", 8);
-            month_dict_sales.Add("September", 9);
-            month_dict_sales.Add("October", 10);
-            month_dict_sales.Add("November", 11);
-            month_dict_sales.Add("December", 12);
-            int month_var_id = month_dict_sales[month_name_sales];
-
+            int day = 1;
+            int month = sales_datetimepicker.Value.Month;
+            int year = sales_datetimepicker.Value.Year;
+            string SaleMonthStart = year.ToString() + "-" + month.ToString() + "-" + day.ToString();
+            int endMonth, endYear;
+            if (month + 1 == 13) { endMonth = 1; endYear = year + 1; } else { endMonth = month + 1; endYear = year; }
+            string SaleMonthEnd = year.ToString() + "-" + month.ToString() + "-" + day.ToString();
             // Show ALL Radio button
             if (SearchAll_sales_report.Checked)
             {
                 // run the Query, add results to salesReport_grid
                 try
                 {
-                    myCommand.CommandText = "select sum(AccountType.cost) Total_Income, count(dates.cid) #OfAccounts from (select CID, TID from customer where month(START_Date) <= " + month_var_id + " and year(START_Date) <= year(getdate()) and (month(END_Date) >= " + month_var_id + " or END_Date = '' )) as dates, AccountType, customer c2 where AccountType.tid = dates.tid and c2.cid = dates.cid";
+                    myCommand.CommandText = "select sum(Cost) Total_Income, count(CID) #OfAccounts from (select CID, Cost from Customer c, AccountType a where c.TID = A.TID and c.TID > 0 and START_Date<= '"+SaleMonthEnd+"' and END_Date >= '"+SaleMonthStart+"') x";
                     salesReport_grid.Rows.Clear();
                     myReader = myCommand.ExecuteReader();
                     // add queried data to salesReport_grid
@@ -98,7 +86,7 @@ namespace CMPT291_Project
                 // run the Query, add results to salesReport_grid
                 try
                 {
-                    myCommand.CommandText = "select sum(AccountType.cost) Total_Income, count(dates.cid) #OfAccounts from (select CID, TID from customer where month(START_Date) <= " + month_var_id + " and year(START_Date) <= year(getdate()) and (month(END_Date) >= " + month_var_id + " or END_Date = '' )) as dates, AccountType, customer c2 where AccountType.tid = dates.tid and c2.cid = dates.cid and AccountType.tid = 1";
+                    myCommand.CommandText = "select sum(Cost) Total_Income, count(CID) #OfAccounts from (select CID, Cost from Customer c, AccountType a where c.TID = A.TID and c.TID = 1 and START_Date<= '" + SaleMonthEnd + "' and END_Date >= '" + SaleMonthStart + "') x";
                     salesReport_grid.Rows.Clear();
                     myReader = myCommand.ExecuteReader();
                     // add queried data to salesReport_grid
@@ -120,7 +108,7 @@ namespace CMPT291_Project
                 // run the Query, add results to salesReport_grid
                 try
                 {
-                    myCommand.CommandText = "select sum(AccountType.cost) Total_Income, count(dates.cid) #OfAccounts from (select CID, TID from customer where month(START_Date) <= " + month_var_id + " and year(START_Date) <= year(getdate()) and (month(END_Date) >= " + month_var_id + " or END_Date = '' )) as dates, AccountType, customer c2 where AccountType.tid = dates.tid and c2.cid = dates.cid and AccountType.tid = 2";
+                    myCommand.CommandText = "select sum(Cost) Total_Income, count(CID) #OfAccounts from (select CID, Cost from Customer c, AccountType a where c.TID = A.TID and c.TID = 2 and START_Date<= '" + SaleMonthEnd + "' and END_Date >= '" + SaleMonthStart + "') x";
                     salesReport_grid.Rows.Clear();
                     myReader = myCommand.ExecuteReader();
                     // add queried data to salesReport_grid
@@ -142,7 +130,7 @@ namespace CMPT291_Project
                 // run the Query, add results to salesReport_grid
                 try
                 {
-                    myCommand.CommandText = "select sum(AccountType.cost) Total_Income, count(dates.cid) #OfAccounts from (select CID, TID from customer where month(START_Date) <= " + month_var_id + " and year(START_Date) <= year(getdate()) and (month(END_Date) >= " + month_var_id + " or END_Date = '' )) as dates, AccountType, customer c2 where AccountType.tid = dates.tid and c2.cid = dates.cid and AccountType.tid = 3";
+                    myCommand.CommandText = "select sum(Cost) Total_Income, count(CID) #OfAccounts from (select CID, Cost from Customer c, AccountType a where c.TID = A.TID and c.TID = 3 and START_Date<= '" + SaleMonthEnd + "' and END_Date >= '" + SaleMonthStart + "') x";
                     salesReport_grid.Rows.Clear();
                     myReader = myCommand.ExecuteReader();
                     // add queried data to salesReport_grid
@@ -164,7 +152,7 @@ namespace CMPT291_Project
                 // run the Query, add results to salesReport_grid
                 try
                 {
-                    myCommand.CommandText = "select sum(AccountType.cost) Total_Income, count(dates.cid) #OfAccounts from (select CID, TID from customer where month(START_Date) <= " + month_var_id + " and year(START_Date) <= year(getdate()) and (month(END_Date) >= " + month_var_id + " or END_Date = '' )) as dates, AccountType, customer c2 where AccountType.tid = dates.tid and c2.cid = dates.cid and AccountType.tid = 4";
+                    myCommand.CommandText = "select sum(Cost) Total_Income, count(CID) #OfAccounts from (select CID, Cost from Customer c, AccountType a where c.TID = A.TID and c.TID = 4 and START_Date<= '" + SaleMonthEnd + "' and END_Date >= '" + SaleMonthStart + "') x";
                     salesReport_grid.Rows.Clear();
                     myReader = myCommand.ExecuteReader();
                     // add queried data to salesReport_grid
@@ -205,15 +193,26 @@ namespace CMPT291_Project
         // MOST ACTIVE CUSTOMERS TAB
         private void most_active_customer_btn_Click(object sender, EventArgs e)
         {
+            int StartDay = StartDateCustomerPicker.Value.Day;
+            int StartMonth = StartDateCustomerPicker.Value.Month;
+            int StartYear = StartDateCustomerPicker.Value.Year;
+            int EndDay = EndDateCustomerPicker.Value.Day;
+            int EndMonth = EndDateCustomerPicker.Value.Month;
+            int EndYear = EndDateCustomerPicker.Value.Year;
+            string StartCustomer = StartYear.ToString() + "-" + StartMonth.ToString() + "-" + StartDay.ToString()+" 0:0:0";
+            string EndCustomer = EndYear.ToString() + "-" + EndMonth.ToString() + "-" + EndDay.ToString() + " 0:0:0";
+
             try
             {
-                myCommand.CommandText = "select Top 3 FName + ' ' + LName as FULLNAME, count([dbo].[Order].OID) RentalCount from [dbo].[Order], customer where [dbo].[Order].cid = customer.cid and customer.cid > 0 group by Fname, LName";
+                if (DescCustomer.Checked) myCommand.CommandText = "select FName +', ' +LName as FULLNAME, count(OID) as RentalCount, x3.mType from dbo.\"Order\" o, dbo.Customer c, \r\n(select mType, x1.CID from (select count(*) as bestType, CID, mType from dbo.\"Order\" o, dbo.Movies m where o.MID=m.MID and m.MID >0 group by CID, mType)x1,\r\n(select max(bestType) as highestType, CID from (select count(*) as bestType, CID, mType from dbo.\"Order\" o, dbo.Movies m where o.MID=m.MID and m.MID >0 group by CID, mType)x2 group by CID)x2\r\nwhere x2.highestType = x1.bestType and x2.CID = x1.CID)x3\r\nwhere CheckOutDate >= '" + StartCustomer + "' and CheckOutDate <= '" + EndCustomer + "' and o.CID = c.CID and c.CID >0 and x3.CID = o.CID group by FName, LName, x3.mType order by RentalCount desc";
+                else myCommand.CommandText = "select FName +', ' +LName as FULLNAME, count(OID) as RentalCount, x3.mType from dbo.\"Order\" o, dbo.Customer c, \r\n(select mType, x1.CID from (select count(*) as bestType, CID, mType from dbo.\"Order\" o, dbo.Movies m where o.MID=m.MID and m.MID >0 group by CID, mType)x1,\r\n(select max(bestType) as highestType, CID from (select count(*) as bestType, CID, mType from dbo.\"Order\" o, dbo.Movies m where o.MID=m.MID and m.MID >0 group by CID, mType)x2 group by CID)x2\r\nwhere x2.highestType = x1.bestType and x2.CID = x1.CID)x3\r\nwhere CheckOutDate >= '" + StartCustomer + "' and CheckOutDate <= '" + EndCustomer + "' and o.CID = c.CID and c.CID >0 and x3.CID = o.CID group by FName, LName, x3.mType order by RentalCount asc";
                 most_active_customer_grid.Rows.Clear();
+                //MessageBox.Show(myCommand.CommandText);
                 myReader = myCommand.ExecuteReader();
                 // add queried data to grid
                 while (myReader.Read())
                 {
-                    most_active_customer_grid.Rows.Add(myReader["FULLNAME"].ToString(), myReader["RentalCount"].ToString());
+                    most_active_customer_grid.Rows.Add(myReader["FULLNAME"].ToString(), myReader["RentalCount"].ToString(), myReader["mType"].ToString());
                 }
                 myReader.Close();
             }
@@ -226,14 +225,23 @@ namespace CMPT291_Project
         // TOP EMPLOYEE RENTAL TAB
         private void top_employee_btn_Click(object sender, EventArgs e)
         {
+            int StartDay = StartDateEmployee.Value.Day;
+            int StartMonth = StartDateEmployee.Value.Month;
+            int StartYear = StartDateEmployee.Value.Year;
+            int EndDay = EndDateEmployee.Value.Day;
+            int EndMonth = EndDateEmployee.Value.Month;
+            int EndYear = EndDateEmployee.Value.Year;
+            string StartEmployee = StartYear.ToString() + "-" + StartMonth.ToString() + "-" + StartDay.ToString() + " 0:0:0";
+            string EndEmployee = EndYear.ToString() + "-" + EndMonth.ToString() + "-" + EndDay.ToString() + " 0:0:0";
             try
             {
-                myCommand.CommandText = "select Top 1 FName + ' ' + LName as FULLNAME, count([dbo].[Order].OID) TransactionCount from [dbo].[Order], Employees where [dbo].[Order].eid = Employees.eid and Employees.eid >0 group by Fname, LName";
+                if (DescEmp.Checked) myCommand.CommandText = "select FName +', ' +LName as FULLNAME, count(OID) as TransactionCount, x3.mType from dbo.\"Order\" o, dbo.Employees c, (select mType, x1.EID from (select count(*) as bestType, EID, mType from dbo.\"Order\" o, dbo.Movies m where o.MID=m.MID and m.MID >0 group by EID, mType)x1,(select max(bestType) as highestType, EID from (select count(*) as bestType, EID, mType from dbo.\"Order\" o, dbo.Movies m where o.MID=m.MID and m.MID >0 group by EID, mType)x2 group by EID)x2 where x2.highestType = x1.bestType and x2.EID = x1.EID)x3 where CheckOutDate >= '" + StartEmployee + "' and CheckOutDate <= '" + EndEmployee + "' and o.EID = c.EID and c.EID >0 and x3.EID = o.EID group by FName, LName, x3.mType order by TransactionCount desc";
+                else myCommand.CommandText = "select FName +', ' +LName as FULLNAME, count(OID) as TransactionCount, x3.mType from dbo.\"Order\" o, dbo.Employees c, (select mType, x1.EID from (select count(*) as bestType, EID, mType from dbo.\"Order\" o, dbo.Movies m where o.MID=m.MID and m.MID >0 group by EID, mType)x1,(select max(bestType) as highestType, EID from (select count(*) as bestType, EID, mType from dbo.\"Order\" o, dbo.Movies m where o.MID=m.MID and m.MID >0 group by EID, mType)x2 group by EID)x2 where x2.highestType = x1.bestType and x2.EID = x1.EID)x3 where CheckOutDate >= '" + StartEmployee + "' and CheckOutDate <= '" + EndEmployee + "' and o.EID = c.EID and c.EID >0 and x3.EID = o.EID group by FName, LName, x3.mType order by TransactionCount asc";
                 top_employee_grid.Rows.Clear();
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
                 {
-                    top_employee_grid.Rows.Add(myReader["FULLNAME"].ToString(), myReader["TransactionCount"].ToString());
+                    top_employee_grid.Rows.Add(myReader["FULLNAME"].ToString(), myReader["TransactionCount"].ToString(), myReader["mType"].ToString());
                 }
                 myReader.Close();
             }
@@ -245,15 +253,24 @@ namespace CMPT291_Project
         // MOST POPULAR RENTALS TAB
         private void most_popular_rent_btn_Click(object sender, EventArgs e)
         {
+            int StartDay = StartDateRentalPicker.Value.Day;
+            int StartMonth = StartDateRentalPicker.Value.Month;
+            int StartYear = StartDateRentalPicker.Value.Year;
+            int EndDay = EndDateRentalPicker.Value.Day;
+            int EndMonth = EndDateRentalPicker.Value.Month;
+            int EndYear = EndDateRentalPicker.Value.Year;
+            string StartRental = StartYear.ToString() + "-" + StartMonth.ToString() + "-" + StartDay.ToString() + " 0:0:0";
+            string EndRental = EndYear.ToString() + "-" + EndMonth.ToString() + "-" + EndDay.ToString() + " 0:0:0";
             try
             {
-                myCommand.CommandText = "select Top 3 mName, count([dbo].[Order].OID) from Movies, [dbo].[Order] WHERE [dbo].[Order].MID = Movies.MID, Movies.MID >0 group by mName";
+                if (DescRental.Checked) myCommand.CommandText = "select mName, count(*) as retailAmount from dbo.\"Order\" o, dbo.Movies m where o.MID>0 and o.MID=m.MID and CheckOutDate >= '"+StartRental+"' and CheckOutDate <= '"+EndRental+"' group by mName order by retailAmount desc";
+                else myCommand.CommandText = "select mName, count(*) as retailAmount from dbo.\"Order\" o, dbo.Movies m where o.MID>0 and o.MID=m.MID and CheckOutDate >= '"+StartRental+"' and CheckOutDate <= '"+EndRental+"' group by mName order by retailAmount asc";
                 popular_rental_grid.Rows.Clear();
                 myReader = myCommand.ExecuteReader();
                 // add queried data to grid
                 while (myReader.Read())
                 {
-                    popular_rental_grid.Rows.Add(myReader["mName"].ToString(), myReader["count([dbo].[Order].OID)"].ToString());
+                    popular_rental_grid.Rows.Add(myReader["mName"].ToString(), myReader["retailAmount"].ToString());
                 }
                 myReader.Close();
             }
@@ -261,6 +278,28 @@ namespace CMPT291_Project
             {
                 MessageBox.Show(e3.ToString(), "Error");
             }
+            try
+            {
+                if (DescRental.Checked) myCommand.CommandText = "select mType, count(*) as retailAmount from dbo.\"Order\" o, dbo.Movies m where o.MID>0 and o.MID=m.MID and CheckOutDate >= '"+StartRental+"' and CheckOutDate <= '"+EndRental+"' group by mType order by retailAmount desc";
+                else myCommand.CommandText = "select mType, count(*) as retailAmount from dbo.\"Order\" o, dbo.Movies m where o.MID>0 and o.MID=m.MID and CheckOutDate >= '"+StartRental+"' and CheckOutDate <= '"+EndRental+"' group by mType order by retailAmount asc";
+                popular_type_rental_grid.Rows.Clear();
+                myReader = myCommand.ExecuteReader();
+                // add queried data to grid
+                while (myReader.Read())
+                {
+                    popular_type_rental_grid.Rows.Add(myReader["mType"].ToString(), myReader["retailAmount"].ToString());
+                }
+                myReader.Close();
+            }
+            catch (Exception e3)
+            {
+                MessageBox.Show(e3.ToString(), "Error");
+            }
+        }
+
+        private void report_tabcontrol_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
