@@ -925,7 +925,21 @@ namespace CMPT291_Project
 
         private void gen_movies_btn_Click_1(object sender, EventArgs e)
         {
-
+            try
+            {
+                myCommand.CommandText = "select mName, mType, mRating, NumCopies, DistroFee from Movies";
+                movie_list_grid.Rows.Clear();
+                myReader = myCommand.ExecuteReader();
+                while (myReader.Read())
+                {
+                    movie_list_grid.Rows.Add(myReader["mName"].ToString(), myReader["mType"].ToString(), myReader["mRating"].ToString(), myReader["NumCopies"].ToString(), myReader["DistroFee"].ToString());
+                }
+                myReader.Close();
+            }
+            catch (Exception e3)
+            {
+                MessageBox.Show(e3.ToString(), "Error");
+            }
         }
     }
 }
