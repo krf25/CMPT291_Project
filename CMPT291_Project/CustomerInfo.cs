@@ -59,7 +59,7 @@ namespace CMPT291_Project
         private void addCustomerButton_Click(object sender, EventArgs e)
         {
             //checks if importent boxes are empty
-            if (LName_add_box.Text != "" && FName_add_box.Text != "" && Email_add_box.Text != "" && Credit_add_box.Text != "" && Password_add_box.Text != "")
+            if (LName_add_box.Text != "" && FName_add_box.Text != "" && Email_add_box.Text != "" && Credit_add_box.Text != "" && Password_add_box.Text != "" && Address_add_box.Text != "" && City_add_box.Text != "" && State_add_box.Text != "" && ZIP_add_box.Text != "" && phone_add_box.Text != "")
             {
                 // check if repeat email
                 myCommand.CommandText = "select count(*) as repeat from dbo.Customer where Email = '" + Email_add_box.Text+"'";
@@ -122,7 +122,7 @@ namespace CMPT291_Project
                     MessageBox.Show("Email is already registored");
                 }
             }
-            else MessageBox.Show("Please fill in all boxes with asteries");
+            else MessageBox.Show("Please fill in all boxes");
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -203,7 +203,7 @@ namespace CMPT291_Project
             else if (PremiumEdit.Checked) TID = 4;
             else TID = 0;
             
-            if (LName_edit_box.Text != "" && FName_edit_box.Text != "" && Email_edit_box.Text != "" && Credit_edit_box.Text != "" && Password_edit_box.Text != "")
+            if (LName_edit_box.Text != "" && FName_edit_box.Text != "" && Address_edit_box.Text != "" && City_edit_box.Text != "" && State_edit_box.Text != "" && ZIP_edit_box.Text != "" && Phone_edit_box.Text != "" && Email_edit_box.Text != "" && Credit_edit_box.Text != "" && Password_edit_box.Text != "")
             {
                 myCommand.CommandText = "select count(*) as repeat from dbo.Customer where Email = '" + Email_add_box.Text + "' and CID != "+CID_edit_box.Text;
                 myReader = myCommand.ExecuteReader();
@@ -235,7 +235,7 @@ namespace CMPT291_Project
                 }
                 }
             else
-            MessageBox.Show("Please fill in all boxes with asteries");
+            MessageBox.Show("Please fill in all boxes");
         }
 
         private void EditWithCID_Click(object sender, EventArgs e)

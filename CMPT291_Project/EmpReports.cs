@@ -187,7 +187,7 @@ namespace CMPT291_Project
         {
             try
             {
-                myCommand.CommandText = "select distinct FName + ' ' + LName as FULLNAME, Address, City, State, ZIP, Email, Phone from customer";
+                myCommand.CommandText = "select distinct FName + ' ' + LName as FULLNAME, Address, City, State, ZIP, Email, Phone from customer where CID >0 and TID >0";
                 mailing_list_grid.Rows.Clear();
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
@@ -207,7 +207,7 @@ namespace CMPT291_Project
         {
             try
             {
-                myCommand.CommandText = "select Top 3 FName + ' ' + LName as FULLNAME, count([dbo].[Order].OID) RentalCount from [dbo].[Order], customer where [dbo].[Order].cid = customer.cid group by Fname, LName";
+                myCommand.CommandText = "select Top 3 FName + ' ' + LName as FULLNAME, count([dbo].[Order].OID) RentalCount from [dbo].[Order], customer where [dbo].[Order].cid = customer.cid and customer.cid > 0 group by Fname, LName";
                 most_active_customer_grid.Rows.Clear();
                 myReader = myCommand.ExecuteReader();
                 // add queried data to grid
@@ -228,7 +228,7 @@ namespace CMPT291_Project
         {
             try
             {
-                myCommand.CommandText = "select Top 1 FName + ' ' + LName as FULLNAME, count([dbo].[Order].OID) TransactionCount from [dbo].[Order], Employees where [dbo].[Order].eid = Employees.eid group by Fname, LName";
+                myCommand.CommandText = "select Top 1 FName + ' ' + LName as FULLNAME, count([dbo].[Order].OID) TransactionCount from [dbo].[Order], Employees where [dbo].[Order].eid = Employees.eid and Employees.eid >0 group by Fname, LName";
                 top_employee_grid.Rows.Clear();
                 myReader = myCommand.ExecuteReader();
                 while (myReader.Read())
@@ -247,7 +247,7 @@ namespace CMPT291_Project
         {
             try
             {
-                myCommand.CommandText = "select Top 3 mName, count([dbo].[Order].OID) from Movies, [dbo].[Order] WHERE [dbo].[Order].MID = Movies.MID group by mName";
+                myCommand.CommandText = "select Top 3 mName, count([dbo].[Order].OID) from Movies, [dbo].[Order] WHERE [dbo].[Order].MID = Movies.MID, Movies.MID >0 group by mName";
                 popular_rental_grid.Rows.Clear();
                 myReader = myCommand.ExecuteReader();
                 // add queried data to grid
