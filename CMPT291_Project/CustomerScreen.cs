@@ -210,7 +210,7 @@ namespace CMPT291_Project
                 while (myReader.Read())
                 {
                     // fills in the box with the sql return
-                    MovieDisplay.Rows.Add(myReader["mName"].ToString(), myReader["mType"].ToString(), myReader["NumCopies"].ToString(), myReader["mRating"].ToString());
+                    MovieDisplay.Rows.Add(myReader["MID"].ToString(), myReader["mName"].ToString(), myReader["mType"].ToString(), myReader["NumCopies"].ToString(), myReader["mRating"].ToString());
                 }
 
                 myReader.Close();
