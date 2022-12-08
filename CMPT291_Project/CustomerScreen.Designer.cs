@@ -89,27 +89,23 @@
             this.CheckOutDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReturnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerDetails = new System.Windows.Forms.TabPage();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.Email = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
+            this.ViewInfoButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.Name = new System.Windows.Forms.Label();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label24 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label27 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
+            this.CustomerDisplay = new System.Windows.Forms.DataGridView();
+            this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Address = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.City = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.State = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ZIP = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.password = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CreditCardNum = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.START_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.END_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerTabs.SuspendLayout();
             this.Movie.SuspendLayout();
             this.MovieMenu.SuspendLayout();
@@ -128,6 +124,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerRentalGrid)).BeginInit();
             this.CustomerDetails.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomerDisplay)).BeginInit();
             this.SuspendLayout();
             // 
             // CustomerTabs
@@ -723,26 +720,8 @@
             // 
             // CustomerDetails
             // 
-            this.CustomerDetails.Controls.Add(this.label28);
-            this.CustomerDetails.Controls.Add(this.label27);
-            this.CustomerDetails.Controls.Add(this.label26);
-            this.CustomerDetails.Controls.Add(this.label25);
-            this.CustomerDetails.Controls.Add(this.label24);
-            this.CustomerDetails.Controls.Add(this.label23);
-            this.CustomerDetails.Controls.Add(this.label22);
-            this.CustomerDetails.Controls.Add(this.label21);
-            this.CustomerDetails.Controls.Add(this.label20);
-            this.CustomerDetails.Controls.Add(this.Name);
-            this.CustomerDetails.Controls.Add(this.label19);
-            this.CustomerDetails.Controls.Add(this.label18);
-            this.CustomerDetails.Controls.Add(this.label15);
-            this.CustomerDetails.Controls.Add(this.label14);
-            this.CustomerDetails.Controls.Add(this.label13);
-            this.CustomerDetails.Controls.Add(this.label5);
-            this.CustomerDetails.Controls.Add(this.label4);
-            this.CustomerDetails.Controls.Add(this.label3);
-            this.CustomerDetails.Controls.Add(this.Email);
-            this.CustomerDetails.Controls.Add(this.label1);
+            this.CustomerDetails.Controls.Add(this.CustomerDisplay);
+            this.CustomerDetails.Controls.Add(this.ViewInfoButton);
             this.CustomerDetails.Location = new System.Drawing.Point(4, 24);
             this.CustomerDetails.Name = "CustomerDetails";
             this.CustomerDetails.Size = new System.Drawing.Size(768, 398);
@@ -750,212 +729,113 @@
             this.CustomerDetails.Text = "Account Details";
             this.CustomerDetails.UseVisualStyleBackColor = true;
             // 
-            // label5
+            // ViewInfoButton
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(468, 167);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(129, 25);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Account Type:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(20, 138);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(144, 25);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Phone Number:";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(20, 60);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(83, 25);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Address:";
-            // 
-            // Email
-            // 
-            this.Email.AutoSize = true;
-            this.Email.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Email.Location = new System.Drawing.Point(20, 188);
-            this.Email.Name = "Email";
-            this.Email.Size = new System.Drawing.Size(62, 25);
-            this.Email.TabIndex = 1;
-            this.Email.Text = "Email:";
-            this.Email.Click += new System.EventHandler(this.label2_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(20, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.ViewInfoButton.Location = new System.Drawing.Point(324, 189);
+            this.ViewInfoButton.Name = "ViewInfoButton";
+            this.ViewInfoButton.Size = new System.Drawing.Size(116, 23);
+            this.ViewInfoButton.TabIndex = 23;
+            this.ViewInfoButton.Text = "View Details";
+            this.ViewInfoButton.UseVisualStyleBackColor = true;
+            this.ViewInfoButton.Click += new System.EventHandler(this.ViewInfoButton_Click);
             // 
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
-            // label13
+            // CustomerDisplay
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label13.Location = new System.Drawing.Point(468, 248);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(129, 25);
-            this.label13.TabIndex = 5;
-            this.label13.Text = "Account Type:";
+            this.CustomerDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CustomerDisplay.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CID,
+            this.LName,
+            this.FName,
+            this.Address,
+            this.City,
+            this.State,
+            this.ZIP,
+            this.Phone,
+            this.Email,
+            this.password,
+            this.CreditCardNum,
+            this.TID,
+            this.START_Date,
+            this.END_Date});
+            this.CustomerDisplay.Location = new System.Drawing.Point(3, 47);
+            this.CustomerDisplay.Name = "CustomerDisplay";
+            this.CustomerDisplay.RowTemplate.Height = 25;
+            this.CustomerDisplay.Size = new System.Drawing.Size(744, 73);
+            this.CustomerDisplay.TabIndex = 24;
             // 
-            // label14
+            // CID
             // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label14.Location = new System.Drawing.Point(468, 323);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(129, 25);
-            this.label14.TabIndex = 6;
-            this.label14.Text = "Account Type:";
+            this.CID.HeaderText = "CID";
+            this.CID.Name = "CID";
             // 
-            // label15
+            // LName
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(20, 237);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(62, 25);
-            this.label15.TabIndex = 7;
-            this.label15.Text = "Email:";
+            this.LName.HeaderText = "LName";
+            this.LName.Name = "LName";
             // 
-            // label18
+            // FName
             // 
-            this.label18.AutoSize = true;
-            this.label18.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label18.Location = new System.Drawing.Point(20, 101);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(62, 25);
-            this.label18.TabIndex = 8;
-            this.label18.Text = "Email:";
+            this.FName.HeaderText = "FName";
+            this.FName.Name = "FName";
             // 
-            // label19
+            // Address
             // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label19.Location = new System.Drawing.Point(20, 291);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(62, 25);
-            this.label19.TabIndex = 9;
-            this.label19.Text = "Email:";
+            this.Address.HeaderText = "Address";
+            this.Address.Name = "Address";
             // 
-            // Name
+            // City
             // 
-            this.Name.AutoSize = true;
-            this.Name.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Name.Location = new System.Drawing.Point(102, 13);
-            this.Name.Name = "Name";
-            this.Name.Size = new System.Drawing.Size(62, 25);
-            this.Name.TabIndex = 10;
-            this.Name.Text = "Email:";
+            this.City.HeaderText = "City";
+            this.City.Name = "City";
             // 
-            // label20
+            // State
             // 
-            this.label20.AutoSize = true;
-            this.label20.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label20.Location = new System.Drawing.Point(102, 60);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(62, 25);
-            this.label20.TabIndex = 11;
-            this.label20.Text = "Email:";
+            this.State.HeaderText = "State";
+            this.State.Name = "State";
             // 
-            // label21
+            // ZIP
             // 
-            this.label21.AutoSize = true;
-            this.label21.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label21.Location = new System.Drawing.Point(102, 101);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(62, 25);
-            this.label21.TabIndex = 12;
-            this.label21.Text = "Email:";
+            this.ZIP.HeaderText = "Zip";
+            this.ZIP.Name = "ZIP";
             // 
-            // label22
+            // Phone
             // 
-            this.label22.AutoSize = true;
-            this.label22.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label22.Location = new System.Drawing.Point(170, 138);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(62, 25);
-            this.label22.TabIndex = 13;
-            this.label22.Text = "Email:";
+            this.Phone.HeaderText = "Phone";
+            this.Phone.Name = "Phone";
             // 
-            // label23
+            // Email
             // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label23.Location = new System.Drawing.Point(88, 188);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(62, 25);
-            this.label23.TabIndex = 14;
-            this.label23.Text = "Email:";
+            this.Email.HeaderText = "Email";
+            this.Email.Name = "Email";
             // 
-            // label24
+            // password
             // 
-            this.label24.AutoSize = true;
-            this.label24.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label24.Location = new System.Drawing.Point(88, 237);
-            this.label24.Name = "label24";
-            this.label24.Size = new System.Drawing.Size(62, 25);
-            this.label24.TabIndex = 15;
-            this.label24.Text = "Email:";
+            this.password.HeaderText = "Password";
+            this.password.Name = "password";
             // 
-            // label25
+            // CreditCardNum
             // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label25.Location = new System.Drawing.Point(88, 291);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(62, 25);
-            this.label25.TabIndex = 16;
-            this.label25.Text = "Email:";
+            this.CreditCardNum.HeaderText = "CreditCardNum";
+            this.CreditCardNum.Name = "CreditCardNum";
             // 
-            // label26
+            // TID
             // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label26.Location = new System.Drawing.Point(603, 167);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(62, 25);
-            this.label26.TabIndex = 17;
-            this.label26.Text = "Email:";
+            this.TID.HeaderText = "TID";
+            this.TID.Name = "TID";
             // 
-            // label27
+            // START_Date
             // 
-            this.label27.AutoSize = true;
-            this.label27.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label27.Location = new System.Drawing.Point(603, 248);
-            this.label27.Name = "label27";
-            this.label27.Size = new System.Drawing.Size(62, 25);
-            this.label27.TabIndex = 18;
-            this.label27.Text = "Email:";
+            this.START_Date.HeaderText = "START_Date";
+            this.START_Date.Name = "START_Date";
             // 
-            // label28
+            // END_Date
             // 
-            this.label28.AutoSize = true;
-            this.label28.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label28.Location = new System.Drawing.Point(603, 323);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(62, 25);
-            this.label28.TabIndex = 19;
-            this.label28.Text = "Email:";
+            this.END_Date.HeaderText = "END_Date";
+            this.END_Date.Name = "END_Date";
             // 
             // CustomerScreen
             // 
@@ -990,7 +870,7 @@
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.CustomerRentalGrid)).EndInit();
             this.CustomerDetails.ResumeLayout(false);
-            this.CustomerDetails.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CustomerDisplay)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -1008,11 +888,6 @@
         private TabPage RecomendedMovies;
         private TextBox textBox1;
         private TabPage CustomerDetails;
-        private Label label5;
-        private Label label4;
-        private Label label3;
-        private Label Email;
-        private Label label1;
         private Panel panel1;
         private CheckBox checkBox1;
         private ComboBox MovieType;
@@ -1064,20 +939,21 @@
         private DataGridViewTextBoxColumn ReturnDate;
         private TextBox ScoreNumberBox;
         private Label label7;
-        private Label label14;
-        private Label label13;
-        private Label label28;
-        private Label label27;
-        private Label label26;
-        private Label label25;
-        private Label label24;
-        private Label label23;
-        private Label label22;
-        private Label label21;
-        private Label label20;
-        private Label Name;
-        private Label label19;
-        private Label label18;
-        private Label label15;
+        private Button ViewInfoButton;
+        private DataGridView CustomerDisplay;
+        private DataGridViewTextBoxColumn CID;
+        private DataGridViewTextBoxColumn LName;
+        private DataGridViewTextBoxColumn FName;
+        private DataGridViewTextBoxColumn Address;
+        private DataGridViewTextBoxColumn City;
+        private DataGridViewTextBoxColumn State;
+        private DataGridViewTextBoxColumn ZIP;
+        private DataGridViewTextBoxColumn Phone;
+        private DataGridViewTextBoxColumn Email;
+        private DataGridViewTextBoxColumn password;
+        private DataGridViewTextBoxColumn CreditCardNum;
+        private DataGridViewTextBoxColumn TID;
+        private DataGridViewTextBoxColumn START_Date;
+        private DataGridViewTextBoxColumn END_Date;
     }
 }

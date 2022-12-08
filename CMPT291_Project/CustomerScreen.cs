@@ -375,5 +375,25 @@ namespace CMPT291_Project
                 }else MessageBox.Show("Score must be between 1-5");
             }
         }
+
+        private void Name_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ViewInfoButton_Click(object sender, EventArgs e)
+        {
+            myCommand.CommandText = "select * from dbo.Customer where CID = " + IDtracker.CustomerID;
+            myReader = myCommand.ExecuteReader();
+
+            CustomerDisplay.Rows.Clear();
+            while (myReader.Read())
+            {
+                // fills in the box with the sql return
+                CustomerDisplay.Rows.Add(myReader["CID"].ToString(), myReader["LName"].ToString(), myReader["FName"].ToString(), myReader["Address"].ToString(), myReader["City"].ToString(), myReader["State"].ToString(), myReader["ZIP"].ToString(), myReader["Phone"].ToString(), myReader["Email"].ToString(), myReader["password"].ToString(), myReader["CreditCardNum"].ToString(), myReader["TID"].ToString(), myReader["START_Date"].ToString(), myReader["END_Date"].ToString());
+            }
+
+            myReader.Close();
+        }
     }
 }
