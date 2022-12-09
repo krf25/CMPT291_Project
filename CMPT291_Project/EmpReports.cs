@@ -55,7 +55,7 @@ namespace CMPT291_Project
             string SaleMonthStart = year.ToString() + "-" + month.ToString() + "-" + day.ToString();
             int endMonth, endYear;
             if (month + 1 == 13) { endMonth = 1; endYear = year + 1; } else { endMonth = month + 1; endYear = year; }
-            string SaleMonthEnd = year.ToString() + "-" + month.ToString() + "-" + day.ToString();
+            string SaleMonthEnd = endYear.ToString() + "-" + endMonth.ToString() + "-" + day.ToString();
             // Show ALL Radio button
             if (SearchAll_sales_report.Checked)
             {
