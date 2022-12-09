@@ -424,6 +424,9 @@ namespace CMPT291_Project
 
         private void RecommendedMovies_Click(object sender, EventArgs e)
         {
+            // try to find movies with a high rating
+            // maybe prompt for specific genre?
+            // sorry this is a WIP and no time
             myCommand.CommandText = "select * from dbo.Movies where mRating > 4";
             try
             {
