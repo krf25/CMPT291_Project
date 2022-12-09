@@ -205,10 +205,10 @@ namespace CMPT291_Project
             
             if (LName_edit_box.Text != "" && FName_edit_box.Text != "" && Address_edit_box.Text != "" && City_edit_box.Text != "" && State_edit_box.Text != "" && ZIP_edit_box.Text != "" && Phone_edit_box.Text != "" && Email_edit_box.Text != "" && Credit_edit_box.Text != "" && Password_edit_box.Text != "")
             {
-                myCommand.CommandText = "select count(*) as repeat from dbo.Customer where Email = '" + Email_add_box.Text + "' and CID != "+CID_edit_box.Text;
+                myCommand.CommandText = "select count(*) as repeat from dbo.Customer where Email = '" + Email_edit_box.Text + "' and CID != "+CID_edit_box.Text;
                 myReader = myCommand.ExecuteReader();
                 myReader.Read();
-                if (myReader["repeat"].ToString() == "0")
+                if (myReader["repeat"].ToString() != "1" )
                 {
                     myReader.Close();
                     try

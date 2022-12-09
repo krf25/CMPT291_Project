@@ -162,3 +162,12 @@ C:\Users\tee\OneDrive\Desktop\newcurr\CMPT291_Project\obj\Debug\net6.0-windows\C
 C:\Users\tee\OneDrive\Desktop\newcurr\CMPT291_Project\obj\Debug\net6.0-windows\ref\CMPT291_Project.dll
 C:\Users\e2467\Desktop\Eric\homework\cmpt 291\project\CMPT291_Project\obj\Debug\net6.0-windows\CMPT291_Project.Rental.resources
 C:\Users\e2467\Desktop\Eric\homework\cmpt 291\project\CMPT291_Project\obj\Debug\net6.0-windows\CMPT291_Project.Return.resources
+C:\Users\e2467\OneDrive\Desktop\eric\291 project\CMPT291_Project\bin\Debug\net6.0-windows\System.Data.SqlClient.dll
+C:\Users\e2467\OneDrive\Desktop\eric\291 project\CMPT291_Project\bin\Debug\net6.0-windows\runtimes\win-arm64\native\sni.dll
+C:\Users\e2467\OneDrive\Desktop\eric\291 project\CMPT291_Project\bin\Debug\net6.0-windows\runtimes\win-x64\native\sni.dll
+C:\Users\e2467\OneDrive\Desktop\eric\291 project\CMPT291_Project\bin\Debug\net6.0-windows\runtimes\win-x86\native\sni.dll
+C:\Users\e2467\OneDrive\Desktop\eric\291 project\CMPT291_Project\bin\Debug\net6.0-windows\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\e2467\OneDrive\Desktop\eric\291 project\CMPT291_Project\bin\Debug\net6.0-windows\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Users\e2467\OneDrive\Desktop\eric\291 project\CMPT291_Project\obj\Debug\net6.0-windows\CMPT291_Project.Rental.resources
+C:\Users\e2467\OneDrive\Desktop\eric\291 project\CMPT291_Project\obj\Debug\net6.0-windows\CMPT291_Project.Return.resources
+C:\Users\e2467\OneDrive\Desktop\eric\291 project\CMPT291_Project\obj\Debug\net6.0-windows\CMPT291_Project.csproj.CopyComplete

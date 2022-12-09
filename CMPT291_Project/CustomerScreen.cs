@@ -93,9 +93,11 @@ namespace CMPT291_Project
         {
             int SelectedIndex = MovieType.SelectedIndex;
             bool CheckCopies = checkBox1.Checked;
-            string ActNames = richTextBox1.Text;
+            string Names = richTextBox1.Text;
+            string[] ActNames = Names.Split(',');
             string MovieTitle = textBox1.Text;
             string SelectedGenre = "";
+           
             if (SelectedIndex == -1)
             {
                 SelectedIndex = 0;
@@ -105,17 +107,17 @@ namespace CMPT291_Project
             myCommand.CommandText = "select * from dbo.Movies ";
             // filters
             
-            if (CheckCopies && MovieTitle == "" && ActNames == "" && (SelectedIndex == 0 || SelectedIndex == -1)) //only copies //work
+            if (CheckCopies && MovieTitle == "" && ActNames[0] == "" && (SelectedIndex == 0 || SelectedIndex == -1)) //only copies //work
             {
                 myCommand.CommandText += " where NumCopies > 1";
                 
             }
-            if (MovieTitle != "" && ActNames == "" && (SelectedIndex == -1 || SelectedIndex == 0) && !CheckCopies) //only title //work
+            if (MovieTitle != "" && ActNames[0] == "" && (SelectedIndex == -1 || SelectedIndex == 0) && !CheckCopies) //only title //work
             {
                 myCommand.CommandText += " where mName like " + "'%" + MovieTitle + "%'";
             }
                     
-            if  (SelectedIndex != -1 && !CheckCopies && MovieTitle == "" && ActNames == "") //only genre //work 
+            if  (SelectedIndex != -1 && !CheckCopies && MovieTitle == "" && ActNames[0] == "") //only genre //work 
             {
                 SelectedGenre = MovieType.Items[MovieType.SelectedIndex].ToString();
                 if (SelectedGenre != "")
@@ -124,75 +126,139 @@ namespace CMPT291_Project
                 }
             }
 
-            if (ActNames != "" && (SelectedIndex == -1 || SelectedIndex == 0) && !CheckCopies && MovieTitle == "") //only actor //work
+            if (ActNames[0] != "" && (SelectedIndex == -1 || SelectedIndex == 0) && !CheckCopies && MovieTitle == "") //only actor //work
             {
-                myCommand.CommandText += ", dbo.Actor A, dbo.Participated_IN P where Movies.MID=P.MID and A.AID=P.AID and A.Name like '%" + ActNames + "%'";
+
+                myCommand.CommandText += ", dbo.Actor A, dbo.Participated_IN P where Movies.MID=P.MID and A.AID=P.AID and A.Name like '%" + ActNames[0] + "%'";
+                if (ActNames.Length > 1)
+                {
+                    myCommand.CommandText = "select * from dbo.Movies M where M.MID IN((select Movies.MID from dbo.Movies, dbo.Actor A, dbo.Participated_IN P where Movies.MID = P.MID and A.AID = P.AID and A.Name like '%" + ActNames[0] + "%')";
+                    for (int i = 1; i < ActNames.Length; i++)
+                    {
+                        myCommand.CommandText += " INTERSECT (select Movies.MID from dbo.Movies, dbo.Actor A, dbo.Participated_IN P where Movies.MID = P.MID and A.AID = P.AID and A.Name like '%" + ActNames[i] + "%'))";
+                      
+                    }
+                }
             }
-            if (ActNames == "" && (SelectedIndex != -1 && SelectedIndex != 0) && CheckCopies && MovieTitle == "")//genre and copies // work
+            if (ActNames[0] == "" && (SelectedIndex != -1 && SelectedIndex != 0) && CheckCopies && MovieTitle == "")//genre and copies // work
             {
                 SelectedGenre = MovieType.Items[MovieType.SelectedIndex].ToString();
                 myCommand.CommandText += " where mType = " + "'" + SelectedGenre + "'";
                 myCommand.CommandText += " and NumCopies > 1";
             }
 
-            if (ActNames != "" && (SelectedIndex != -1 && SelectedIndex != 0) && !CheckCopies && MovieTitle == "")//genre and actors //work 
+            if (ActNames[0] != "" && (SelectedIndex != -1 && SelectedIndex != 0) && !CheckCopies && MovieTitle == "")//genre and actors //work 
             {
                 SelectedGenre = MovieType.Items[MovieType.SelectedIndex].ToString();
-                myCommand.CommandText += ", dbo.Actor A, dbo.Participated_IN P where Movies.MID=P.MID and A.AID=P.AID and A.Name like '%" + ActNames + "%'";
+                myCommand.CommandText += ", dbo.Actor A, dbo.Participated_IN P where Movies.MID=P.MID and A.AID=P.AID and A.Name like '%" + ActNames[0] + "%'";
+                if (ActNames.Length > 1)
+                {
+                    myCommand.CommandText = "select * from dbo.Movies M where M.MID IN((select Movies.MID from dbo.Movies, dbo.Actor A, dbo.Participated_IN P where Movies.MID = P.MID and A.AID = P.AID and A.Name like '%" + ActNames[0] + "%')";
+                    for (int i = 1; i < ActNames.Length; i++)
+                    {
+                        myCommand.CommandText += " INTERSECT (select Movies.MID from dbo.Movies, dbo.Actor A, dbo.Participated_IN P where Movies.MID = P.MID and A.AID = P.AID and A.Name like '%" + ActNames[i] + "%'))";
+
+                    }
+                }
                 myCommand.CommandText += " and mType = " + "'" + SelectedGenre + "'";
             }
-            if (ActNames == "" && (SelectedIndex != -1 && SelectedIndex != 0) && !CheckCopies && MovieTitle != "")//genre and title //work
+            if (ActNames[0] == "" && (SelectedIndex != -1 && SelectedIndex != 0) && !CheckCopies && MovieTitle != "")//genre and title //work
             {
                 SelectedGenre = MovieType.Items[MovieType.SelectedIndex].ToString();
                 myCommand.CommandText += " where mType = " + "'" + SelectedGenre + "'";
                 myCommand.CommandText += " and mName like " + "'%" + MovieTitle + "%'";
             }
-            if (ActNames != "" && (SelectedIndex == -1 || SelectedIndex == 0) && CheckCopies && MovieTitle == "")//copies and actor //work
+            if (ActNames[0] != "" && (SelectedIndex == -1 || SelectedIndex == 0) && CheckCopies && MovieTitle == "")//copies and actor //work
             {
-                myCommand.CommandText += ", dbo.Actor A, dbo.Participated_IN P where Movies.MID=P.MID and A.AID=P.AID and A.Name like '%" + ActNames + "%'";
+                myCommand.CommandText += ", dbo.Actor A, dbo.Participated_IN P where Movies.MID=P.MID and A.AID=P.AID and A.Name like '%" + ActNames[0] + "%'";
+                if (ActNames.Length > 1)
+                {
+                    myCommand.CommandText = "select * from dbo.Movies M where M.MID IN((select Movies.MID from dbo.Movies, dbo.Actor A, dbo.Participated_IN P where Movies.MID = P.MID and A.AID = P.AID and A.Name like '%" + ActNames[0] + "%')";
+                    for (int i = 1; i < ActNames.Length; i++)
+                    {
+                        myCommand.CommandText += " INTERSECT (select Movies.MID from dbo.Movies, dbo.Actor A, dbo.Participated_IN P where Movies.MID = P.MID and A.AID = P.AID and A.Name like '%" + ActNames[i] + "%'))";
+
+                    }
+                }
                 myCommand.CommandText += " and NumCopies > 1";
             }
-            if (ActNames == "" && (SelectedIndex == -1 || SelectedIndex == 0) && CheckCopies && MovieTitle != "")//copies and title //work
+            if (ActNames[0] == "" && (SelectedIndex == -1 || SelectedIndex == 0) && CheckCopies && MovieTitle != "")//copies and title //work
             {
                 myCommand.CommandText += " where mName like " + "'%" + MovieTitle + "%'";
                 myCommand.CommandText += " and NumCopies > 1";
             }
-            if (ActNames != "" && (SelectedIndex == -1 || SelectedIndex == 0) && !CheckCopies && MovieTitle != "") //actor and title //work
+            if (ActNames[0] != "" && (SelectedIndex == -1 || SelectedIndex == 0) && !CheckCopies && MovieTitle != "") //actor and title //work
             {
-                myCommand.CommandText += ", dbo.Actor A, dbo.Participated_IN P where Movies.MID=P.MID and A.AID=P.AID and A.Name like '%" + ActNames + "%'";
+                myCommand.CommandText += ", dbo.Actor A, dbo.Participated_IN P where Movies.MID=P.MID and A.AID=P.AID and A.Name like '%" + ActNames[0] + "%'";
+                if (ActNames.Length > 1)
+                {
+                    myCommand.CommandText = "select * from dbo.Movies M where M.MID IN((select Movies.MID from dbo.Movies, dbo.Actor A, dbo.Participated_IN P where Movies.MID = P.MID and A.AID = P.AID and A.Name like '%" + ActNames[0] + "%')";
+                    for (int i = 1; i < ActNames.Length; i++)
+                    {
+                        myCommand.CommandText += " INTERSECT (select Movies.MID from dbo.Movies, dbo.Actor A, dbo.Participated_IN P where Movies.MID = P.MID and A.AID = P.AID and A.Name like '%" + ActNames[i] + "%'))";
+
+                    }
+                }
                 myCommand.CommandText += " and mName like " + "'%" + MovieTitle + "%'";
             }
-            if (ActNames == "" && (SelectedIndex != -1 && SelectedIndex != 0) && CheckCopies && MovieTitle != "")//genre copies title // work
+            if (ActNames[0] == "" && (SelectedIndex != -1 && SelectedIndex != 0) && CheckCopies && MovieTitle != "")//genre copies title // work
             {
                 SelectedGenre = MovieType.Items[MovieType.SelectedIndex].ToString();
                 myCommand.CommandText += " where mType = " + "'" + SelectedGenre + "'";
                 myCommand.CommandText += " and mName like " + "'%" + MovieTitle + "%'";
                 myCommand.CommandText += " and NumCopies > 1";
             }
-            if (ActNames != "" && (SelectedIndex != -1 && SelectedIndex != 0) && CheckCopies && MovieTitle == "") //genre actors copies //work
+            if (ActNames[0] != "" && (SelectedIndex != -1 && SelectedIndex != 0) && CheckCopies && MovieTitle == "") //genre actors copies //work
             {
-                myCommand.CommandText += ", dbo.Actor A, dbo.Participated_IN P where Movies.MID=P.MID and A.AID=P.AID and A.Name like '%" + ActNames + "%'";
+                myCommand.CommandText += ", dbo.Actor A, dbo.Participated_IN P where Movies.MID=P.MID and A.AID=P.AID and A.Name like '%" + ActNames[0] + "%'";
+                if (ActNames.Length > 1)
+                {
+                    myCommand.CommandText = "select * from dbo.Movies M where M.MID IN((select Movies.MID from dbo.Movies, dbo.Actor A, dbo.Participated_IN P where Movies.MID = P.MID and A.AID = P.AID and A.Name like '%" + ActNames[0] + "%')";
+                    for (int i = 1; i < ActNames.Length; i++)
+                    {
+                        myCommand.CommandText += " INTERSECT (select Movies.MID from dbo.Movies, dbo.Actor A, dbo.Participated_IN P where Movies.MID = P.MID and A.AID = P.AID and A.Name like '%" + ActNames[i] + "%'))";
+
+                    }
+                }
                 myCommand.CommandText += " and NumCopies > 1";
                 SelectedGenre = MovieType.Items[MovieType.SelectedIndex].ToString();
                 myCommand.CommandText += " and mType = " + "'" + SelectedGenre + "'";
             }
-            if (ActNames != "" && (SelectedIndex != -1 && SelectedIndex != 0) && !CheckCopies && MovieTitle != "")//genre actor title //work
+            if (ActNames[0] != "" && (SelectedIndex != -1 && SelectedIndex != 0) && !CheckCopies && MovieTitle != "")//genre actor title //work
             {
-                myCommand.CommandText += ", dbo.Actor A, dbo.Participated_IN P where Movies.MID=P.MID and A.AID=P.AID and A.Name like '%" + ActNames + "%'";
+                myCommand.CommandText += ", dbo.Actor A, dbo.Participated_IN P where Movies.MID=P.MID and A.AID=P.AID and A.Name like '%" + ActNames[0] + "%'";
+                if (ActNames.Length > 1)
+                {
+                    myCommand.CommandText = "select * from dbo.Movies M where M.MID IN((select Movies.MID from dbo.Movies, dbo.Actor A, dbo.Participated_IN P where Movies.MID = P.MID and A.AID = P.AID and A.Name like '%" + ActNames[0] + "%')";
+                    for (int i = 1; i < ActNames.Length; i++)
+                    {
+                        myCommand.CommandText += " INTERSECT (select Movies.MID from dbo.Movies, dbo.Actor A, dbo.Participated_IN P where Movies.MID = P.MID and A.AID = P.AID and A.Name like '%" + ActNames[i] + "%'))";
+
+                    }
+                }
                 myCommand.CommandText += " and mName like " + "'%" + MovieTitle + "%'";
                 SelectedGenre = MovieType.Items[MovieType.SelectedIndex].ToString();
                 myCommand.CommandText += " and mType = " + "'" + SelectedGenre + "'";
             }
-            if (ActNames != "" && (SelectedIndex == -1 || SelectedIndex == 0) && CheckCopies && MovieTitle != "")//copies actor title //work
+            if (ActNames[0] != "" && (SelectedIndex == -1 || SelectedIndex == 0) && CheckCopies && MovieTitle != "")//copies actor title //work
             {
-                myCommand.CommandText += ", dbo.Actor A, dbo.Participated_IN P where Movies.MID=P.MID and A.AID=P.AID and A.Name like '%" + ActNames + "%'";
+                myCommand.CommandText += ", dbo.Actor A, dbo.Participated_IN P where Movies.MID=P.MID and A.AID=P.AID and A.Name like '%" + ActNames[0] + "%'";
                 myCommand.CommandText += " and mName like " + "'%" + MovieTitle + "%'";
                 myCommand.CommandText += " and NumCopies > 1";
             }
 
-            if ((SelectedIndex != -1 && SelectedIndex != 0) && CheckCopies && MovieTitle != "" && ActNames != "") //all filters //work
+            if ((SelectedIndex != -1 && SelectedIndex != 0) && CheckCopies && MovieTitle != "" && ActNames[0] != "") //all filters //work
             {
-                myCommand.CommandText += ", dbo.Actor A, dbo.Participated_IN P where Movies.MID=P.MID and A.AID=P.AID and A.Name like '%" + ActNames + "%'";
+                myCommand.CommandText += ", dbo.Actor A, dbo.Participated_IN P where Movies.MID=P.MID and A.AID=P.AID and A.Name like '%" + ActNames[0] + "%'";
+                if (ActNames.Length > 1)
+                {
+                    myCommand.CommandText = "select * from dbo.Movies M where M.MID IN((select Movies.MID from dbo.Movies, dbo.Actor A, dbo.Participated_IN P where Movies.MID = P.MID and A.AID = P.AID and A.Name like '%" + ActNames[0] + "%')";
+                    for (int i = 1; i < ActNames.Length; i++)
+                    {
+                        myCommand.CommandText += " INTERSECT (select Movies.MID from dbo.Movies, dbo.Actor A, dbo.Participated_IN P where Movies.MID = P.MID and A.AID = P.AID and A.Name like '%" + ActNames[i] + "%'))";
+
+                    }
+                }
                 myCommand.CommandText += " and mName like " + "'%" + MovieTitle + "%'";
                 SelectedGenre = MovieType.Items[MovieType.SelectedIndex].ToString();
                 myCommand.CommandText += " and mType = " + "'" + SelectedGenre + "'";
@@ -210,7 +276,7 @@ namespace CMPT291_Project
                 while (myReader.Read())
                 {
                     // fills in the box with the sql return
-                    MovieDisplay.Rows.Add(myReader["mName"].ToString(), myReader["mType"].ToString(), myReader["NumCopies"].ToString(), myReader["mRating"].ToString());
+                    MovieDisplay.Rows.Add(myReader["MID"].ToString(), myReader["mName"].ToString(), myReader["mType"].ToString(), myReader["NumCopies"].ToString(), myReader["mRating"].ToString());
                 }
 
                 myReader.Close();
