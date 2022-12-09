@@ -76,7 +76,7 @@ namespace CMPT291_Group3_Project
                     string password_text = password.Text;
                     string r = "Insert into Customer values('" + max_value + "'" +
                         ", '', '', '', '', '', '', '', '" + email_text + "'," +
-                        "'" + password_text + "', '', 0, 0, '"+ year + "', '"+ year + "')";
+                        "'" + password_text + "', '', 0, 0, '"+ Today + "', '"+ Today + "')";
 
                     // executeNonQuery - "Executes a Transact-SQL statement against the connection and returns the number of rows affected."
                     SqlCommand insertion = new SqlCommand(r, db);
