@@ -47,9 +47,10 @@
             this.label11 = new System.Windows.Forms.Label();
             this.MovieType = new System.Windows.Forms.ComboBox();
             this.BestSellers = new System.Windows.Forms.TabPage();
+            this.CustBest = new System.Windows.Forms.DataGridView();
             this.button5 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.AVCopiesCheck = new System.Windows.Forms.CheckBox();
             this.RecomendedMovies = new System.Windows.Forms.TabPage();
             this.button4 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -89,8 +90,6 @@
             this.CheckOutDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReturnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerDetails = new System.Windows.Forms.TabPage();
-            this.ViewInfoButton = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.CustomerDisplay = new System.Windows.Forms.DataGridView();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,6 +105,12 @@
             this.TID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.START_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.END_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ViewInfoButton = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.ager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Namgwaeree = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Typesegr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ratingjhrty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerTabs.SuspendLayout();
             this.Movie.SuspendLayout();
             this.MovieMenu.SuspendLayout();
@@ -113,6 +118,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MovieDisplay)).BeginInit();
             this.panel1.SuspendLayout();
             this.BestSellers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CustBest)).BeginInit();
             this.panel4.SuspendLayout();
             this.RecomendedMovies.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -327,6 +333,7 @@
             // 
             // BestSellers
             // 
+            this.BestSellers.Controls.Add(this.CustBest);
             this.BestSellers.Controls.Add(this.button5);
             this.BestSellers.Controls.Add(this.panel4);
             this.BestSellers.Location = new System.Drawing.Point(4, 24);
@@ -337,6 +344,20 @@
             this.BestSellers.Text = "Best Sellers";
             this.BestSellers.UseVisualStyleBackColor = true;
             // 
+            // CustBest
+            // 
+            this.CustBest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CustBest.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ager,
+            this.Namgwaeree,
+            this.Typesegr,
+            this.Ratingjhrty});
+            this.CustBest.Location = new System.Drawing.Point(6, 6);
+            this.CustBest.Name = "CustBest";
+            this.CustBest.RowTemplate.Height = 25;
+            this.CustBest.Size = new System.Drawing.Size(748, 299);
+            this.CustBest.TabIndex = 2;
+            // 
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -346,26 +367,27 @@
             this.button5.TabIndex = 1;
             this.button5.Text = "Search";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Gray;
-            this.panel4.Controls.Add(this.checkBox2);
+            this.panel4.Controls.Add(this.AVCopiesCheck);
             this.panel4.Location = new System.Drawing.Point(6, 311);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(172, 47);
             this.panel4.TabIndex = 0;
             // 
-            // checkBox2
+            // AVCopiesCheck
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox2.Location = new System.Drawing.Point(13, 12);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(143, 25);
-            this.checkBox2.TabIndex = 0;
-            this.checkBox2.Text = "Avaliable Copies";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.AVCopiesCheck.AutoSize = true;
+            this.AVCopiesCheck.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.AVCopiesCheck.Location = new System.Drawing.Point(13, 12);
+            this.AVCopiesCheck.Name = "AVCopiesCheck";
+            this.AVCopiesCheck.Size = new System.Drawing.Size(143, 25);
+            this.AVCopiesCheck.TabIndex = 0;
+            this.AVCopiesCheck.Text = "Avaliable Copies";
+            this.AVCopiesCheck.UseVisualStyleBackColor = true;
             // 
             // RecomendedMovies
             // 
@@ -729,20 +751,6 @@
             this.CustomerDetails.Text = "Account Details";
             this.CustomerDetails.UseVisualStyleBackColor = true;
             // 
-            // ViewInfoButton
-            // 
-            this.ViewInfoButton.Location = new System.Drawing.Point(324, 189);
-            this.ViewInfoButton.Name = "ViewInfoButton";
-            this.ViewInfoButton.Size = new System.Drawing.Size(116, 23);
-            this.ViewInfoButton.TabIndex = 23;
-            this.ViewInfoButton.Text = "View Details";
-            this.ViewInfoButton.UseVisualStyleBackColor = true;
-            this.ViewInfoButton.Click += new System.EventHandler(this.ViewInfoButton_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
-            // 
             // CustomerDisplay
             // 
             this.CustomerDisplay.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -837,6 +845,41 @@
             this.END_Date.HeaderText = "END_Date";
             this.END_Date.Name = "END_Date";
             // 
+            // ViewInfoButton
+            // 
+            this.ViewInfoButton.Location = new System.Drawing.Point(324, 189);
+            this.ViewInfoButton.Name = "ViewInfoButton";
+            this.ViewInfoButton.Size = new System.Drawing.Size(116, 23);
+            this.ViewInfoButton.TabIndex = 23;
+            this.ViewInfoButton.Text = "View Details";
+            this.ViewInfoButton.UseVisualStyleBackColor = true;
+            this.ViewInfoButton.Click += new System.EventHandler(this.ViewInfoButton_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // ager
+            // 
+            this.ager.HeaderText = "MID";
+            this.ager.Name = "ager";
+            // 
+            // Namgwaeree
+            // 
+            this.Namgwaeree.HeaderText = "Name";
+            this.Namgwaeree.Name = "Namgwaeree";
+            this.Namgwaeree.Width = 200;
+            // 
+            // Typesegr
+            // 
+            this.Typesegr.HeaderText = "Type";
+            this.Typesegr.Name = "Typesegr";
+            // 
+            // Ratingjhrty
+            // 
+            this.Ratingjhrty.HeaderText = "Rating";
+            this.Ratingjhrty.Name = "Ratingjhrty";
+            // 
             // CustomerScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -853,6 +896,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.BestSellers.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CustBest)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.RecomendedMovies.ResumeLayout(false);
@@ -897,7 +941,7 @@
         private RichTextBox richTextBox1;
         private Button button5;
         private Panel panel4;
-        private CheckBox checkBox2;
+        private CheckBox AVCopiesCheck;
         private Button button4;
         private Panel panel5;
         private CheckBox checkBox3;
@@ -955,5 +999,10 @@
         private DataGridViewTextBoxColumn TID;
         private DataGridViewTextBoxColumn START_Date;
         private DataGridViewTextBoxColumn END_Date;
+        private DataGridView CustBest;
+        private DataGridViewTextBoxColumn ager;
+        private DataGridViewTextBoxColumn Namgwaeree;
+        private DataGridViewTextBoxColumn Typesegr;
+        private DataGridViewTextBoxColumn Ratingjhrty;
     }
 }

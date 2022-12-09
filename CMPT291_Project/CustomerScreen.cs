@@ -395,5 +395,31 @@ namespace CMPT291_Project
 
             myReader.Close();
         }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            if (AVCopiesCheck.Checked) myCommand.CommandText = "select m.MID, m.mName, m.mType, m.mRating, count(OID) as retailAmount from dbo.\"Order\" o, dbo.Movies m, dbo.Copies c where o.MID>0 and o.MID=m.MID and c.MID = m.MID and c.Availability = 'Y'  group by m.MID, m.mName, m.mType, m.mRating order by retailAmount desc";
+            else myCommand.CommandText = "select m.MID, m.mName, m.mType, m.mRating, count(OID) as retailAmount from dbo.\"Order\" o, dbo.Movies m where o.MID>0 and o.MID=m.MID  group by m.MID, m.mName, m.mType, m.mRating order by retailAmount desc";
+            try
+            {
+                // shows the command
+                MessageBox.Show(myCommand.CommandText);
+                // runs command
+                myReader = myCommand.ExecuteReader();
+
+                CustBest.Rows.Clear();
+                while (myReader.Read())
+                {
+                    // fills in the box with the sql return
+                    CustBest.Rows.Add(myReader["MID"].ToString(), myReader["mName"].ToString(), myReader["mType"].ToString(), myReader["mRating"].ToString());
+                }
+
+                myReader.Close();
+            }
+            catch (Exception e3)
+            {
+                MessageBox.Show(e3.ToString(), "Error");
+            }
+        }
     }
 }
