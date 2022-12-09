@@ -422,9 +422,18 @@ namespace CMPT291_Project
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void RecommendedMovies_Click(object sender, EventArgs e)
         {
             myCommand.CommandText = "select * from dbo.Movies where mRating > 4";
+            try
+            {
+                myReader = myCommand.ExecuteReader();
+                myReader.Close();
+            }
+            catch (Exception e3)
+            {
+                MessageBox.Show(e3.ToString(), "Error");
+            }
         }
     }
 }
