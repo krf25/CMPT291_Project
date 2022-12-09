@@ -421,5 +421,10 @@ namespace CMPT291_Project
                 MessageBox.Show(e3.ToString(), "Error");
             }
         }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            myCommand.CommandText = "select * from dbo.Movies where mRating > 4";
+        }
     }
 }

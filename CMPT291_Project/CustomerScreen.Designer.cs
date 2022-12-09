@@ -48,6 +48,10 @@
             this.MovieType = new System.Windows.Forms.ComboBox();
             this.BestSellers = new System.Windows.Forms.TabPage();
             this.CustBest = new System.Windows.Forms.DataGridView();
+            this.ager = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Namgwaeree = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Typesegr = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ratingjhrty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button5 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
             this.AVCopiesCheck = new System.Windows.Forms.CheckBox();
@@ -107,10 +111,6 @@
             this.END_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ViewInfoButton = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
-            this.ager = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Namgwaeree = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Typesegr = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ratingjhrty = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerTabs.SuspendLayout();
             this.Movie.SuspendLayout();
             this.MovieMenu.SuspendLayout();
@@ -358,6 +358,27 @@
             this.CustBest.Size = new System.Drawing.Size(748, 299);
             this.CustBest.TabIndex = 2;
             // 
+            // ager
+            // 
+            this.ager.HeaderText = "MID";
+            this.ager.Name = "ager";
+            // 
+            // Namgwaeree
+            // 
+            this.Namgwaeree.HeaderText = "Name";
+            this.Namgwaeree.Name = "Namgwaeree";
+            this.Namgwaeree.Width = 200;
+            // 
+            // Typesegr
+            // 
+            this.Typesegr.HeaderText = "Type";
+            this.Typesegr.Name = "Typesegr";
+            // 
+            // Ratingjhrty
+            // 
+            this.Ratingjhrty.HeaderText = "Rating";
+            this.Ratingjhrty.Name = "Ratingjhrty";
+            // 
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
@@ -409,6 +430,7 @@
             this.button4.TabIndex = 2;
             this.button4.Text = "Search";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // panel5
             // 
@@ -858,27 +880,6 @@
             // openFileDialog1
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
-            // 
-            // ager
-            // 
-            this.ager.HeaderText = "MID";
-            this.ager.Name = "ager";
-            // 
-            // Namgwaeree
-            // 
-            this.Namgwaeree.HeaderText = "Name";
-            this.Namgwaeree.Name = "Namgwaeree";
-            this.Namgwaeree.Width = 200;
-            // 
-            // Typesegr
-            // 
-            this.Typesegr.HeaderText = "Type";
-            this.Typesegr.Name = "Typesegr";
-            // 
-            // Ratingjhrty
-            // 
-            this.Ratingjhrty.HeaderText = "Rating";
-            this.Ratingjhrty.Name = "Ratingjhrty";
             // 
             // CustomerScreen
             // 
