@@ -47,9 +47,15 @@
             this.label11 = new System.Windows.Forms.Label();
             this.MovieType = new System.Windows.Forms.ComboBox();
             this.BestSellers = new System.Windows.Forms.TabPage();
+            this.CustBest = new System.Windows.Forms.DataGridView();
+            this.MID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button5 = new System.Windows.Forms.Button();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
+            this.IfCopies = new System.Windows.Forms.CheckBox();
             this.RecomendedMovies = new System.Windows.Forms.TabPage();
             this.button4 = new System.Windows.Forms.Button();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -89,8 +95,6 @@
             this.CheckOutDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ReturnDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CustomerDetails = new System.Windows.Forms.TabPage();
-            this.ViewInfoButton = new System.Windows.Forms.Button();
-            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.CustomerDisplay = new System.Windows.Forms.DataGridView();
             this.CID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -106,6 +110,8 @@
             this.TID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.START_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.END_Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ViewInfoButton = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.CustomerTabs.SuspendLayout();
             this.Movie.SuspendLayout();
             this.MovieMenu.SuspendLayout();
@@ -113,6 +119,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.MovieDisplay)).BeginInit();
             this.panel1.SuspendLayout();
             this.BestSellers.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.CustBest)).BeginInit();
             this.panel4.SuspendLayout();
             this.RecomendedMovies.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -133,18 +140,20 @@
             this.CustomerTabs.Controls.Add(this.MovieQueued);
             this.CustomerTabs.Controls.Add(this.CustomerHistory);
             this.CustomerTabs.Controls.Add(this.CustomerDetails);
-            this.CustomerTabs.Location = new System.Drawing.Point(12, 12);
+            this.CustomerTabs.Location = new System.Drawing.Point(34, 38);
+            this.CustomerTabs.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.CustomerTabs.Name = "CustomerTabs";
             this.CustomerTabs.SelectedIndex = 0;
-            this.CustomerTabs.Size = new System.Drawing.Size(776, 426);
+            this.CustomerTabs.Size = new System.Drawing.Size(2217, 1363);
             this.CustomerTabs.TabIndex = 0;
             // 
             // Movie
             // 
             this.Movie.Controls.Add(this.MovieMenu);
-            this.Movie.Location = new System.Drawing.Point(4, 24);
+            this.Movie.Location = new System.Drawing.Point(12, 69);
+            this.Movie.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.Movie.Name = "Movie";
-            this.Movie.Size = new System.Drawing.Size(768, 398);
+            this.Movie.Size = new System.Drawing.Size(2193, 1282);
             this.Movie.TabIndex = 0;
             this.Movie.Text = "Movies";
             this.Movie.UseVisualStyleBackColor = true;
@@ -154,10 +163,11 @@
             this.MovieMenu.Controls.Add(this.MovieSearch);
             this.MovieMenu.Controls.Add(this.BestSellers);
             this.MovieMenu.Controls.Add(this.RecomendedMovies);
-            this.MovieMenu.Location = new System.Drawing.Point(0, 3);
+            this.MovieMenu.Location = new System.Drawing.Point(0, 10);
+            this.MovieMenu.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.MovieMenu.Name = "MovieMenu";
             this.MovieMenu.SelectedIndex = 0;
-            this.MovieMenu.Size = new System.Drawing.Size(768, 402);
+            this.MovieMenu.Size = new System.Drawing.Size(2194, 1286);
             this.MovieMenu.TabIndex = 0;
             // 
             // MovieSearch
@@ -165,10 +175,11 @@
             this.MovieSearch.Controls.Add(this.MovieDisplay);
             this.MovieSearch.Controls.Add(this.button2);
             this.MovieSearch.Controls.Add(this.panel1);
-            this.MovieSearch.Location = new System.Drawing.Point(4, 24);
+            this.MovieSearch.Location = new System.Drawing.Point(12, 69);
+            this.MovieSearch.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.MovieSearch.Name = "MovieSearch";
-            this.MovieSearch.Padding = new System.Windows.Forms.Padding(3);
-            this.MovieSearch.Size = new System.Drawing.Size(760, 374);
+            this.MovieSearch.Padding = new System.Windows.Forms.Padding(9, 10, 9, 10);
+            this.MovieSearch.Size = new System.Drawing.Size(2170, 1205);
             this.MovieSearch.TabIndex = 0;
             this.MovieSearch.Text = "Movie Search";
             this.MovieSearch.UseVisualStyleBackColor = true;
@@ -181,12 +192,11 @@
             this.mType,
             this.NumCopies,
             this.mRating});
-            this.MovieDisplay.Location = new System.Drawing.Point(6, 4);
-            this.MovieDisplay.Margin = new System.Windows.Forms.Padding(1);
+            this.MovieDisplay.Location = new System.Drawing.Point(17, 13);
             this.MovieDisplay.Name = "MovieDisplay";
             this.MovieDisplay.RowHeadersWidth = 123;
             this.MovieDisplay.RowTemplate.Height = 57;
-            this.MovieDisplay.Size = new System.Drawing.Size(748, 236);
+            this.MovieDisplay.Size = new System.Drawing.Size(2137, 755);
             this.MovieDisplay.TabIndex = 1;
             this.MovieDisplay.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -221,9 +231,10 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button2.Location = new System.Drawing.Point(634, 313);
+            this.button2.Location = new System.Drawing.Point(1811, 1002);
+            this.button2.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(120, 39);
+            this.button2.Size = new System.Drawing.Size(343, 125);
             this.button2.TabIndex = 1;
             this.button2.Text = "Search";
             this.button2.UseVisualStyleBackColor = true;
@@ -239,17 +250,19 @@
             this.panel1.Controls.Add(this.richTextBox1);
             this.panel1.Controls.Add(this.label11);
             this.panel1.Controls.Add(this.MovieType);
-            this.panel1.Location = new System.Drawing.Point(6, 278);
+            this.panel1.Location = new System.Drawing.Point(17, 890);
+            this.panel1.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(751, 90);
+            this.panel1.Size = new System.Drawing.Size(2146, 288);
             this.panel1.TabIndex = 2;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(479, 24);
+            this.label2.Location = new System.Drawing.Point(1369, 77);
+            this.label2.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(65, 15);
+            this.label2.Size = new System.Drawing.Size(196, 48);
             this.label2.TabIndex = 5;
             this.label2.Text = "Movie Title";
             // 
@@ -257,25 +270,28 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label10.Location = new System.Drawing.Point(15, 18);
+            this.label10.Location = new System.Drawing.Point(43, 58);
+            this.label10.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 21);
+            this.label10.Size = new System.Drawing.Size(270, 65);
             this.label10.TabIndex = 2;
             this.label10.Text = "Movie Type";
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(443, 52);
+            this.textBox1.Location = new System.Drawing.Point(1266, 166);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(165, 23);
+            this.textBox1.Size = new System.Drawing.Size(464, 55);
             this.textBox1.TabIndex = 0;
             // 
             // checkBox1
             // 
             this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(122, 56);
+            this.checkBox1.Location = new System.Drawing.Point(349, 179);
+            this.checkBox1.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(113, 19);
+            this.checkBox1.Size = new System.Drawing.Size(325, 52);
             this.checkBox1.TabIndex = 1;
             this.checkBox1.Text = "Available Copies";
             this.checkBox1.UseVisualStyleBackColor = true;
@@ -283,9 +299,10 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(251, 42);
+            this.richTextBox1.Location = new System.Drawing.Point(717, 134);
+            this.richTextBox1.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(177, 35);
+            this.richTextBox1.Size = new System.Drawing.Size(498, 103);
             this.richTextBox1.TabIndex = 3;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
@@ -293,9 +310,10 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(268, 9);
+            this.label11.Location = new System.Drawing.Point(766, 29);
+            this.label11.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(123, 30);
+            this.label11.Size = new System.Drawing.Size(368, 96);
             this.label11.TabIndex = 4;
             this.label11.Text = "Actor full name \r\nseperated by commas";
             this.label11.Click += new System.EventHandler(this.label11_Click);
@@ -317,9 +335,10 @@
             "Thriller",
             "War",
             "Western"});
-            this.MovieType.Location = new System.Drawing.Point(3, 54);
+            this.MovieType.Location = new System.Drawing.Point(9, 173);
+            this.MovieType.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.MovieType.Name = "MovieType";
-            this.MovieType.Size = new System.Drawing.Size(111, 23);
+            this.MovieType.Size = new System.Drawing.Size(310, 56);
             this.MovieType.Sorted = true;
             this.MovieType.TabIndex = 0;
             this.MovieType.Text = "--Select Genre--";
@@ -327,53 +346,111 @@
             // 
             // BestSellers
             // 
+            this.BestSellers.Controls.Add(this.CustBest);
             this.BestSellers.Controls.Add(this.button5);
             this.BestSellers.Controls.Add(this.panel4);
-            this.BestSellers.Location = new System.Drawing.Point(4, 24);
+            this.BestSellers.Location = new System.Drawing.Point(12, 69);
+            this.BestSellers.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.BestSellers.Name = "BestSellers";
-            this.BestSellers.Padding = new System.Windows.Forms.Padding(3);
-            this.BestSellers.Size = new System.Drawing.Size(760, 374);
+            this.BestSellers.Padding = new System.Windows.Forms.Padding(9, 10, 9, 10);
+            this.BestSellers.Size = new System.Drawing.Size(2170, 1205);
             this.BestSellers.TabIndex = 1;
             this.BestSellers.Text = "Best Sellers";
             this.BestSellers.UseVisualStyleBackColor = true;
             // 
+            // CustBest
+            // 
+            this.CustBest.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.CustBest.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MID,
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4});
+            this.CustBest.Location = new System.Drawing.Point(17, 13);
+            this.CustBest.Name = "CustBest";
+            this.CustBest.RowHeadersWidth = 123;
+            this.CustBest.RowTemplate.Height = 57;
+            this.CustBest.Size = new System.Drawing.Size(2100, 880);
+            this.CustBest.TabIndex = 2;
+            // 
+            // MID
+            // 
+            this.MID.HeaderText = "Movie ID";
+            this.MID.MinimumWidth = 15;
+            this.MID.Name = "MID";
+            this.MID.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.HeaderText = "Movie Title";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 15;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.HeaderText = "Genre";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 15;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.HeaderText = "Available Copies";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 15;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 300;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.HeaderText = "Movie Rating";
+            this.dataGridViewTextBoxColumn4.MinimumWidth = 15;
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 300;
+            // 
             // button5
             // 
             this.button5.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button5.Location = new System.Drawing.Point(216, 312);
+            this.button5.Location = new System.Drawing.Point(617, 998);
+            this.button5.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(106, 46);
+            this.button5.Size = new System.Drawing.Size(303, 147);
             this.button5.TabIndex = 1;
             this.button5.Text = "Search";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.Gray;
-            this.panel4.Controls.Add(this.checkBox2);
-            this.panel4.Location = new System.Drawing.Point(6, 311);
+            this.panel4.Controls.Add(this.IfCopies);
+            this.panel4.Location = new System.Drawing.Point(17, 995);
+            this.panel4.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(172, 47);
+            this.panel4.Size = new System.Drawing.Size(491, 150);
             this.panel4.TabIndex = 0;
             // 
-            // checkBox2
+            // IfCopies
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox2.Location = new System.Drawing.Point(13, 12);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(143, 25);
-            this.checkBox2.TabIndex = 0;
-            this.checkBox2.Text = "Avaliable Copies";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.IfCopies.AutoSize = true;
+            this.IfCopies.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.IfCopies.Location = new System.Drawing.Point(37, 38);
+            this.IfCopies.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
+            this.IfCopies.Name = "IfCopies";
+            this.IfCopies.Size = new System.Drawing.Size(420, 69);
+            this.IfCopies.TabIndex = 0;
+            this.IfCopies.Text = "Avaliable Copies";
+            this.IfCopies.UseVisualStyleBackColor = true;
             // 
             // RecomendedMovies
             // 
             this.RecomendedMovies.Controls.Add(this.button4);
             this.RecomendedMovies.Controls.Add(this.panel5);
-            this.RecomendedMovies.Location = new System.Drawing.Point(4, 24);
+            this.RecomendedMovies.Location = new System.Drawing.Point(12, 69);
+            this.RecomendedMovies.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.RecomendedMovies.Name = "RecomendedMovies";
-            this.RecomendedMovies.Size = new System.Drawing.Size(760, 374);
+            this.RecomendedMovies.Size = new System.Drawing.Size(2170, 1205);
             this.RecomendedMovies.TabIndex = 2;
             this.RecomendedMovies.Text = "Recomended Movies";
             this.RecomendedMovies.UseVisualStyleBackColor = true;
@@ -381,9 +458,10 @@
             // button4
             // 
             this.button4.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button4.Location = new System.Drawing.Point(199, 316);
+            this.button4.Location = new System.Drawing.Point(569, 1011);
+            this.button4.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(99, 51);
+            this.button4.Size = new System.Drawing.Size(283, 163);
             this.button4.TabIndex = 2;
             this.button4.Text = "Search";
             this.button4.UseVisualStyleBackColor = true;
@@ -392,18 +470,20 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.Gray;
             this.panel5.Controls.Add(this.checkBox3);
-            this.panel5.Location = new System.Drawing.Point(3, 312);
+            this.panel5.Location = new System.Drawing.Point(9, 998);
+            this.panel5.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(175, 55);
+            this.panel5.Size = new System.Drawing.Size(500, 176);
             this.panel5.TabIndex = 1;
             // 
             // checkBox3
             // 
             this.checkBox3.AutoSize = true;
             this.checkBox3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.checkBox3.Location = new System.Drawing.Point(15, 16);
+            this.checkBox3.Location = new System.Drawing.Point(43, 51);
+            this.checkBox3.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.checkBox3.Name = "checkBox3";
-            this.checkBox3.Size = new System.Drawing.Size(143, 25);
+            this.checkBox3.Size = new System.Drawing.Size(420, 69);
             this.checkBox3.TabIndex = 0;
             this.checkBox3.Text = "Available Copies";
             this.checkBox3.UseVisualStyleBackColor = true;
@@ -413,9 +493,10 @@
             this.MovieQueued.Controls.Add(this.MovieQueueGrid);
             this.MovieQueued.Controls.Add(this.label8);
             this.MovieQueued.Controls.Add(this.panel3);
-            this.MovieQueued.Location = new System.Drawing.Point(4, 24);
+            this.MovieQueued.Location = new System.Drawing.Point(12, 69);
+            this.MovieQueued.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.MovieQueued.Name = "MovieQueued";
-            this.MovieQueued.Size = new System.Drawing.Size(768, 398);
+            this.MovieQueued.Size = new System.Drawing.Size(2193, 1282);
             this.MovieQueued.TabIndex = 1;
             this.MovieQueued.Text = "Movie queued";
             this.MovieQueued.UseVisualStyleBackColor = true;
@@ -428,40 +509,50 @@
             this.QueuedName,
             this.QueuedType,
             this.movieRating});
-            this.MovieQueueGrid.Location = new System.Drawing.Point(9, 30);
+            this.MovieQueueGrid.Location = new System.Drawing.Point(26, 96);
+            this.MovieQueueGrid.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.MovieQueueGrid.Name = "MovieQueueGrid";
+            this.MovieQueueGrid.RowHeadersWidth = 123;
             this.MovieQueueGrid.RowTemplate.Height = 25;
-            this.MovieQueueGrid.Size = new System.Drawing.Size(731, 253);
+            this.MovieQueueGrid.Size = new System.Drawing.Size(2089, 810);
             this.MovieQueueGrid.TabIndex = 11;
             // 
             // MovieID
             // 
             this.MovieID.HeaderText = "MID";
+            this.MovieID.MinimumWidth = 15;
             this.MovieID.Name = "MovieID";
+            this.MovieID.Width = 300;
             // 
             // QueuedName
             // 
             this.QueuedName.HeaderText = "MovieName";
+            this.QueuedName.MinimumWidth = 15;
             this.QueuedName.Name = "QueuedName";
             this.QueuedName.Width = 300;
             // 
             // QueuedType
             // 
             this.QueuedType.HeaderText = "MType";
+            this.QueuedType.MinimumWidth = 15;
             this.QueuedType.Name = "QueuedType";
+            this.QueuedType.Width = 300;
             // 
             // movieRating
             // 
             this.movieRating.HeaderText = "mRating";
+            this.movieRating.MinimumWidth = 15;
             this.movieRating.Name = "movieRating";
+            this.movieRating.Width = 300;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(9, 2);
+            this.label8.Location = new System.Drawing.Point(26, 6);
+            this.label8.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(144, 25);
+            this.label8.Size = new System.Drawing.Size(428, 76);
             this.label8.TabIndex = 9;
             this.label8.Text = "Queued Movies";
             // 
@@ -475,17 +566,19 @@
             this.panel3.Controls.Add(this.button3);
             this.panel3.Controls.Add(this.RemoveMovieId);
             this.panel3.Controls.Add(this.label12);
-            this.panel3.Location = new System.Drawing.Point(9, 300);
+            this.panel3.Location = new System.Drawing.Point(26, 960);
+            this.panel3.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(750, 97);
+            this.panel3.Size = new System.Drawing.Size(2143, 310);
             this.panel3.TabIndex = 10;
             // 
             // SearchMovieQueueButton
             // 
             this.SearchMovieQueueButton.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.SearchMovieQueueButton.Location = new System.Drawing.Point(609, 27);
+            this.SearchMovieQueueButton.Location = new System.Drawing.Point(1740, 86);
+            this.SearchMovieQueueButton.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.SearchMovieQueueButton.Name = "SearchMovieQueueButton";
-            this.SearchMovieQueueButton.Size = new System.Drawing.Size(122, 60);
+            this.SearchMovieQueueButton.Size = new System.Drawing.Size(349, 192);
             this.SearchMovieQueueButton.TabIndex = 7;
             this.SearchMovieQueueButton.Text = "Refresh Queue";
             this.SearchMovieQueueButton.UseVisualStyleBackColor = true;
@@ -494,9 +587,10 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button1.Location = new System.Drawing.Point(464, 27);
+            this.button1.Location = new System.Drawing.Point(1326, 86);
+            this.button1.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(139, 60);
+            this.button1.Size = new System.Drawing.Size(397, 192);
             this.button1.TabIndex = 2;
             this.button1.Text = "Add Movie";
             this.button1.UseVisualStyleBackColor = true;
@@ -506,25 +600,28 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label9.Location = new System.Drawing.Point(341, 11);
+            this.label9.Location = new System.Drawing.Point(974, 35);
+            this.label9.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(87, 25);
+            this.label9.Size = new System.Drawing.Size(258, 76);
             this.label9.TabIndex = 3;
             this.label9.Text = "Movie ID";
             // 
             // AddMovieId
             // 
-            this.AddMovieId.Location = new System.Drawing.Point(341, 51);
+            this.AddMovieId.Location = new System.Drawing.Point(974, 163);
+            this.AddMovieId.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.AddMovieId.Name = "AddMovieId";
-            this.AddMovieId.Size = new System.Drawing.Size(100, 23);
+            this.AddMovieId.Size = new System.Drawing.Size(278, 55);
             this.AddMovieId.TabIndex = 1;
             // 
             // button3
             // 
             this.button3.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.button3.Location = new System.Drawing.Point(135, 27);
+            this.button3.Location = new System.Drawing.Point(386, 86);
+            this.button3.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(189, 60);
+            this.button3.Size = new System.Drawing.Size(540, 192);
             this.button3.TabIndex = 4;
             this.button3.Text = "Remove Movie";
             this.button3.UseVisualStyleBackColor = true;
@@ -532,18 +629,20 @@
             // 
             // RemoveMovieId
             // 
-            this.RemoveMovieId.Location = new System.Drawing.Point(15, 51);
+            this.RemoveMovieId.Location = new System.Drawing.Point(43, 163);
+            this.RemoveMovieId.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.RemoveMovieId.Name = "RemoveMovieId";
-            this.RemoveMovieId.Size = new System.Drawing.Size(100, 23);
+            this.RemoveMovieId.Size = new System.Drawing.Size(278, 55);
             this.RemoveMovieId.TabIndex = 5;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label12.Location = new System.Drawing.Point(15, 11);
+            this.label12.Location = new System.Drawing.Point(43, 35);
+            this.label12.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(87, 25);
+            this.label12.Size = new System.Drawing.Size(258, 76);
             this.label12.TabIndex = 6;
             this.label12.Text = "Movie ID";
             // 
@@ -552,9 +651,10 @@
             this.CustomerHistory.Controls.Add(this.panel6);
             this.CustomerHistory.Controls.Add(this.panel2);
             this.CustomerHistory.Controls.Add(this.CustomerRentalGrid);
-            this.CustomerHistory.Location = new System.Drawing.Point(4, 24);
+            this.CustomerHistory.Location = new System.Drawing.Point(12, 69);
+            this.CustomerHistory.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.CustomerHistory.Name = "CustomerHistory";
-            this.CustomerHistory.Size = new System.Drawing.Size(768, 398);
+            this.CustomerHistory.Size = new System.Drawing.Size(2193, 1282);
             this.CustomerHistory.TabIndex = 3;
             this.CustomerHistory.Text = "Rental History";
             this.CustomerHistory.UseVisualStyleBackColor = true;
@@ -568,48 +668,54 @@
             this.panel6.Controls.Add(this.RateMIDBox);
             this.panel6.Controls.Add(this.RateMovieButton);
             this.panel6.Controls.Add(this.label16);
-            this.panel6.Location = new System.Drawing.Point(575, 223);
+            this.panel6.Location = new System.Drawing.Point(1643, 714);
+            this.panel6.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(185, 139);
+            this.panel6.Size = new System.Drawing.Size(529, 445);
             this.panel6.TabIndex = 5;
             // 
             // ScoreNumberBox
             // 
-            this.ScoreNumberBox.Location = new System.Drawing.Point(32, 81);
+            this.ScoreNumberBox.Location = new System.Drawing.Point(91, 259);
+            this.ScoreNumberBox.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.ScoreNumberBox.Name = "ScoreNumberBox";
-            this.ScoreNumberBox.Size = new System.Drawing.Size(100, 23);
+            this.ScoreNumberBox.Size = new System.Drawing.Size(278, 55);
             this.ScoreNumberBox.TabIndex = 6;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(32, 63);
+            this.label7.Location = new System.Drawing.Point(91, 202);
+            this.label7.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(36, 15);
+            this.label7.Size = new System.Drawing.Size(109, 48);
             this.label7.TabIndex = 5;
             this.label7.Text = "Score";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(33, 19);
+            this.label17.Location = new System.Drawing.Point(94, 61);
+            this.label17.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(29, 15);
+            this.label17.Size = new System.Drawing.Size(87, 48);
             this.label17.TabIndex = 4;
             this.label17.Text = "MID";
             // 
             // RateMIDBox
             // 
-            this.RateMIDBox.Location = new System.Drawing.Point(32, 37);
+            this.RateMIDBox.Location = new System.Drawing.Point(91, 118);
+            this.RateMIDBox.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.RateMIDBox.Name = "RateMIDBox";
-            this.RateMIDBox.Size = new System.Drawing.Size(100, 23);
+            this.RateMIDBox.Size = new System.Drawing.Size(278, 55);
             this.RateMIDBox.TabIndex = 3;
             // 
             // RateMovieButton
             // 
-            this.RateMovieButton.Location = new System.Drawing.Point(50, 110);
+            this.RateMovieButton.Location = new System.Drawing.Point(143, 352);
+            this.RateMovieButton.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.RateMovieButton.Name = "RateMovieButton";
-            this.RateMovieButton.Size = new System.Drawing.Size(75, 23);
+            this.RateMovieButton.Size = new System.Drawing.Size(214, 74);
             this.RateMovieButton.TabIndex = 2;
             this.RateMovieButton.Text = "RateMovie";
             this.RateMovieButton.UseVisualStyleBackColor = true;
@@ -619,9 +725,10 @@
             // 
             this.label16.AutoSize = true;
             this.label16.BackColor = System.Drawing.Color.Transparent;
-            this.label16.Location = new System.Drawing.Point(3, 0);
+            this.label16.Location = new System.Drawing.Point(9, 0);
+            this.label16.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(63, 15);
+            this.label16.Size = new System.Drawing.Size(189, 48);
             this.label16.TabIndex = 1;
             this.label16.Text = "RateMovie";
             // 
@@ -632,17 +739,19 @@
             this.panel2.Controls.Add(this.HeldMovieCheckBox);
             this.panel2.Controls.Add(this.ViewRentalButton);
             this.panel2.Controls.Add(this.label6);
-            this.panel2.Location = new System.Drawing.Point(575, 27);
+            this.panel2.Location = new System.Drawing.Point(1643, 86);
+            this.panel2.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(185, 139);
+            this.panel2.Size = new System.Drawing.Size(529, 445);
             this.panel2.TabIndex = 4;
             // 
             // OverDueMovieCheckBox
             // 
             this.OverDueMovieCheckBox.AutoSize = true;
-            this.OverDueMovieCheckBox.Location = new System.Drawing.Point(22, 70);
+            this.OverDueMovieCheckBox.Location = new System.Drawing.Point(63, 224);
+            this.OverDueMovieCheckBox.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.OverDueMovieCheckBox.Name = "OverDueMovieCheckBox";
-            this.OverDueMovieCheckBox.Size = new System.Drawing.Size(110, 19);
+            this.OverDueMovieCheckBox.Size = new System.Drawing.Size(319, 52);
             this.OverDueMovieCheckBox.TabIndex = 3;
             this.OverDueMovieCheckBox.Text = "OverDueMovies";
             this.OverDueMovieCheckBox.UseVisualStyleBackColor = true;
@@ -650,18 +759,20 @@
             // HeldMovieCheckBox
             // 
             this.HeldMovieCheckBox.AutoSize = true;
-            this.HeldMovieCheckBox.Location = new System.Drawing.Point(22, 34);
+            this.HeldMovieCheckBox.Location = new System.Drawing.Point(63, 109);
+            this.HeldMovieCheckBox.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.HeldMovieCheckBox.Name = "HeldMovieCheckBox";
-            this.HeldMovieCheckBox.Size = new System.Drawing.Size(89, 19);
+            this.HeldMovieCheckBox.Size = new System.Drawing.Size(254, 52);
             this.HeldMovieCheckBox.TabIndex = 2;
             this.HeldMovieCheckBox.Text = "HeldMovies";
             this.HeldMovieCheckBox.UseVisualStyleBackColor = true;
             // 
             // ViewRentalButton
             // 
-            this.ViewRentalButton.Location = new System.Drawing.Point(50, 95);
+            this.ViewRentalButton.Location = new System.Drawing.Point(143, 304);
+            this.ViewRentalButton.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.ViewRentalButton.Name = "ViewRentalButton";
-            this.ViewRentalButton.Size = new System.Drawing.Size(75, 23);
+            this.ViewRentalButton.Size = new System.Drawing.Size(214, 74);
             this.ViewRentalButton.TabIndex = 1;
             this.ViewRentalButton.Text = "View";
             this.ViewRentalButton.UseVisualStyleBackColor = true;
@@ -670,9 +781,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 5);
+            this.label6.Location = new System.Drawing.Point(9, 16);
+            this.label6.Margin = new System.Windows.Forms.Padding(9, 0, 9, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 15);
+            this.label6.Size = new System.Drawing.Size(232, 48);
             this.label6.TabIndex = 0;
             this.label6.Text = "RentalHistory";
             // 
@@ -685,63 +797,60 @@
             this.rentMovieName,
             this.CheckOutDate,
             this.ReturnDate});
-            this.CustomerRentalGrid.Location = new System.Drawing.Point(8, 3);
+            this.CustomerRentalGrid.Location = new System.Drawing.Point(23, 10);
+            this.CustomerRentalGrid.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.CustomerRentalGrid.Name = "CustomerRentalGrid";
+            this.CustomerRentalGrid.RowHeadersWidth = 123;
             this.CustomerRentalGrid.RowTemplate.Height = 25;
-            this.CustomerRentalGrid.Size = new System.Drawing.Size(555, 392);
+            this.CustomerRentalGrid.Size = new System.Drawing.Size(1586, 1254);
             this.CustomerRentalGrid.TabIndex = 3;
             // 
             // RentMovieID
             // 
             this.RentMovieID.HeaderText = "MID";
+            this.RentMovieID.MinimumWidth = 15;
             this.RentMovieID.Name = "RentMovieID";
             this.RentMovieID.Width = 60;
             // 
             // rentCopyID
             // 
             this.rentCopyID.HeaderText = "CPID";
+            this.rentCopyID.MinimumWidth = 15;
             this.rentCopyID.Name = "rentCopyID";
+            this.rentCopyID.Width = 300;
             // 
             // rentMovieName
             // 
             this.rentMovieName.HeaderText = "Movie Name";
+            this.rentMovieName.MinimumWidth = 15;
             this.rentMovieName.Name = "rentMovieName";
             this.rentMovieName.Width = 150;
             // 
             // CheckOutDate
             // 
             this.CheckOutDate.HeaderText = "CheckOutDate";
+            this.CheckOutDate.MinimumWidth = 15;
             this.CheckOutDate.Name = "CheckOutDate";
+            this.CheckOutDate.Width = 300;
             // 
             // ReturnDate
             // 
             this.ReturnDate.HeaderText = "ReturnDate";
+            this.ReturnDate.MinimumWidth = 15;
             this.ReturnDate.Name = "ReturnDate";
+            this.ReturnDate.Width = 300;
             // 
             // CustomerDetails
             // 
             this.CustomerDetails.Controls.Add(this.CustomerDisplay);
             this.CustomerDetails.Controls.Add(this.ViewInfoButton);
-            this.CustomerDetails.Location = new System.Drawing.Point(4, 24);
+            this.CustomerDetails.Location = new System.Drawing.Point(12, 69);
+            this.CustomerDetails.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.CustomerDetails.Name = "CustomerDetails";
-            this.CustomerDetails.Size = new System.Drawing.Size(768, 398);
+            this.CustomerDetails.Size = new System.Drawing.Size(2193, 1282);
             this.CustomerDetails.TabIndex = 2;
             this.CustomerDetails.Text = "Account Details";
             this.CustomerDetails.UseVisualStyleBackColor = true;
-            // 
-            // ViewInfoButton
-            // 
-            this.ViewInfoButton.Location = new System.Drawing.Point(324, 189);
-            this.ViewInfoButton.Name = "ViewInfoButton";
-            this.ViewInfoButton.Size = new System.Drawing.Size(116, 23);
-            this.ViewInfoButton.TabIndex = 23;
-            this.ViewInfoButton.Text = "View Details";
-            this.ViewInfoButton.UseVisualStyleBackColor = true;
-            this.ViewInfoButton.Click += new System.EventHandler(this.ViewInfoButton_Click);
-            // 
-            // openFileDialog1
-            // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // CustomerDisplay
             // 
@@ -761,88 +870,134 @@
             this.TID,
             this.START_Date,
             this.END_Date});
-            this.CustomerDisplay.Location = new System.Drawing.Point(3, 47);
+            this.CustomerDisplay.Location = new System.Drawing.Point(9, 150);
+            this.CustomerDisplay.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.CustomerDisplay.Name = "CustomerDisplay";
+            this.CustomerDisplay.RowHeadersWidth = 123;
             this.CustomerDisplay.RowTemplate.Height = 25;
-            this.CustomerDisplay.Size = new System.Drawing.Size(744, 73);
+            this.CustomerDisplay.Size = new System.Drawing.Size(2126, 234);
             this.CustomerDisplay.TabIndex = 24;
             // 
             // CID
             // 
             this.CID.HeaderText = "CID";
+            this.CID.MinimumWidth = 15;
             this.CID.Name = "CID";
+            this.CID.Width = 300;
             // 
             // LName
             // 
             this.LName.HeaderText = "LName";
+            this.LName.MinimumWidth = 15;
             this.LName.Name = "LName";
+            this.LName.Width = 300;
             // 
             // FName
             // 
             this.FName.HeaderText = "FName";
+            this.FName.MinimumWidth = 15;
             this.FName.Name = "FName";
+            this.FName.Width = 300;
             // 
             // Address
             // 
             this.Address.HeaderText = "Address";
+            this.Address.MinimumWidth = 15;
             this.Address.Name = "Address";
+            this.Address.Width = 300;
             // 
             // City
             // 
             this.City.HeaderText = "City";
+            this.City.MinimumWidth = 15;
             this.City.Name = "City";
+            this.City.Width = 300;
             // 
             // State
             // 
             this.State.HeaderText = "State";
+            this.State.MinimumWidth = 15;
             this.State.Name = "State";
+            this.State.Width = 300;
             // 
             // ZIP
             // 
             this.ZIP.HeaderText = "Zip";
+            this.ZIP.MinimumWidth = 15;
             this.ZIP.Name = "ZIP";
+            this.ZIP.Width = 300;
             // 
             // Phone
             // 
             this.Phone.HeaderText = "Phone";
+            this.Phone.MinimumWidth = 15;
             this.Phone.Name = "Phone";
+            this.Phone.Width = 300;
             // 
             // Email
             // 
             this.Email.HeaderText = "Email";
+            this.Email.MinimumWidth = 15;
             this.Email.Name = "Email";
+            this.Email.Width = 300;
             // 
             // password
             // 
             this.password.HeaderText = "Password";
+            this.password.MinimumWidth = 15;
             this.password.Name = "password";
+            this.password.Width = 300;
             // 
             // CreditCardNum
             // 
             this.CreditCardNum.HeaderText = "CreditCardNum";
+            this.CreditCardNum.MinimumWidth = 15;
             this.CreditCardNum.Name = "CreditCardNum";
+            this.CreditCardNum.Width = 300;
             // 
             // TID
             // 
             this.TID.HeaderText = "TID";
+            this.TID.MinimumWidth = 15;
             this.TID.Name = "TID";
+            this.TID.Width = 300;
             // 
             // START_Date
             // 
             this.START_Date.HeaderText = "START_Date";
+            this.START_Date.MinimumWidth = 15;
             this.START_Date.Name = "START_Date";
+            this.START_Date.Width = 300;
             // 
             // END_Date
             // 
             this.END_Date.HeaderText = "END_Date";
+            this.END_Date.MinimumWidth = 15;
             this.END_Date.Name = "END_Date";
+            this.END_Date.Width = 300;
+            // 
+            // ViewInfoButton
+            // 
+            this.ViewInfoButton.Location = new System.Drawing.Point(926, 605);
+            this.ViewInfoButton.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
+            this.ViewInfoButton.Name = "ViewInfoButton";
+            this.ViewInfoButton.Size = new System.Drawing.Size(331, 74);
+            this.ViewInfoButton.TabIndex = 23;
+            this.ViewInfoButton.Text = "View Details";
+            this.ViewInfoButton.UseVisualStyleBackColor = true;
+            this.ViewInfoButton.Click += new System.EventHandler(this.ViewInfoButton_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // CustomerScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(20F, 48F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 447);
+            this.ClientSize = new System.Drawing.Size(2286, 1430);
             this.Controls.Add(this.CustomerTabs);
+            this.Margin = new System.Windows.Forms.Padding(9, 10, 9, 10);
             this.Name = "CustomerScreen";
             this.Text = "Menu";
             this.CustomerTabs.ResumeLayout(false);
@@ -853,6 +1008,7 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.BestSellers.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.CustBest)).EndInit();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.RecomendedMovies.ResumeLayout(false);
@@ -897,7 +1053,7 @@
         private RichTextBox richTextBox1;
         private Button button5;
         private Panel panel4;
-        private CheckBox checkBox2;
+        private CheckBox IfCopies;
         private Button button4;
         private Panel panel5;
         private CheckBox checkBox3;
@@ -955,5 +1111,11 @@
         private DataGridViewTextBoxColumn TID;
         private DataGridViewTextBoxColumn START_Date;
         private DataGridViewTextBoxColumn END_Date;
+        private DataGridView CustBest;
+        private DataGridViewTextBoxColumn MID;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
     }
 }
